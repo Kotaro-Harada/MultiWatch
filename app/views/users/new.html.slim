@@ -1,0 +1,22 @@
+.register_wrapper
+  p ユーザー登録
+  .register_information
+    = form_with model: [@user], local: true do |f|
+      .form_group
+        = f.label :name, "ユーザー名 (4~25文字)"
+        = f.text_field :name, class: "form-control"
+      .form_group
+        = f.label :email, "メールアドレス"
+        = f.text_field :email, class: "fotm-control"
+      .form_check
+        = f.label :admin, class: "form-check-label" do
+          p 管理者権限
+          = f.check_box :admin, class: "form-check-input"
+      .form_group
+        = f.label :password, "パスワード (8文字以上)"
+        = f.password_field :password, class: "form-control"
+      .form_group
+        = f.label :password_confirmation, "パスワード(確認)"
+        = f.password_field :password_confirmation, class: "form-control"
+      .form_group
+        = f.submit "登録", class: "btn btn-primary"

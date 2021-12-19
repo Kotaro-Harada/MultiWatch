@@ -13,9 +13,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    avatar_path = Rails.root.join("app", "assets", "images", "default_icon.jpeg")
+    file = File.open(avatar_path)
+    @user.avatar.attach(io: file, filename: "default_icon.jpeg")
 
     if @user.save
-      redirect_to multiwatch_home_path(@user)
+      redirect_to root_path(@user)
     else
       render :new
     end

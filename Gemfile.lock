@@ -436,7 +436,7 @@ PLATFORMS
 DEPENDENCIES
   annotate
   aws-sdk-s3
-  bcrypt
+  bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.4)
   bootstrap
   bullet
@@ -447,7 +447,7 @@ DEPENDENCIES
   font-awesome-sass (~> 5.13.0)
   google-api-client (~> 0.11)
   html2slim
-  image_processing
+  image_processing (~> 1.2)
   jbuilder (~> 2.7)
   listen (~> 3.3)
   pg (~> 1.1)

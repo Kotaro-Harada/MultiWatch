@@ -1,0 +1,8 @@
+.user_menu
+  .user_each_menu
+    i.fas.fa-user-friends  フレンド
+  .user_each_menu
+    i.fas.fa-cog  設定
+  .user_each_menu
+    = link_to logout_path, method: :delete, class: "nav_link"
+      i.fas.fa-sign-out-alt  ログアウト

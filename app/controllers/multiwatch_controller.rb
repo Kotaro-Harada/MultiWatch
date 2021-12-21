@@ -1,16 +1,14 @@
 require "api"
 require "json"
+require "multiwatch"
 
 class MultiwatchController < ApplicationController
   def home
-
-
-
   end
 
   def watch
-    @youtube = /v=/.match(params[:youtube]).post_match if params[:youtube].present?
-    @twitch = /tv./.match(params[:twitch]).post_match if params[:twitch].present?
+    @youtube = Multiwatch.youtube_video(params[:youtube]) if params[:youtube].present?
+    @twitch = Multiwatch.twitch_user(params[:twitch]) if params[:twitch].present?
     @niconico = /lv/.match(params[:niconico]).post_match if params[:niconico].present?
   end
 

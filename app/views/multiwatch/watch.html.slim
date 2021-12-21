@@ -1,11 +1,14 @@
 .video_wrapper
-  .youtube
-    - if @youtube.present?
-      iframe width="620" height="378"  allowfullscreen="1" src="https://www.youtube.com/embed/#{@youtube}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      iframe width="620" height="570" frameborder="0" src="https://www.youtube.com/live_chat?v=#{@youtube}&embed_domain=localhost"
-  .twitch
-    - if @twitch.present?
-      iframe frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620" src="https://player.twitch.tv/?channel=#{@twitch}&parent=localhost"
-      iframe id="twitch-chat-embed" src="https://www.twitch.tv/embed/#{@twitch}/chat?parent=localhost" height="500" width="620" sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-modals"
+  - if @youtube.present?
+    - @youtube.each do |video|
+      .youtube
+        iframe width="620" height="378"  allowfullscreen="1" src="https://www.youtube.com/embed/#{video}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        iframe width="620" height="570" frameborder="0" src="https://www.youtube.com/live_chat?v=#{video}&embed_domain=localhost" - if
+  - if @twitch.present?
+    - @twitch.each do |user|
+      .twitch
+        iframe frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620" src="https://player.twitch.tv/?channel=#{user}&parent=localhost"
+        iframe id="twitch-chat-embed" src="https://www.twitch.tv/embed/#{user}/chat?parent=localhost" height="500" width="620" sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-modals"
   .niconico
-    script src="https://embed.nicovideo.jp/watch/sm39747025/script?w=640&h=360"
+      <script type="application/javascript" src="https://embed.nicovideo.jp/watch/so39761198/script?w=640&h=360"></script><noscript><a href="https://www.nicovideo.jp/watch/so39761198">吸血鬼すぐ死ぬ 第12話『バカ五番勝負』ほか２本</a></noscript>
+

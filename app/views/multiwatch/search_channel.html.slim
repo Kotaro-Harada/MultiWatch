@@ -2,7 +2,7 @@
   .channel_wrapper
     - if @platform == 1
       - @channel["items"].each do |channel|
-        = link_to multiwatch_watch_path(youtube:"v=#{@channel_video}")
+        = link_to multiwatch_watch_path(youtube:["v=#{@channel_video}"])
           .channel
             .channel_image
               img src="#{channel['snippet']['thumbnails']['default']['url']}"
@@ -15,7 +15,7 @@
               .description
                 p = channel["snippet"]["description"]
     - if @platform == 2
-      = link_to multiwatch_watch_path(twitch:"tv/#{@keyword}")
+      = link_to multiwatch_watch_path(twitch:["tv/#{@keyword}"])
         .channel
           .channel_image
             img src="#{@channel['profile_image_url']}"

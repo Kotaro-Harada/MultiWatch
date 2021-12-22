@@ -12,7 +12,11 @@
         = f.text_field :keyword, placeholder: "検索"
         = f.button :type => "submit", class: "search_channel", style: "border-style: none;" do
           i.fas.fa-search
-  .unknown_user
+  .header_user
+    .notification
+      i.far.fa-envelope
+    .whisper
+      i.far.fa-comment-alt
     - unless current_user
       .login
         = link_to login_path

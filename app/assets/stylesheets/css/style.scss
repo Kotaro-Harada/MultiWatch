@@ -9,14 +9,18 @@
 4. WATCH
 */
 /* === 0 COMMON ===*/
+body{
+  background-color: black !important;
+  height: 100vh;
+}
 p{
   color: white;
   text-decoration: none;
 }
 .wrapper{
+  height: 100%;
   background-color: black;
   display: flex;
-  height: 100vh;
   position: relative;
 }
 .nav_link, .nav_link:hover{
@@ -59,7 +63,7 @@ a{
   margin: auto;
   width: auto;
 }
-.unknown_user{
+.header_user{
   display: flex;
   width: auto;
   height: 50px;
@@ -109,9 +113,10 @@ a{
 .user_menu{
   opacity: 0;
   position: absolute;
-  top: 0px;
+  top: 50px;
   right: 20px;
   background-color: black;
+  z-index: 2;
 }
 .show{
   opacity: 1;
@@ -144,11 +149,25 @@ a{
 .side_nav .menu:nth-of-type(3){
   bottom: 0;
 }
+.notification, .whisper{
+  padding: 3px 10px;
+  margin: auto 5px;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.notification:hover, .whisper:hover{
+  background-color: rgb(49, 49, 49);
+}
 
 /* === 1.3 TOP === */
+.main{
+  width: 100vh;
+  margin: 0 auto;
+}
 .sidebar{
-  position: relative;
-  width: 150px;
+  position: absolute;
+  width: 0px;
   height: 100%;
   background-color: rgb(40, 40, 40);
   color: white;
@@ -157,7 +176,8 @@ a{
   z-index: 1;
 }
 .slide{
-  left: 0
+  left: 0;
+  width: 150px;
 }
 .top_menu{
   width: 150px;
@@ -174,11 +194,38 @@ a{
 .home, .follow, .history, .later{
   box-sizing: border-box;
 }
-.stream_and_video{
-  display: flex;
-  left: 100px;
+.platform{
+  width: 520px;
+  margin: 30px auto 0 auto;
 }
-
+.platform p{
+  text-align: center;
+  margin: 0;
+  font-weight: bold;
+}
+.platform input{
+  margin: 5px auto;
+}
+.submit{
+  display: block;
+  margin: auto;
+  width: 150px;
+}
+@keyframes display{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+.youtube2, .youtube3, .youtube4, .twitch2, .twitch3, .twitch4{
+  display: none;
+}
+.youtube2.display, .youtube3.display, .youtube4.display, .twitch2.display, .twitch3.display, .twitch4.display{
+  display: inline-block;
+  animation: display 0.5s;
+}
 
 /* === 2. CHANNEL === */
 .channel{
@@ -252,9 +299,5 @@ a{
 }
 
 /* === 4. WATCH === */
-.video_wrapper{
-  background-color: black;
-  display: flex;
-  height: 100%;
-}
+
 

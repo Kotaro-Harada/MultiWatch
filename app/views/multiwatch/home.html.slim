@@ -1,26 +1,4 @@
 .wrapper
-  .sidebar
-    = link_to multiwatch_home_path, class: "nav_link"
-      .top_menu
-        .icon
-          i.fas.fa-home
-        .home
-          | HOME
-    .top_menu
-      .icon
-        i.fas.fa-heart
-      .follow
-        | フォロー
-    .top_menu
-      .icon
-        i.fas.fa-history
-      .history
-        | 履歴
-    .top_menu
-      .icon
-        i.fas.fa-clock
-      .later
-        | 後で見る
   .main
     = form_with url: { controller: "multiwatch", action: "watch"}, method: :get, local: true do |f|
       .platform

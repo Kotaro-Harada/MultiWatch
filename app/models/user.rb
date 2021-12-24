@@ -9,5 +9,4 @@ class User < ApplicationRecord
     presence: true,
     uniqueness: true
   validates :password, length: { minimum: 8 }
-
 end

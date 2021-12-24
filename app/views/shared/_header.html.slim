@@ -13,8 +13,6 @@
         = f.button :type => "submit", class: "search_channel", style: "border-style: none;" do
           i.fas.fa-search
   .header_user
-    .notification
-      i.far.fa-envelope
     .whisper
       i.far.fa-comment-alt
     - unless current_user
@@ -28,4 +26,4 @@
       - if current_user
         = image_tag current_user.avatar.variant(resize_to_fill: [30, 30]), class: "icon_image"
       - else
-        = image_tag "aaa.png", size: "30x30", class: "icon_image"
+        = image_tag "default_icon.jpeg", size: "30x30", class: "icon_image"

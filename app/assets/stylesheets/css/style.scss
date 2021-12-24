@@ -97,6 +97,21 @@ a{
   font-weight: bold !important;
   line-height: 0 !important;
 }
+.whisper_box{
+  display: none;
+  position: absolute;
+  background-color: rgb(40, 40, 40);
+  width: 400px;
+  z-index: 2;
+  right: 40px;
+  top: 50px;
+  border-radius: 5px;
+}
+.whisper_box p{
+  margin-top: 5px;
+  font-weight: bold;
+  text-align: center;
+}
 .user_icon{
   margin-right: 20px;
   cursor: pointer;
@@ -111,7 +126,7 @@ a{
   margin: 10px
 }
 .user_menu{
-  opacity: 0;
+  display: none;
   position: absolute;
   top: 50px;
   right: 20px;
@@ -119,8 +134,8 @@ a{
   z-index: 2;
 }
 .show{
-  opacity: 1;
-  transition-duration: 0.3s;
+  display: inline-block;
+  animation: display 0.3s;
 }
 .side_nav{
   position: relative;
@@ -149,21 +164,17 @@ a{
 .side_nav .menu:nth-of-type(3){
   bottom: 0;
 }
-.notification, .whisper{
-  padding: 3px 10px;
+.whisper{
   margin: auto 5px;
   color: white;
   cursor: pointer;
   border-radius: 5px;
 }
-.notification:hover, .whisper:hover{
-  background-color: rgb(49, 49, 49);
+.whisper:hover{
+  background-color: rgb(50, 50, 50);
 }
-
-/* === 1.3 TOP === */
-.main{
-  width: 100vh;
-  margin: 0 auto;
+.fa-comment-alt{
+  padding: 7px;
 }
 .sidebar{
   position: absolute;
@@ -172,8 +183,9 @@ a{
   background-color: rgb(40, 40, 40);
   color: white;
   left: -150px;
+  top: 50px;
   transition-duration: 0.3s;
-  z-index: 1;
+  z-index: 2;
 }
 .slide{
   left: 0;
@@ -193,6 +205,12 @@ a{
 }
 .home, .follow, .history, .later{
   box-sizing: border-box;
+}
+
+/* === 1.3 TOP === */
+.main{
+  width: 100vh;
+  margin: 0 auto;
 }
 .platform{
   width: 520px;
@@ -222,7 +240,7 @@ a{
 .youtube2, .youtube3, .youtube4, .twitch2, .twitch3, .twitch4{
   display: none;
 }
-.youtube2.display, .youtube3.display, .youtube4.display, .twitch2.display, .twitch3.display, .twitch4.display{
+.display{
   display: inline-block;
   animation: display 0.5s;
 }
@@ -285,7 +303,6 @@ a{
   margin: auto;
 }
 .register_wrapper p, .login_wrapper p{
-
   font-weight: bold;
   text-align: center;
   font-size: 20px;
@@ -299,5 +316,14 @@ a{
 }
 
 /* === 4. WATCH === */
-
+.wrap{
+  width: 0;
+  height: 0;
+}
+.hide{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+}
 

@@ -3,9 +3,6 @@ require "json"
 
 class MultiwatchController < ApplicationController
   def home
-
-
-
   end
 
   def watch

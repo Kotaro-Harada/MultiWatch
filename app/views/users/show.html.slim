@@ -1,25 +1,29 @@
-.wrapper
-  p 設定
-  .avatar
-    p プロフィール画像
-    - if current_user.avatar.attached?
-      = current_user.avatar.variant(resize_to_fill: [50, 50])
-    - else
-      img src="app/assets/images/default_icon.jpeg"
-  .profile
-    p プロフィール設定
-    .setting
-      .username
-        .title_username
-          p ユーザー名
-        .current_user_name
-          = current_user.name
-      .email
-        .title_email
-          p メールアドレス
-        .current_user_email
-          = current_user.email
-      .password
+.profile_wrapper
+  .profile_or_security
+    .profile
+      p 設定
+    .security
+      p セキュリティ
+  = form_with model: @user, local: true do |f|
+    .avatar
+      p プロフィール画像
+      .avatar_image
+        = image_tag current_user.avatar.variant(resize_to_fill: [50, 50]), class: "icon_image"
+        = f.file_field :avatar
+    .profile
+      p プロフィール設定
+      .setting
+        .username
+          .title_username
+            p ユーザー名
+          .current_user_name
+            p = current_user.name
+        .email
+          .title_email
+            p メールアドレス
+          .current_user_email
+            p = current_user.email
+        .password
 
 
 

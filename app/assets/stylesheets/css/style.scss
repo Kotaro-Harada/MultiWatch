@@ -7,6 +7,9 @@
 2. CHANNEL
 3. REGISTER, LOGIN
 4. WATCH
+5. SETTING
+  5.1 PROFILE
+  5.2 SECURITY
 */
 /* === 0 COMMON ===*/
 body{
@@ -327,3 +330,7 @@ a{
   z-index: 1;
 }
 
+/* === 5.1 PROFILE === */
+.profile_or_security{
+  display: flex;
+}

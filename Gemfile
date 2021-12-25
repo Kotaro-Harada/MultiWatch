@@ -52,6 +52,7 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'rubocop-airbnb'
 end
 
 group :test do
@@ -65,7 +66,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'slim-rails'
 gem 'html2slim'
-gem "rubocop-airbnb"
 gem "dotenv-rails"
 gem 'rest-client'
 gem 'bootstrap'

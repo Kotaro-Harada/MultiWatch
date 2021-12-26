@@ -7,7 +7,11 @@
 2. CHANNEL
 3. REGISTER, LOGIN
 4. WATCH
+5. SETTING
+  5.1 PROFILE
+  5.2 SECURITY
 */
+
 /* === 0 COMMON ===*/
 body{
   background-color: black !important;
@@ -16,6 +20,7 @@ body{
 p{
   color: white;
   text-decoration: none;
+  margin: 0 !important;
 }
 .wrapper{
   height: 100%;
@@ -29,6 +34,9 @@ p{
 }
 a{
   text-decoration: none !important;
+}
+.side{
+  display: flex;
 }
 /* === 1.1 HEADER === */
 .header, .navbar_header, .search, .search_input{
@@ -327,3 +335,55 @@ a{
   z-index: 1;
 }
 
+/* === 5.1 PROFILE === */
+.setting_wrapper{
+  margin-top: 30px;
+  margin-left: 280px;
+}
+.setting_tab{
+  display: flex;
+  margin: 20px 0;
+}
+.setting_title{
+  font-weight: bold;
+  font-size: 40px;
+}
+.security_tab:hover, .profile_tab:hover{
+  border-bottom: 2px solid purple;
+  cursor: pointer;
+}
+.security_tab, .profile_tab{
+  padding-bottom: 2px;
+  margin-right: 30px;
+}
+.underline{
+  border-bottom: 2px solid purple;
+}
+.profile_image_title, .profile p, .address p, .security p{
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+.profile_image{
+  margin: auto 0 auto 30px;
+  height: 30px;
+}
+#update_image{
+  width: 350px;
+}
+.title_username{
+  margin: auto 30px auto 0;
+}
+.profile_box, .setting{
+  width: 600px;
+  background-color: rgb(40, 40, 40);
+}
+.update_btn{
+  text-align: center;
+}
+.delete{
+ display: none;
+}
+.select{
+  display: inline-block
+}

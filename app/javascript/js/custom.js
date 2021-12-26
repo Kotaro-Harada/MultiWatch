@@ -42,3 +42,22 @@ $(document).on("click", function(){
     $(".wrap").removeClass("hide");
   }
 });
+
+// === SETTING === //
+$(".profile_tab").on("click", function(){
+  $(this).addClass("underline");
+  $(".security_tab").removeClass("underline");
+  $(".profile_setting").addClass("select");
+  $(".profile_setting").removeClass("delete");
+  $(".security_setting").addClass("delete");
+  $(".security_setting").removeClass("select");
+});
+
+$(".security_tab").on("click", function(){
+  $(this).addClass("underline");
+  $(".profile_tab").removeClass("underline");
+  $(".security_setting").addClass("select");
+  $(".security_setting").removeClass("delete");
+  $(".profile_setting").addClass("delete");
+  $(".profile_setting").removeClass("select");
+});

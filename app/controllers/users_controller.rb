@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = user.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def new
@@ -29,16 +29,14 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = Uesr.find(params[:id])
+    @user = User.find(params[:id])
 
-    if @user.update(user_params)
+    if @user.update!(user_params)
       redirect_to user_path(@user)
     else
       render :edit
     end
   end
-
-
 
   private
 

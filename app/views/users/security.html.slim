@@ -1,0 +1,39 @@
+.setting_wrapper
+  .setting_title
+    p 設定
+  .setting_tab
+    = link_to profile_user_path
+      .profile_tab
+        p プロフィール
+    .security_tab.underline
+      p セキュリティ
+  .address
+    = form_with model: @user, local: true do |f|
+      = render "shared/error_and_notice", model: f.object
+      p 連絡先
+      .setting
+        .form_group.side.p-3
+          .title_email
+            = f.label :email, "メールアドレス"
+          .input_email
+            = f.text_field :email, placeholder: current_user.email, class: "form-control"
+        .form_group.p-3.update_btn
+          = f.hidden_field :password, value: @user.password_digest
+          = f.hidden_field :password_confirmation, value: @user.password_digest
+          = f.submit "変更", class: "btn btn-primary"
+  .security
+    = form_with model: @user, local: true do |f|
+      p セキュリティ
+      .setting
+        .form_group.side.p-3
+          .title_password
+            = f.label :password, "パスワード (8文字以上)"
+          .input_password
+            = f.text_field :password, class: "form-control"
+        .form_group.side.p-3
+          .title_confirmation
+            = f.label :password_confirmation, "パスワード(確認)"
+          .input_confirmation
+            = f.password_field :password_confirmation, class: "form-control"
+        .form_group.p-3.update_btn
+          = f.submit "変更", class: "btn btn-primary"

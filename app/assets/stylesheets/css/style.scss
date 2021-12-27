@@ -38,6 +38,15 @@ a{
 .side{
   display: flex;
 }
+.alert{
+  margin: 0;
+  padding: 0 !important;
+  color: rgb(255, 80, 80);
+}
+.notice{
+  color: chartreuse;
+  margin-bottom: 30px;
+}
 /* === 1.1 HEADER === */
 .header, .navbar_header, .search, .search_input{
   display: flex;
@@ -371,8 +380,9 @@ a{
 #update_image{
   width: 350px;
 }
-.title_username{
-  margin: auto 30px auto 0;
+.title_username, .title_email, .title_password, .title_confirmation{
+  margin: auto 20px auto 0;
+  width: 180px;
 }
 .profile_box, .setting{
   width: 600px;
@@ -380,10 +390,4 @@ a{
 }
 .update_btn{
   text-align: center;
-}
-.delete{
- display: none;
-}
-.select{
-  display: inline-block
 }

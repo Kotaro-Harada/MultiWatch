@@ -29,7 +29,7 @@
           .title_password
             = f.label :password, "パスワード (8文字以上)"
           .input_password
-            = f.text_field :password, class: "form-control"
+            = f.text_field :password, value: nil, class: "form-control"
         .form_group.side.p-3
           .title_confirmation
             = f.label :password_confirmation, "パスワード(確認)"

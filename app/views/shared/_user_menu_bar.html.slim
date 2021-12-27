@@ -2,7 +2,7 @@
   .user_menu
     .user_each_menu
       i.fas.fa-user-friends  フレンド
-    = link_to user_path(current_user.id)
+    = link_to profile_user_path(current_user.id)
       .user_each_menu
         i.fas.fa-cog  設定
     = link_to logout_path, method: :delete, class: "nav_link"

@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def new
@@ -29,16 +28,24 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = Uesr.find(params[:id])
+    @user = User.find(params[:id])
 
     if @user.update(user_params)
-      redirect_to user_path(@user)
+      redirect_to profile_user_path(@user), notice: "変更が完了しました"
+    elsif @user.errors[:name].any? || @user.errors[:avatar].any?
+      render :profile
     else
-      render :edit
+      render :security
     end
   end
 
+  def profile
+    @user = User.find(params[:id])
+  end
 
+  def security
+    @user = User.find(params[:id])
+  end
 
   private
 

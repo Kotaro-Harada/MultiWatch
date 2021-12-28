@@ -1,29 +1,45 @@
-.profile_wrapper
-  .profile_or_security
-    .profile
-      p 設定
-    .security
+.setting_wrapper
+  .setting_title
+    p 設定
+  .setting_tab
+    .profile_tab.underline
+      p プロフィール
+    .security_tab
       p セキュリティ
   = form_with model: @user, local: true do |f|
-    .avatar
-      p プロフィール画像
-      .avatar_image
-        = image_tag current_user.avatar.variant(resize_to_fill: [50, 50]), class: "icon_image"
-        = f.file_field :avatar
-    .profile
-      p プロフィール設定
-      .setting
-        .username
-          .title_username
-            p ユーザー名
-          .current_user_name
-            p = current_user.name
-        .email
-          .title_email
-            p メールアドレス
-          .current_user_email
-            p = current_user.email
-        .password
-
-
-
+    .profile_setting
+      .profile_image_title
+        = f.label :avatar, "プロフィール画像"
+      .form_group.side.p-3.profile_box
+        = image_tag current_user.avatar.variant(resize_to_fill: [80, 80]), class: "icon_image"
+        .profile_image
+          = f.file_field :avatar, class: "form-control", id: "update_image"
+      .profile
+        p プロフィール設定
+        .setting
+          .form_group.side.p-3
+            .title_username
+              = f.label :name, "ユーザー名 (4~25文字)"
+            .current_user_name
+              = f.text_field :name, placeholder: current_user.name, class: "form-control"
+          .form_group.p-3.update_btn
+            = f.submit "変更", class: "btn btn-primary"
+    .security_setting.delete
+      .address
+        p 連絡先
+        .setting
+          .form_group.side.p-3
+            .title_username
+              = f.label :email, "メールアドレス"
+            .current_user_name
+              = f.text_field :email, placeholder: current_user.email, class: "form-control"
+      .security
+        p セキュリティ
+        .setting
+          .form_group.side.p-3
+            .title_username
+              = f.label :password, "パスワード (8文字以上)"
+            .current_user_name
+              = f.text_field :password, class: "form-control"
+          .form_group.p-3.update_btn
+            = f.submit "変更", class: "btn btn-primary"

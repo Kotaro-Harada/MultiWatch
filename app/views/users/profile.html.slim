@@ -1,0 +1,30 @@
+.setting_wrapper
+  .setting_title
+    p 設定
+  .setting_tab
+    .profile_tab.underline
+      p プロフィール
+    = link_to security_user_path
+      .security_tab
+        p セキュリティ
+  = form_with model: @user, local: true do |f|
+    .profile_setting
+      = render "shared/error_and_notice", model: f.object
+      .profile_image_title
+        = f.label :avatar, "プロフィール画像"
+      .form_group.side.p-3.profile_box
+        = image_tag @user.avatar.variant(resize_to_fill: [80, 80]), class: "icon_image"
+        .profile_image
+          = f.file_field :avatar, class: "form-control", id: "update_image"
+      .profile
+        p プロフィール設定
+        .setting
+          .form_group.side.p-3
+            .title_username
+              = f.label :name, "ユーザー名 (4~25文字)"
+            .input_user_name
+              = f.text_field :name, placeholder: @user.name, class: "form-control"
+          .form_group.p-3.update_btn
+            = f.hidden_field :password, value: @user.password_digest
+            = f.hidden_field :password_confirmation, value: @user.password_digest
+            = f.submit "変更", class: "btn btn-primary"

@@ -1,3 +1,6 @@
+const { post } = require("jquery");
+const e = require("turbolinks");
+
 // === HEADER === //
 $(".user_icon").on("click", function(){
   $(".user_menu").toggleClass("show");
@@ -42,3 +45,57 @@ $(document).on("click", function(){
     $(".wrap").removeClass("hide");
   }
 });
+
+// === FOLLOW === //
+$("#follow").on("submit", function(e){
+  e.preventDefault();
+  let image_url = $(this).children("input:nth-child(2)").val();
+  let name = $(this).children("input:nth-child(3)").val();
+  let display_name = $(this).children("input:nth-child(4)").val();
+  let user_id = $(this).children("input:nth-child(5)").val();
+  let platform = $(this).children("input:nth-child(6)").val();
+  let url = $(this).attr("action");
+  $.ajax({
+    url: url,
+    type: "POST",
+    data: {
+      follow: {
+        name: name,
+        display_name: display_name,
+        user_id: user_id,
+        platform: platform,
+      },
+      image_url: image_url
+    },
+  })
+  .fail(function(){
+    $("#follow_button i").text("");
+    $("#follow_button i").removeClass("fas fa-heart");
+    $("#follow_button i").addClass("fas fa-exclamation-circle");
+  });
+});
+
+$("#unfollow").on("submit", function(e){
+  e.preventDefault();
+  let name = $(this).children("input:nth-child(3)").val();
+  let user_id = $(this).children("input:nth-child(4)").val();
+  let platform = $(this).children("input:nth-child(5)").val();
+  let url = $(this).attr("action");
+  $.ajax({
+    url: url,
+    type: "DELETE",
+    data: {
+      follow: {
+        name: name,
+        user_id: user_id,
+        platform: platform,
+      },
+    },
+  })
+  .fail(function(){
+    $("#unfollow_button i").text("");
+    $("#unfollow_button i").removeClass("fas fa-heart-broken");
+    $("#unfollow_button i").addClass("fas fa-exclamation-circle");
+  });
+});
+

@@ -1,8 +1,12 @@
 require "api"
 require "json"
+require "follow"
+require "open-uri"
+require "user"
 
 class MultiwatchController < ApplicationController
   def home
+    @user = current_user
   end
 
   def watch
@@ -12,6 +16,7 @@ class MultiwatchController < ApplicationController
   end
 
   def search_channel
+    @follow = Follow.new
     @keyword = params[:keyword]
     @platform = params[:platform].to_i
     case @platform
@@ -24,51 +29,29 @@ class MultiwatchController < ApplicationController
     end
   end
 
-  def search
-
-    youtube.key = ENV["YOUTUBE_API_KEY"]
-    client = Google::APIClient.new(
-      :key => ENV["YOUTUBE_API_KEY"],
-      :authorization => nil,
-    )
-    youtube = client.discovered_api(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION)
-
-    return client, youtube
+  def follow
+    @follow = Follow.new(follow_params)
+    file_url = URI.open(params[:image_url])
+    @follow.image.attach(io: file_url, filename: "#{params[:follow][:name]}.png")
+    @follow.save!
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: root_path) }
+      format.js
+    end
   end
 
-  def main
-    client, youtube = search
-
-    begin
-      search_responce = client.execute!(
-        :api_method => youtube.search.list,
-        :parameters => {
-          :part => "snippet",
-          :q => opts[:q],
-          :maxResults => opts[:max_results]
-        }
-      )
-
-      videos = []
-      channels = []
-      playlists = []
-
-      search_response.data.items.each do |search_result|
-        case search_result.id.kind
-          when 'youtube#video'
-            videos << "#{search_result.snippet.title} (#{search_result.id.videoId})"
-          when 'youtube#channel'
-            channels << "#{search_result.snippet.title} (#{search_result.id.channelId})"
-          when 'youtube#playlist'
-            playlists << "#{search_result.snippet.title} (#{search_result.id.playlistId})"
-        end
-      end
-
-      puts "Videos:\n", videos, "\n"
-      puts "Channels:\n", channels, "\n"
-      puts "Playlists:\n", playlists, "\n"
-    rescue Google::APIClient::TransmissionError => e
-      puts e.result.body
+  def unfollow
+    @follow = Follow.find_by(name: params[:follow][:name], user_id: params[:follow][:user_id], platform: params[:follow][:platform])
+    @follow.destroy
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: root_path) }
+      format.js
     end
+  end
+
+  private
+
+  def follow_params
+    params.require(:follow).permit(:image, :name, :display_name, :user_id, :platform)
   end
 end

@@ -13,8 +13,11 @@
         = f.button :type => "submit", class: "search_channel", style: "border-style: none;" do
           i.fas.fa-search
   .header_user
-    .whisper
-      i.far.fa-comment-alt
+    .layout
+      i.fas.fa-th-large
+    - if current_user
+      .whisper
+        i.far.fa-comment-alt
     - unless current_user
       .login
         = link_to login_path

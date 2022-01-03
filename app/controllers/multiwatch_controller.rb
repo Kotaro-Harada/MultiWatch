@@ -16,16 +16,13 @@ class MultiwatchController < ApplicationController
   end
 
   def search_channel
-    @follow = Follow.new
     @keyword = params[:keyword]
     @platform = params[:platform].to_i
     case @platform
     when 1
-      @channel = Api.youtube_channel(params[:keyword])
-      @channel_video = Api.youtube_video(params[:keyword])
+      @channels = Api.youtube_channel(params[:keyword])
     when 2
-      @channel = Api.twitch_channel(params[:keyword])
-      @channel_status = Api.twitch_stream(params[:keyword])
+      @channels = Api.twitch_channel(params[:keyword])
     end
   end
 

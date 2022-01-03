@@ -41,7 +41,7 @@ class MultiwatchController < ApplicationController
   end
 
   def unfollow
-    @follow = Follow.find_by(name: params[:follow][:name], user_id: params[:follow][:user_id], platform: params[:follow][:platform])
+    @follow = Follow.find_by(channel_id: params[:follow][:channel_id], user_id: params[:follow][:user_id], platform: params[:follow][:platform])
     @follow.destroy
     respond_to do |format|
       format.html { redirect_back(fallback_location: root_path) }
@@ -52,6 +52,6 @@ class MultiwatchController < ApplicationController
   private
 
   def follow_params
-    params.require(:follow).permit(:image, :name, :display_name, :user_id, :platform)
+    params.require(:follow).permit(:image, :name, :display_name, :user_id, :platform, :channel_id)
   end
 end

@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2021_12_28_082703) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "platform"
+    t.string "channel_id"
   end
 
   create_table "users", force: :cascade do |t|

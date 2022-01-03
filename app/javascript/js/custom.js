@@ -54,6 +54,7 @@ $("#follow").on("submit", function(e){
   let display_name = $(this).children("input:nth-child(4)").val();
   let user_id = $(this).children("input:nth-child(5)").val();
   let platform = $(this).children("input:nth-child(6)").val();
+  let channel_id = $(this).children("input:nth-child(7)").val();
   let url = $(this).attr("action");
   $.ajax({
     url: url,
@@ -64,12 +65,13 @@ $("#follow").on("submit", function(e){
         display_name: display_name,
         user_id: user_id,
         platform: platform,
+        channel_id: channel_id
       },
       image_url: image_url
     },
   })
   .fail(function(){
-    $("#follow_button i").text("");
+    $("#follow_button i").text(" エラー");
     $("#follow_button i").removeClass("fas fa-heart");
     $("#follow_button i").addClass("fas fa-exclamation-circle");
   });
@@ -77,7 +79,7 @@ $("#follow").on("submit", function(e){
 
 $("#unfollow").on("submit", function(e){
   e.preventDefault();
-  let name = $(this).children("input:nth-child(3)").val();
+  let channel_id = $(this).children("input:nth-child(3)").val();
   let user_id = $(this).children("input:nth-child(4)").val();
   let platform = $(this).children("input:nth-child(5)").val();
   let url = $(this).attr("action");
@@ -86,14 +88,14 @@ $("#unfollow").on("submit", function(e){
     type: "DELETE",
     data: {
       follow: {
-        name: name,
+        channel_id: channel_id,
         user_id: user_id,
         platform: platform,
       },
     },
   })
   .fail(function(){
-    $("#unfollow_button i").text("");
+    $("#unfollow_button i").text(" エラー");
     $("#unfollow_button i").removeClass("fas fa-heart-broken");
     $("#unfollow_button i").addClass("fas fa-exclamation-circle");
   });

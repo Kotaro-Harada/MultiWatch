@@ -5,6 +5,7 @@ class CreateFollows < ActiveRecord::Migration[6.1]
       t.string :display_name
       t.integer :user_id, null: false
       t.belongs_to :user
+      t.string :channel_id, null: false
 
       t.timestamps
     end

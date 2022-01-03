@@ -2,11 +2,11 @@ GET https://www.googleapis.com/youtube/v3/search?part=snippet&q=M.S.S Project Ch
 
 ####
 
-GET https://api.twitch.tv/helix/users?login=detonator_robin HTTP/1.1
+GET https://api.twitch.tv/helix/users?login=killin9hit HTTP/1.1
 Authorization: Bearer 9hvky7oapw6mbcs737pck0yt14hco6
 Client-Id: ld7k23jtn14otrmpij39mqa50y5pmk
 
 ####
-GET https://api.twitch.tv/helix/streams?user_login=detonator_robin HTTP/1.1
+GET https://api.twitch.tv/helix/streams?user_login=killin9hit HTTP/1.1
 Authorization: Bearer 9hvky7oapw6mbcs737pck0yt14hco6
 Client-Id: ld7k23jtn14otrmpij39mqa50y5pmk

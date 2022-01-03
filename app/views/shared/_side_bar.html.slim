@@ -4,9 +4,30 @@
       .icon
         i.fas.fa-home
       .home
-        | HOME
+        p HOME
   .top_menu
     .icon
       i.fas.fa-heart
     .follow
-      | フォロー
+      p フォロー
+      - if current_user.follows.present?
+        - current_user.follows.each do |follow|
+          .follow_image
+            = follow.image.variant(resize_to_fill: [30, 30]), class: "icon_image"
+          .follow_content
+            - if follow.platform.to_s == true
+              .follow_name
+                = follow.name
+                - if Api.youtube_channel(follow.channel_id)["items"][0]["snippet"]["liveBroadcastContent"] == "live"
+                  .live_status
+                    p ●
+            - else
+              .follow_name
+                = follow.name
+                - if Api.twitch_stream(follow.channel_id)["data"].present?
+                  .live_status
+                    p ●
+              - if Api.twitch_stream(follow.channel_id)["data"].present?
+                .follow_game
+                  = Api.twitch_stream(follow.channel_id)["data"][0]["game_name"]
+

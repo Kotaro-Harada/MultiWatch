@@ -1,8 +1,9 @@
 .wrapper
   .channel_wrapper
     - if @platform == 1
-      - @channel["items"].each do |channel|
-        = link_to multiwatch_watch_path(youtube:"v=#{@channel_video}")
+      - @channels.each do |channel|
+        = link_to_if channel["snippet"]["liveBroadcastContent"] == "live",
+          multiwatch_watch_path(youtube:"v=#{youtube_stream(channel["id"]["channelId"])["id"]["videoId"]}")
           .channel
             .channel_image
               img src="#{channel['snippet']['thumbnails']['default']['url']}"
@@ -15,15 +16,16 @@
               .description
                 p = channel["snippet"]["description"]
     - if @platform == 2
-      = link_to multiwatch_watch_path(twitch:"tv/#{@keyword}")
-        .channel
-          .channel_image
-            img src="#{@channel['profile_image_url']}"
-          .channel_explanation
-            .title
-              p = @channel["display_name"]
-              - if @channel_status.present?
-                  .live_status
-                    p ● ライブ配信中
-            .description
-              p = @channel["description"]
+      - @channels.each do |channel|
+        = link_to multiwatch_watch_path(twitch:"tv/#{channel["broadcaster_login"]}")
+          .channel
+            .channel_image
+              img src="#{channel['thumbnail_url']}"
+            .channel_explanation
+              .title
+                p = channel["display_name"]
+                - if channel["is_live"]
+                    .live_status
+                      p ● ライブ配信中
+              .description
+                p = twitch_description(channel["id"])

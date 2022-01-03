@@ -1,12 +1,12 @@
-GET https://www.googleapis.com/youtube/v3/search?part=snippet&q=mssp&type=channel&maxResults=5&key=AIzaSyANhdpNyFdNHJUxD90Canf5NAAavgilsLw HTTP/1.1
+GET https://www.googleapis.com/youtube/v3/search?part=snippet&q=M.S.S Project Channel&type=channel&maxResults=5&key=AIzaSyANhdpNyFdNHJUxD90Canf5NAAavgilsLw HTTP/1.1
 
 ####
 
-GET https://api.twitch.tv/helix/users?login=icebahn05 HTTP/1.1
+GET https://api.twitch.tv/helix/search/channels?query=suruga&first=5 HTTP/1.1
 Authorization: Bearer 9hvky7oapw6mbcs737pck0yt14hco6
 Client-Id: ld7k23jtn14otrmpij39mqa50y5pmk
 
 ####
-GET https://api.twitch.tv/helix/streams?user_login=icebahn05 HTTP/1.1
+GET https://api.twitch.tv/helix/streams?user_id=123355356 HTTP/1.1
 Authorization: Bearer 9hvky7oapw6mbcs737pck0yt14hco6
 Client-Id: ld7k23jtn14otrmpij39mqa50y5pmk

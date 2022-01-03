@@ -17,12 +17,12 @@ class User < ApplicationRecord
     length: { minimum: 8 },
     presence: true
 
-  def following?(channel_name)
-    channels = []
+  def following?(channel_id)
+    channel_ids = []
     self.follows.each do |follow|
-      channels.push(follow.name)
+      channel_ids.push(follow.channel_id)
     end
-    channels.include?(channel_name)
+    channel_ids.include?(channel_id)
   end
 
 

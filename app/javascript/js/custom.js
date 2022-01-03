@@ -1,6 +1,3 @@
-const { post } = require("jquery");
-const e = require("turbolinks");
-
 // === HEADER === //
 $(".user_icon").on("click", function(){
   $(".user_menu").toggleClass("show");

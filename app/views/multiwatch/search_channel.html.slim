@@ -13,18 +13,17 @@
               - if channel["snippet"]["liveBroadcastContent"] == "live"
                 .live_status
                   p ● ライブ配信中
-              - if current_user.following?(channel["snippet"]["title"]) == true
+              - if current_user.following?(channel["id"]["channelId"]) == true
                 = form_with model: @follow, url: { controller: "multiwatch", action: "unfollow" }, id: "unfollow", method: :delete, local: true do |f|
                   = f.hidden_field :channel_id, value: channel["snippet"]["channelId"]
                   = f.hidden_field :user_id, value: current_user.id
-                  = f.hidden_field :platform, value: true
                   = f.button :type => "submit", style: "border-style: none;" do
                     i.fas.fa-heart-broken  フォロー解除
               - else
                 = form_with model: @follow, url: { controller: "multiwatch", action: "follow" }, id: "follow", local: true do |f|
                   = f.hidden_field :image_url, value: channel['snippet']['thumbnails']['default']['url'], direct_upload: true
                   = f.hidden_field :name, value: channel["snippet"]["title"]
-                  = f.hidden_field :display_name
+                  = f.hidden_field :display_name, value: ""
                   = f.hidden_field :user_id, value: current_user.id
                   = f.hidden_field :platform, value: true
                   = f.hidden_field :channel_id, value: channel["snippet"]["channelId"]
@@ -44,11 +43,10 @@
             - if @channel_status.present?
               .live_status
                 p ● ライブ配信中
-            - if current_user.following?(@keyword) == true
+            - if current_user.following?(@channel["id"]) == true
               = form_with model: @follow, url: {controller: "multiwatch", action: "unfollow"}, id: "unfollow", method: :delete, local: true do |f|
                 = f.hidden_field :channel_id, value: @channel["id"]
                 = f.hidden_field :user_id, value: current_user.id
-                = f.hidden_field :platform, value: false
                 = f.button :type => "submit", id: "unfollow_button", style: "border-style: none;" do
                   i.fas.fa-heart-broken  フォロー解除
             - else

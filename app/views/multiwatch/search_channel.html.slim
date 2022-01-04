@@ -2,30 +2,67 @@
   .channel_wrapper
     - if @platform == 1
       - @channels.each do |channel|
-        = link_to_if channel["snippet"]["liveBroadcastContent"] == "live",
-          multiwatch_watch_path(youtube:"v=#{youtube_stream(channel["id"]["channelId"])["id"]["videoId"]}")
-          .channel
+        .channel
+          = link_to multiwatch_watch_path(youtube:"v=#{youtube_video(channel["id"]["channelId"])}")
             .channel_image
               img src="#{channel['snippet']['thumbnails']['default']['url']}"
-            .channel_explanation
-              .title
-                p = channel["snippet"]["title"]
-                - if channel["snippet"]["liveBroadcastContent"] == "live"
-                  .live_status
-                    p ● ライブ配信中
-              .description
-                p = channel["snippet"]["description"]
+          .channel_explanation
+            .channel_name
+              = link_to multiwatch_watch_path(youtube:"v=#{youtube_video(channel["id"]["channelId"])}")
+                p id="channel_name" = channel["snippet"]["title"]
+              - if channel["snippet"]["liveBroadcastContent"] == "live"
+                .live_status
+                  p ● ライブ配信中
+              - if current_user.following?(channel["id"]["channelId"]) == true
+                = form_with model: @follow, url: { controller: "multiwatch", action: "unfollow" },
+                  class: "unfollow_form", method: :delete, local: true do |f|
+                  = f.hidden_field :channel_id, value: channel["snippet"]["channelId"]
+                  = f.hidden_field :user_id, value: current_user.id
+                  = f.button :type => "submit", style: "border-style: none;" do
+                    i.fas.fa-heart-broken  フォロー解除
+              - else
+                = form_with model: @follow, url: { controller: "multiwatch", action: "follow" },
+                  class: "follow_form", local: true do |f|
+                  = f.hidden_field :image_url, value: channel['snippet']['thumbnails']['default']['url']
+                  = f.hidden_field :name, value: channel["snippet"]["title"]
+                  = f.hidden_field :display_name
+                  = f.hidden_field :user_id, value: current_user.id
+                  = f.hidden_field :platform, value: true
+                  = f.hidden_field :channel_id, value: channel["snippet"]["channelId"]
+                  = f.button :type => "submit", id: "follow_button", style: "border-style: none;" do
+                    i.fas.fa-heart  フォロー
+            .description
+              p = channel["snippet"]["description"]
     - if @platform == 2
       - @channels.each do |channel|
-        = link_to multiwatch_watch_path(twitch:"tv/#{channel["broadcaster_login"]}")
-          .channel
+        .channel
+          = link_to multiwatch_watch_path(twitch:"tv/#{channel["broadcaster_login"]}")
             .channel_image
               img src="#{channel['thumbnail_url']}"
-            .channel_explanation
-              .title
-                p = channel["display_name"]
-                - if channel["is_live"]
-                    .live_status
-                      p ● ライブ配信中
-              .description
-                p = twitch_description(channel["id"])
+          .channel_explanation
+            .channel_name
+              = link_to multiwatch_watch_path(twitch:"tv/#{channel["broadcaster_login"]}")
+                p id="channel_name" = channel["display_name"]
+              - if channel["is_live"]
+                .live_status
+                  p ● ライブ配信中
+              - if current_user.following?(channel["id"]) == true
+                = form_with model: @follow, url: {controller: "multiwatch", action: "unfollow"},
+                  class: "unfollow_form", method: :delete, local: true do |f|
+                  = f.hidden_field :channel_id, value: channel["id"]
+                  = f.hidden_field :user_id, value: current_user.id
+                  = f.button :type => "submit", id: "unfollow_button", style: "border-style: none;" do
+                    i.fas.fa-heart-broken  フォロー解除
+              - else
+                = form_with model: @follow, url: { controller: "multiwatch", action: "follow" },
+                  class: "follow_form", local: true do |f|
+                  = f.hidden_field :image_url, value: channel['thumbnail_url']
+                  = f.hidden_field :name, value: channel["broadcaster_login"]
+                  = f.hidden_field :display_name, value: channel["display_name"]
+                  = f.hidden_field :user_id, value: current_user.id
+                  = f.hidden_field :platform, value: false
+                  = f.hidden_field :channel_id, value: channel["id"]
+                  = f.button :type => "submit", id: "follow_button", style: "border-style: none;" do
+                    i.fas.fa-heart  フォロー
+            .description
+              p = twitch_description(channel["id"])

@@ -5,10 +5,16 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
+  resources :multiwatch, only: [:index] do
+    collection do
+      post "follow"
+      delete "unfollow"
+    end
+  end
   get "multiwatch/home"
   get "multiwatch/watch"
   get "multiwatch/search_channel"
-  resources :multiwatch, only: [:index]
+
 
   resources :users do
     member do
@@ -16,5 +22,7 @@ Rails.application.routes.draw do
       get "security"
     end
   end
+
+  resources :follow
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -130,7 +130,7 @@ a{
   text-align: center;
 }
 .user_icon{
-  margin-right: 20px;
+  margin: 0 20px 0 10px;
   cursor: pointer;
   width: 30px;
   height: 30px;
@@ -181,16 +181,16 @@ a{
 .side_nav .menu:nth-of-type(3){
   bottom: 0;
 }
-.whisper{
-  margin: auto 5px;
+.whisper, .layout{
+  margin: auto 10px;
   color: white;
   cursor: pointer;
   border-radius: 5px;
 }
-.whisper:hover{
+.whisper:hover, .layout:hover{
   background-color: rgb(50, 50, 50);
 }
-.fa-comment-alt{
+.fa-comment-alt, .fa-th-large{
   padding: 7px;
 }
 .sidebar{
@@ -220,7 +220,7 @@ a{
   color: white;
   margin: 15px 10px;
 }
-.home, .follow, .history, .later{
+.home, .follow{
   box-sizing: border-box;
 }
 
@@ -279,12 +279,15 @@ a{
 .channel_explanation{
   padding: 15px 0 0 40px;
 }
-.title{
+.channel_name{
   display: flex;
 }
-.title p{
+.channel_name p{
   font-size: 20px;
   font-weight: bold;
+}
+#channel_name:hover{
+  color: rgb(255, 100, 255);
 }
 .live_status{
   margin: 2px 0 2px 10px;
@@ -292,6 +295,27 @@ a{
 .live_status p{
   color: red;
   font-size: var(--bs-body-font-size);
+}
+.follow_channel{
+  padding: 0 10px;
+  margin-left: 30px;
+  height: 30px;
+  background-color: black;
+  border-radius: 5px;
+}
+.follow_form button, .unfollow_form button{
+  vertical-align: middle;
+  background-color: purple;
+  border-radius: 5px;
+  color: white;
+  margin-left: 30px;
+  height: 25px;
+}
+.follow_form button:hover, .unfollow_form button:hover{
+  background-color: rgb(255, 100, 255);
+}
+.follow_form #follow_image, .unfollow_form #follow_image{
+  display: none;
 }
 
 /* === 3. REGISTER, LOGIN === */

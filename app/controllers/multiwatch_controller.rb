@@ -1,8 +1,6 @@
-require "api"
 require "json"
 require "follow"
 require "open-uri"
-require "user"
 
 class MultiwatchController < ApplicationController
   def home
@@ -16,13 +14,14 @@ class MultiwatchController < ApplicationController
   end
 
   def search_channel
+    @follow = Follow.new
     @keyword = params[:keyword]
     @platform = params[:platform].to_i
     case @platform
     when 1
-      @channels = Api.youtube_channel(params[:keyword])
+      @channels = youtube_channel(params[:keyword])
     when 2
-      @channels = Api.twitch_channel(params[:keyword])
+      @channels = twitch_channel(params[:keyword])
     end
   end
 

@@ -13,5 +13,21 @@
       - if current_user.follows.present?
         - current_user.follows.each do |follow|
           .follow_image
-            = follow.image.variant(resize_to_fill: [30, 30]), class: "icon_image"
+            = image_tag follow.image.variant(resize_to_fill: [30, 30]), class: "icon_image"
+          .follow_content
+            - if follow.platform == true
+              .follow_name
+                = follow.name
+                - if youtube_stream(follow.channel_id).present?
+                  .live_status
+                    p ●
+            - else
+              .follow_name
+                = follow.name
+                - if twitch_stream(follow.channel_id).present?
+                  .live_status
+                    p ●
+              - if twitch_stream(follow.channel_id).present?
+                .follow_game
+                  = twitch_stream(follow.channel_id)[0]["game_name"]
 

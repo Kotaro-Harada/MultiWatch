@@ -220,7 +220,7 @@ a{
   color: white;
   margin: 15px 10px;
 }
-.home, .follow, .history, .later{
+.home, .follow{
   box-sizing: border-box;
 }
 
@@ -303,7 +303,7 @@ a{
   background-color: black;
   border-radius: 5px;
 }
-#follow button, #unfollow button{
+.follow_form button, .unfollow_form button{
   vertical-align: middle;
   background-color: purple;
   border-radius: 5px;
@@ -311,14 +311,11 @@ a{
   margin-left: 30px;
   height: 25px;
 }
-#follow button:hover, #unfollow button:hover{
+.follow_form button:hover, .unfollow_form button:hover{
   background-color: rgb(255, 100, 255);
 }
-#follow #follow_image, #unfollow #follow_image{
+.follow_form #follow_image, .unfollow_form #follow_image{
   display: none;
-}
-.followed{
-  color: blue;
 }
 
 /* === 3. REGISTER, LOGIN === */

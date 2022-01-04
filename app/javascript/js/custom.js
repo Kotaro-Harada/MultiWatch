@@ -44,7 +44,7 @@ $(document).on("click", function(){
 });
 
 // === FOLLOW === //
-$("#follow").on("submit", function(e){
+$(".follow_form").on("submit", function(e){
   e.preventDefault();
   let image_url = $(this).children("input:nth-child(2)").val();
   let name = $(this).children("input:nth-child(3)").val();
@@ -74,7 +74,7 @@ $("#follow").on("submit", function(e){
   });
 });
 
-$("#unfollow").on("submit", function(e){
+$(".unfollow_form").on("submit", function(e){
   e.preventDefault();
   let channel_id = $(this).children("input:nth-child(3)").val();
   let user_id = $(this).children("input:nth-child(4)").val();

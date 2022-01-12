@@ -9,6 +9,8 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
     models:
       user: ユーザー
+      follow: フォロー
+      whisper: ウィスパー
     attributes:
       user:
         id: ID
@@ -16,6 +18,8 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード(確認)
+      whisper:
+        message: メッセージ
   date:
     abbr_day_names:
     - 日

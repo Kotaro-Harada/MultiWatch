@@ -3,17 +3,8 @@ require "open-uri"
 require "user"
 
 class FollowController < ApplicationController
-  def index
-  end
-
-  def show
-  end
-
   def new
     @follow = Follow.new
-  end
-
-  def edit
   end
 
   def create
@@ -29,7 +20,7 @@ class FollowController < ApplicationController
     @follow.save!
   end
 
-  def delete
+  def destroy
     @follow = Follow.find_by(name: params[:name], id: params[:user_id], platform: params[:platform])
     @follow.destroy
   end

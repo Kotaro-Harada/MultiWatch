@@ -10,7 +10,7 @@
       i.fas.fa-heart
     .follow
       p フォロー
-      - if current_user.follows.present?
+      - if current_user && current_user.follows.present?
         - current_user.follows.each do |follow|
           .follow_image
             = image_tag follow.image.variant(resize_to_fill: [30, 30]), class: "icon_image"

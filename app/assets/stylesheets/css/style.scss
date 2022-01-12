@@ -47,6 +47,9 @@ a{
   color: chartreuse;
   margin-bottom: 30px;
 }
+.not_show{
+  display: none;
+}
 /* === 1.1 HEADER === */
 .header, .navbar_header, .search, .search_input{
   display: flex;
@@ -192,6 +195,48 @@ a{
 }
 .fa-comment-alt, .fa-th-large{
   padding: 7px;
+}
+.whisper_box{
+  padding: 10px;
+}
+.send_message, .whisper_form, #message{
+  margin-top: 5px;
+}
+.send_box input, .send_box textarea{
+  width: 100%;
+}
+.send_receive, .each_message, .message{
+  display: flex;
+}
+.select_whisper, .select_receive, .clear_message, .message{
+  margin: 0 10px;
+}
+.whisper_message{
+  font-weight: lighter !important;
+}
+.receive_message{
+  margin-left: 10px;
+}
+.receive_message p{
+  text-align: start;
+  font-weight: lighter !important;
+}
+#message_button{
+  width: 100%;
+  margin: 5px 0;
+}
+.receive_box{
+  max-height: 350px;
+  overflow: scroll;
+  margin-top: 10px;
+}
+.clear_button{
+  height:25px;
+  padding: 2px !important;
+  margin: 0;
+}
+.clear_button p{
+  line-height: 20px;
 }
 .sidebar{
   position: absolute;

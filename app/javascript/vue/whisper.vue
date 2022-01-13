@@ -68,13 +68,16 @@ export default {
           this.send = "送信",
           $("#message_button").removeAttr("disabled"),
           $("#message_button").removeClass("fas fa-exclamation-circle")
-        }, 2000);
+        }, 3000);
         switch(error.response.status){
           case 422:
             this.send = "メッセージエラーです";
             break;
           case 404:
             this.send = "ユーザーが見つかりません";
+            break;
+          case 500:
+            this.send = "現在メッセージを送信できません";
             break;
         }
       })

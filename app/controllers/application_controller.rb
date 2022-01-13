@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user, :youtube_video, :twitch_stream, :twitch_description,
-    :twitch_channel, :youtube_channel, :youtube_stream, :whisper
+    :twitch_channel, :youtube_channel, :youtube_stream
 
   private
 
@@ -89,9 +89,5 @@ class ApplicationController < ActionController::Base
       params: params
     ))
     res["data"]
-  end
-
-  def whisper(user_name)
-    Whisper.where(receive_user_name: current_user.name)
   end
 end

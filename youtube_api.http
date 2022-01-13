@@ -1,4 +1,4 @@
-GET https://www.googleapis.com/youtube/v3/search?part=snippet&q=M.S.S Project Channel&type=channel&maxResults=5&key=AIzaSyANhdpNyFdNHJUxD90Canf5NAAavgilsLw HTTP/1.1
+GET https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCJhjE7wbdYAae1G25m0tHAA&eventType=live&type=video&key=AIzaSyANhdpNyFdNHJUxD90Canf5NAAavgilsLw HTTP/1.1
 
 ####
 

@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :youtube_video, :twitch_stream, :twitch_description, :twitch_channel
-    :youtube_channel, :youtube_stream
+  helper_method :current_user, :youtube_video, :twitch_stream, :twitch_description,
+    :twitch_channel, :youtube_channel, :youtube_stream
 
   private
 
@@ -46,7 +46,9 @@ class ApplicationController < ActionController::Base
     res = JSON.parse(RestClient.get(
       ENV["YOUTUBE_API_URI"], params: params
     ))
-    res["items"]
+    if res["items"].present?
+      res["items"][0]["id"]["videoId"]
+    end
   end
 
   def twitch_stream(channel_id)

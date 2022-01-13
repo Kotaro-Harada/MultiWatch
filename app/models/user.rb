@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_secure_password
   has_one_attached :avatar, dependent: :destroy
   has_many :follows, dependent: :destroy
+  has_many :whispers
 
   validates :name,
     presence: true,
@@ -24,6 +25,4 @@ class User < ApplicationRecord
     end
     channel_ids.include?(channel_id)
   end
-
-
 end

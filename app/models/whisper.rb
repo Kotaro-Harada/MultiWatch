@@ -1,5 +1,5 @@
 class Whisper < ApplicationRecord
-  belongs_to :user, foreign_key: "send_user_id"
+  belongs_to :user, foreign_key: "receive_user_id"
 
   validates :message,
     presence: true,
@@ -15,6 +15,6 @@ class Whisper < ApplicationRecord
   private
 
   def receive_user_must_exist
-    errors.add unless User.find_by!(name: receive_user_name)
+    errors.add("ユーザーが見つかりません") unless User.find_by!(name: receive_user_name)
   end
 end

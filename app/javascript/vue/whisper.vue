@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <button id="message_button" class="btn btn-primary" @click="whisper">{{ send }}</button>
+      <button id="message_button" class="btn btn-primary" @click="whisper">{{ send_message }}</button>
     </div>
     <div class="send_receive">
       <div class="select_receive underline">
@@ -20,11 +20,16 @@
           <p>{{ whisper.created_at }}</p>
         </div>
         <div class="each_message">
-          <div class="send_user">
-            <p>{{ whisper.send_user_name }}:</p>
+          <div class="send_user" v-if="!whisper.message_type">
+            <p>{{ whisper.send_user_name }}</p><p>:</p>
           </div>
           <div class="receive_message">
             <p>{{ whisper.message }}</p>
+          </div>
+          <div class="confirm" v-if="whisper.message_type">
+            <button class="btn btn-success confirm_button" @click="confirm(whisper.send_user_id, index, whisper.id)">
+              <p class="confirm_message">{{ confirm_message }}</p>
+            </button>
           </div>
         </div>
       </div>
@@ -41,7 +46,8 @@ export default {
   data: function(){
     return{
       whispers: [],
-      send: "送信"
+      send_message: "送信",
+      confirm_message: "許可"
     }
   },
   mounted(){
@@ -58,26 +64,26 @@ export default {
         }
       }).then(response => (
         this.whispers = response.data,
-        this.send = "送信しました",
+        this.send_message = "送信しました",
         $("#message").val(""),
-        setTimeout(() => {this.send = "送信"}, 2000)
+        setTimeout(() => {this.send_message = "送信"}, 2000)
       )).catch(error => {
-        $("#message_button").addClass("fas fa-exclamation-circle");
-        $("#message_button").prop("disabled", true);
+        $("#message_button").addClass("fas fa-exclamation-circle"),
+        $("#message_button").prop("disabled", true),
         setTimeout(() => {
-          this.send = "送信",
+          this.send_message = "送信",
           $("#message_button").removeAttr("disabled"),
           $("#message_button").removeClass("fas fa-exclamation-circle")
         }, 3000);
         switch(error.response.status){
           case 422:
-            this.send = "メッセージエラーです";
+            this.send_message = "メッセージエラーです";
             break;
           case 404:
-            this.send = "ユーザーが見つかりません";
+            this.send_message = "ユーザーが見つかりません";
             break;
           case 500:
-            this.send = "現在メッセージを送信できません";
+            this.send_message = "現在メッセージを送信できません";
             break;
         }
       })
@@ -87,7 +93,21 @@ export default {
         axios.delete("/api/v1/whispers/destroy",{
         }).then(response => (this.whispers = response.data));
       }
-    }
+    },
+    confirm: function(user_id, index, whisper_id){
+      axios.post("/friendship", {
+        friendship: {
+          from_user_id: user_id,
+          to_user_id: $(".send_user_id").val(),
+        },
+        id: whisper_id,
+      }).then(function(){
+          $(".each_message").eq(index).find(".confirm_button").prop("disabled", true),
+          $(".each_message").eq(index).find(".confirm_button").addClass("fas fa-check"),
+          $(".each_message").eq(index).find(".confirm_message").text("")
+        }
+      )
+    },
   },
 };
 </script>

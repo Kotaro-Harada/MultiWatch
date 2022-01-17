@@ -1,7 +1,8 @@
 - if current_user
   .user_menu
-    .user_each_menu
-      i.fas.fa-user-friends  フレンド
+    = link_to friendship_path(current_user.id)
+      .user_each_menu
+        i.fas.fa-user-friends  フレンド
     = link_to profile_user_path(current_user.id)
       .user_each_menu
         i.fas.fa-cog  設定

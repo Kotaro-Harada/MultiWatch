@@ -10,6 +10,7 @@
 5. SETTING
   5.1 PROFILE
   5.2 SECURITY
+6. FRIEND
 */
 
 /* === 0 COMMON ===*/
@@ -202,6 +203,9 @@ a{
 .send_message, .whisper_form, #message{
   margin-top: 5px;
 }
+.send_user{
+  display: flex;
+}
 .send_box input, .send_box textarea{
   width: 100%;
 }
@@ -215,9 +219,14 @@ a{
   font-weight: lighter !important;
 }
 .receive_message{
-  margin-left: 10px;
+  margin: 0 10px;
 }
-.receive_message p{
+.confirm{
+  width: auto;
+  height: 20px;
+  margin: auto 0;
+}
+.receive_message p, .confirm_button p{
   text-align: start;
   font-weight: lighter !important;
 }
@@ -230,13 +239,26 @@ a{
   overflow: scroll;
   margin-top: 10px;
 }
+.confirm_button{
+  display: inherit !important;
+  height: 20px;
+  padding: 2px !important;
+  margin: 0;
+}
 .clear_button{
   height:25px;
   padding: 2px !important;
   margin: 0;
+  vertical-align: middle !important;
 }
 .clear_button p{
   line-height: 20px;
+}
+.confirm_button p{
+  line-height: 0;
+  width: 32px;
+  font-size: 13px;
+  text-align: center;
 }
 .sidebar{
   position: absolute;
@@ -460,4 +482,36 @@ a{
 }
 .update_btn{
   text-align: center;
+}
+
+/* === 6. FRIEND === */
+.friends_wrapper{
+  margin: 30px auto 0 auto;
+}
+.friend_form{
+  height: auto;
+  width: 325px;
+  margin: auto;
+}
+.friends{
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+.friend_name, .friend_action{
+  margin: auto 10px;
+}
+.friend_name p{
+  font-size: larger;
+  font-weight: bolder;
+}
+.friend_request{
+  margin-left: 20px;
+  vertical-align: bottom !important;
+}
+#whisper_button{
+  margin-left: 30px;
+}
+.whisper_button, .friend_delete p{
+  font-weight: bold;
 }

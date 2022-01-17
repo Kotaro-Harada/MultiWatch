@@ -13,7 +13,8 @@ $(".whisper").on("click", function(){
 
 $(document).on("click", function(event){
   if (!$(event.target).closest(".whisper_box").length
-    && !$(event.target).hasClass("fa-comment-alt")){
+    && !$(event.target).hasClass("fa-comment-alt")
+    && !$(event.target).hasClass("whisper_button")){
       $(".whisper_box").removeClass("show");
   }
 });
@@ -98,3 +99,9 @@ $(".unfollow_form").on("submit", function(e){
   });
 });
 
+// === FRIEND === //
+$(".whisper_button").on("click", function(){
+  const user_name = $(this).val();
+  $(".whisper_box").addClass("show");
+  $(".receive_user_name").val(user_name);
+});

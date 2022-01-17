@@ -4,7 +4,17 @@ class User < ApplicationRecord
   has_secure_password
   has_one_attached :avatar, dependent: :destroy
   has_many :follows, dependent: :destroy
-  has_many :whispers
+  has_many :whispers, foreign_key: "receive_user_id"
+  has_many :active_friendships,
+    class_name: "Friendship",
+    foreign_key: "from_user_id",
+    dependent: :destroy
+  has_many :passive_friendships,
+    class_name: "Friendship",
+    foreign_key: "to_user_id",
+    dependent: :destroy
+  has_many :active_friends, through: :active_friendships, source: :to_user
+  has_many :passive_friends, through: :passive_friendships, source: :from_user
 
   validates :name,
     presence: true,

@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   get "multiwatch/watch"
   get "multiwatch/search_channel"
 
-
   resources :users do
     member do
       get "profile"
@@ -30,9 +29,12 @@ Rails.application.routes.draw do
       resources :whispers, only: [:index, :create] do
         collection do
           delete "destroy"
+          post "friend_request"
         end
       end
     end
   end
+
+  resources :friendship, only: [:show, :create, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

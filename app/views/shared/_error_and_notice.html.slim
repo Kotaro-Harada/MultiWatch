@@ -3,6 +3,8 @@
     ul
       - model.errors.full_messages.each do |message|
         li = message
-- if flash.notice.present?
+- if flash.present?
   .notice
     = flash.notice
+  .alert
+    = flash.alert

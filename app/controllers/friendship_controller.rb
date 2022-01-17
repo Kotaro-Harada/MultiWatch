@@ -14,10 +14,17 @@ class FriendshipController < ApplicationController
   end
 
   def destroy
-    @friend = Friendship.find_by(
+    @active_friendship = Friendship.find_by(
       from_user_id: params[:from_user_id],
-      to_user_id: params[:to_user_id]
-    ).destroy
+      to_user_id: params[:to_user_id])
+    @passive_friendship = Friendship.find_by(
+      from_user_id: params[:to_user_id],
+      to_user_id: params[:from_user_id])
+    if @active_friendship
+      @active_friendship.destroy
+    else
+      @passive_friendship.destroy
+    end
     redirect_to friendship_path(current_user.id), notice: "フレンドから削除しました"
   end
 

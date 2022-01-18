@@ -1,7 +1,6 @@
 import TurbolinksAdapter from 'vue-turbolinks'
 import Vue from 'vue/dist/vue.esm'
 import Whisper from '../vue/whisper.vue'
-import Follow from '../vue/follow.vue'
 import axios from "axios"
 
 Vue.use(TurbolinksAdapter)
@@ -30,7 +29,7 @@ for(let i = 0; i <= 4; i++ ){
           <div class="unfollow_form" v-if="check_follow">
             <button id="follow_button" class="follow_button" @click="unfollow_button">
               <i class="fas fa-heart-broken"> フォロー解除</i>
-            </buttton>
+            </button>
           </div>
         </div>
       `,

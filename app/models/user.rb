@@ -27,12 +27,4 @@ class User < ApplicationRecord
   validates :password,
     length: { minimum: 8 },
     presence: true
-
-  def following?(channel_id)
-    channel_ids = []
-    self.follows.each do |follow|
-      channel_ids.push(follow.channel_id)
-    end
-    channel_ids.include?(channel_id)
-  end
 end

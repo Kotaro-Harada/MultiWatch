@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  MAX_RESULTS = 5
+
   helper_method :current_user, :youtube_video, :twitch_stream, :twitch_description,
     :twitch_channel, :youtube_channel, :youtube_stream
 
@@ -13,7 +15,7 @@ class ApplicationController < ActionController::Base
       part: "snippet",
       q: keyword,
       type: "channel",
-      maxResults: 5,
+      maxResults: MAX_RESULTS,
       key: ENV["YOUTUBE_API_KEY"]
     }
     res = JSON.parse(RestClient.get(
@@ -80,7 +82,7 @@ class ApplicationController < ActionController::Base
   def twitch_channel(keyword)
     params = {
       query: keyword,
-      first: 5
+      first: MAX_RESULTS
     }
     res = JSON.parse(RestClient.get(
       ENV["TWITCH_API_CHANNEL"],

@@ -4,11 +4,11 @@ class Friendship < ApplicationRecord
 
   validates :from_user_id, presence: true
   validates :to_user_id, presence: true
-  validate :user_is_already_friend
+  validate :already_friend
 
   private
 
-  def user_is_already_friend
+  def already_friend
     errors.add if Friendship.find_by(from_user_id: to_user_id, to_user_id: from_user_id)
   end
 end

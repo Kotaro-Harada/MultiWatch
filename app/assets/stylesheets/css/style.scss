@@ -144,7 +144,16 @@ a{
 }
 .user_each_menu{
   color: white;
-  margin: 10px
+  padding: 5px
+}
+.current_user_menu{
+  display: flex;
+}
+.current_user_menu p{
+  line-height: 35px;
+}
+.current_user_menu img{
+  margin-right: 10px;
 }
 .user_menu{
   display: none;
@@ -191,7 +200,7 @@ a{
   cursor: pointer;
   border-radius: 5px;
 }
-.whisper:hover, .layout:hover{
+.whisper:hover, .layout:hover, .user_each_menu:hover{
   background-color: rgb(50, 50, 50);
 }
 .fa-comment-alt, .fa-th-large{
@@ -277,19 +286,36 @@ a{
 }
 .top_menu{
   width: 250px;
-  display: flex;
+
   align-items: center;
 }
-.top_menu:hover{
+.home:hover, .follow:hover{
   background-color: gray;
 }
-.icon{
+.sidebar_icons{
   color: white;
-  margin: 15px 10px;
+  padding: 15px 10px;
+  display: flex;
 }
-.home, .follow{
+.sidebar_icon{
+line-height: 24px !important;
+margin-right: 10px;
+}
+.follow{
   box-sizing: border-box;
+  display: flex;
+  min-height: 52px;
 }
+.follow_name{
+  display: flex;
+}
+.follow_image{
+  margin: auto 5px;
+}
+.follow_content{
+  margin: auto 0;
+}
+
 
 /* === 1.3 TOP === */
 .main{
@@ -378,11 +404,11 @@ a{
   margin-left: 30px;
   height: 25px;
 }
+#follow_button{
+  border-style: none;
+}
 .follow_form button:hover, .unfollow_form button:hover{
   background-color: rgb(255, 100, 255);
-}
-.follow_form #follow_image, .unfollow_form #follow_image{
-  display: none;
 }
 
 /* === 3. REGISTER, LOGIN === */

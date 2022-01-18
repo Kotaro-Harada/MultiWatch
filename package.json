@@ -19,6 +19,7 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "@mdi/font": "^6.5.95",
     "@vue/compiler-sfc": "^3.2.26",
     "pug": "^3.0.2",
     "pug-plain-loader": "^1.1.0",

@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   has_secure_password
   has_one_attached :avatar, dependent: :destroy
-  has_many :follows, dependent: :destroy
+  has_many :follows, dependent: :destroy, foreign_key: "user_id"
   has_many :whispers, foreign_key: "receive_user_id"
   has_many :active_friendships,
     class_name: "Friendship",

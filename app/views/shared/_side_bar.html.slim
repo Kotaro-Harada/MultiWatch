@@ -1,33 +1,42 @@
 .sidebar
   = link_to multiwatch_home_path, class: "nav_link"
-    .top_menu
-      .icon
-        i.fas.fa-home
-      .home
+    .top_menu.home
+      .sidebar_icons
+        i.fas.fa-home.sidebar_icon
         p HOME
   .top_menu
-    .icon
-      i.fas.fa-heart
-    .follow
+    .sidebar_icons
+      i.fas.fa-heart.sidebar_icon
       p フォロー
+  .follows
       - if current_user && current_user.follows.present?
         - current_user.follows.each do |follow|
-          .follow_image
-            = image_tag follow.image.variant(resize_to_fill: [30, 30]), class: "icon_image"
-          .follow_content
-            - if follow.platform == true
-              .follow_name
-                = follow.name
-                - if youtube_stream(follow.channel_id).present?
-                  .live_status
-                    p ●
-            - else
-              .follow_name
-                = follow.name
-                - if twitch_stream(follow.channel_id).present?
-                  .live_status
-                    p ●
-              - if twitch_stream(follow.channel_id).present?
-                .follow_game
-                  = twitch_stream(follow.channel_id)[0]["game_name"]
+          - if follow.platform == true
+            - @live = capture do
+              .follow
+                .follow_image
+                  = image_tag follow.image.variant(resize_to_fill: [35, 35]), class: "icon_image"
+                .follow_content
+                  .follow_name
+                    p = follow.name
+                    - if youtube_stream(follow.channel_id).present?
+                      .live_status
+                        p ●
+            = link_to_if youtube_stream(follow.channel_id).present?,
+              @live, multiwatch_watch_path(youtube:"v=#{follow.channel_id}")
+          - else
+            = link_to multiwatch_watch_path(twitch:"tv/#{follow.name}")
+              .follow
+                .follow_image
+                  = image_tag follow.image.variant(resize_to_fill: [35, 35]), class: "icon_image"
+                .follow_content
+                  .follow_name
+                    p = follow.name
+                    - if twitch_stream(follow.channel_id).present?
+                      .live_status
+                        p ●
+                  - if twitch_stream(follow.channel_id).present?
+                    .follow_game
+                      p = twitch_stream(follow.channel_id)[0]["game_name"]
+
 

@@ -22,7 +22,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :follow, only: [:new, :create, :destroy]
+  resources :follow, only: [:index, :new, :create] do
+    collection do
+      get "check"
+      delete "destroy"
+    end
+  end
 
   namespace :api, format: "json" do
     namespace :v1 do

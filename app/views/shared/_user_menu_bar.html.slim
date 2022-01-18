@@ -1,5 +1,8 @@
 - if current_user
   .user_menu
+    .current_user_menu
+      = image_tag current_user.avatar.variant(resize_to_fill: [35, 35]), class: "icon_image"
+      p = current_user.name
     = link_to friendship_path(current_user.id)
       .user_each_menu
         i.fas.fa-user-friends  フレンド

@@ -1,5 +1,3 @@
-require "json"
-require "follow"
 require "open-uri"
 
 class MultiwatchController < ApplicationController
@@ -23,31 +21,5 @@ class MultiwatchController < ApplicationController
     when 2
       @channels = twitch_channel(params[:keyword])
     end
-  end
-
-  def follow
-    @follow = Follow.new(follow_params)
-    file_url = URI.open(params[:image_url])
-    @follow.image.attach(io: file_url, filename: "#{params[:follow][:name]}.png")
-    @follow.save!
-    respond_to do |format|
-      format.html { redirect_back(fallback_location: root_path) }
-      format.js
-    end
-  end
-
-  def unfollow
-    @follow = Follow.find_by(channel_id: params[:follow][:channel_id], user_id: params[:follow][:user_id])
-    @follow.destroy
-    respond_to do |format|
-      format.html { redirect_back(fallback_location: root_path) }
-      format.js
-    end
-  end
-
-  private
-
-  def follow_params
-    params.require(:follow).permit(:image, :name, :display_name, :user_id, :platform, :channel_id)
   end
 end

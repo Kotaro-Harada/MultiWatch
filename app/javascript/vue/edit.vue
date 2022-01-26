@@ -311,8 +311,8 @@ export default ({
         $(".video_frame").eq(this.first).css({"top":"50vh", "left":"50vw", "width":"50vw", "height":"50vh"})
         $(".video_frame").eq(this.second).css({"top":"0", "left":"50vw", "width":"50vw", "height":"50vh"})
         $(".video_frame").eq(this.third).css({"top":"0", "left":"0", "width":"50vw", "height":"100vh"})
-        $(".delete_video").eq(this.first).css({"top":"40vh", "right":"2vw"})
-        $(".delete_video").eq(this.second).css({"top":"90vh", "right":"2vw"})
+        $(".delete_video").eq(this.first).css({"top":"90vh", "right":"2vw"})
+        $(".delete_video").eq(this.second).css({"top":"40vh", "right":"2vw"})
         $(".delete_video").eq(this.third).css({"top":"90vh", "right":"52vw"})
       }else if(this.chat_type == 1){
         $(".video_frame").eq(this.first).css({"top":"50vh", "left":"40vw", "width":"40vw", "height":"50vh"})

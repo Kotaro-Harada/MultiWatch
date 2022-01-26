@@ -1,9 +1,10 @@
 import TurbolinksAdapter from 'vue-turbolinks'
 import Vue from 'vue/dist/vue.esm'
 import Whisper from '../vue/whisper.vue'
+import Edit from '../vue/edit.vue'
 import axios from "axios"
 
-Vue.use(TurbolinksAdapter)
+Vue.use(TurbolinksAdapter);
 
 document.addEventListener('turbolinks:load', () => {
   const app = new Vue({
@@ -84,3 +85,16 @@ for(let i = 0; i <= 4; i++ ){
     })
   })
 }
+
+document.addEventListener('turbolinks:load', () => {
+  const app = new Vue({
+    name: 'EditComponent',
+    el: '#edit',
+    template: "<edit/>",
+    components: { Edit },
+  })
+})
+
+$(".frame").on("click", function(){
+  $(".chat_frame").addClass("not_show");
+});

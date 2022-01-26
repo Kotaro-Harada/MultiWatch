@@ -2,11 +2,8 @@ require "open-uri"
 
 class FollowController < ApplicationController
   def index
-    @follows = Follow.find_by(user_id: current_user.id)
-  end
-
-  def new
-    @follow = Follow.new
+    @follows = current_user.follows
+    render json: @follows, methods: [:image_url]
   end
 
   def create
@@ -28,6 +25,11 @@ class FollowController < ApplicationController
   def check
     @check_follow = Follow.find_by(user_id: current_user.id, channel_id: params[:channel_id])
     render json: @check_follow
+  end
+
+  def get_stream
+    @youtube_stream = youtube_stream(params[:channel_id])
+    render json: @youtube_stream
   end
 
   private

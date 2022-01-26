@@ -9,11 +9,15 @@
     .search_input
       = form_with url: { controller: "multiwatch", action: "search_channel" }, method: :get, local: true do |f|
         = f.select :platform, { "YouTube": 1, "Twitch": 2 }, class: "form-control", required: true
-        = f.text_field :keyword, placeholder: "検索"
+        = f.text_field :keyword, placeholder: "チャンネル検索"
         = f.button :type => "submit", class: "search_channel", style: "border-style: none;" do
           i.fas.fa-search
   .header_user
-    .layout
+    .delete_video_icon
+      i.fas.fa-minus-square
+    .edit_video
+      i.fas.fa-plus-square
+    .edit_layout
       i.fas.fa-th-large
     - if current_user
       .whisper

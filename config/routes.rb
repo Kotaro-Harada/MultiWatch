@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     collection do
       get "check"
       delete "destroy"
+      get "image"
+      get "get_stream"
     end
   end
 

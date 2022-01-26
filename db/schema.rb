@@ -52,10 +52,10 @@ ActiveRecord::Schema.define(version: 2022_01_14_150900) do
     t.string "name", null: false
     t.string "display_name"
     t.integer "user_id", null: false
-    t.boolean "platform", null: false
-    t.string "channel_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "platform"
+    t.string "channel_id"
   end
 
   create_table "friendships", force: :cascade do |t|
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2022_01_14_150900) do
     t.string "name"
     t.string "follow"
     t.string "email"
+    t.string "later"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -81,10 +82,10 @@ ActiveRecord::Schema.define(version: 2022_01_14_150900) do
   create_table "whispers", force: :cascade do |t|
     t.integer "send_user_id", null: false
     t.string "message", null: false
-    t.string "receive_user_name", null: false
-    t.string "send_user_name", null: false
     t.date "created_at", null: false
     t.date "updated_at", null: false
+    t.string "receive_user_name", null: false
+    t.string "send_user_name", null: false
     t.integer "receive_user_id", null: false
     t.integer "message_type"
   end

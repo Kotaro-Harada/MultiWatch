@@ -1,0 +1,2 @@
+class Multiwatch < ApplicationRecord
+end

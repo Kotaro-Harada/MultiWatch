@@ -1,14 +1,24 @@
-require "open-uri"
-
 class MultiwatchController < ApplicationController
+include MultiwatchHelper
+
   def home
     @user = current_user
   end
 
   def watch
-    @youtube = /v=/.match(params[:youtube]).post_match if params[:youtube].present?
-    @twitch = /tv./.match(params[:twitch]).post_match if params[:twitch].present?
-    @niconico = /lv/.match(params[:niconico]).post_match if params[:niconico].present?
+    if params[:youtube].is_a?(Array) ||
+      params[:twitch].is_a?(Array) ||
+      params[:niconico].is_a?(Array)
+      if params[:youtube].reject!(&:blank?).length +
+        params[:twitch].reject!(&:blank?).length +
+        params[:niconico].reject!(&:blank?).length > 4
+        redirect_to root_path
+      else
+        part_of_url
+      end
+    else
+      part_of_url
+    end
   end
 
   def search_channel

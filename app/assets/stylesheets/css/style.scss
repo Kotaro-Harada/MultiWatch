@@ -49,7 +49,10 @@ a{
   margin-bottom: 30px;
 }
 .not_show{
-  display: none;
+  display: none !important;
+}
+.underline{
+  border-bottom: 2px solid purple;
 }
 
 /* === 1.1 HEADER === */
@@ -124,10 +127,11 @@ a{
   position: absolute;
   background-color: rgb(40, 40, 40);
   width: 400px;
-  z-index: 2;
+  z-index: 4;
   right: 40px;
   top: 50px;
   border-radius: 5px;
+  padding: 10px;
 }
 .whisper_box p{
   margin-top: 5px;
@@ -162,10 +166,10 @@ a{
   top: 50px;
   right: 20px;
   background-color: black;
-  z-index: 2;
+  z-index: 4;
 }
 .show{
-  display: inline-block;
+  display: inline-block !important;
   animation: display 0.3s;
 }
 .side_nav{
@@ -195,20 +199,17 @@ a{
 .side_nav .menu:nth-of-type(3){
   bottom: 0;
 }
-.whisper, .layout{
+.whisper{
   margin: auto 10px;
   color: white;
   cursor: pointer;
   border-radius: 5px;
 }
-.whisper:hover, .layout:hover, .user_each_menu:hover{
+.whisper:hover, .user_each_menu:hover{
   background-color: rgb(50, 50, 50);
 }
-.fa-comment-alt, .fa-th-large{
+.fa-comment-alt, .fa-th-large, .fa-plus-square, .fa-minus-square{
   padding: 7px;
-}
-.whisper_box{
-  padding: 10px;
 }
 .send_message, .whisper_form, #message{
   margin-top: 5px;
@@ -279,7 +280,7 @@ a{
   left: -250px;
   top: 50px;
   transition-duration: 0.3s;
-  z-index: 2;
+  z-index: 4;
 }
 .slide{
   left: 0;
@@ -347,10 +348,11 @@ margin-right: 10px;
     opacity: 1;
   }
 }
-.youtube2, .youtube3, .youtube4, .twitch2, .twitch3, .twitch4{
+.youtube2, .youtube3, .youtube4, .twitch2, .twitch3, .twitch4, .niconico2, .niconico3, .niconico4{
   display: none;
 }
-.display{
+.youtube2.display, .youtube3.display, .youtube4.display, .twitch2.display, .twitch3.display,
+  .twitch4.display, .niconico2.display, .niconico3.display, .niconico4.display{
   display: inline-block;
   animation: display 0.5s;
 }
@@ -450,6 +452,22 @@ margin-right: 10px;
 }
 
 /* === 4. WATCH === */
+.video_wrapper{
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+.video_frame, .chat_frame, .delete_video{
+  position: absolute;
+  z-index: 1;
+}
+.next_chat, .prev_chat, .delete_video, .chats{
+  position: absolute;
+  z-index: 3;
+}
+.next_chat, .prev_chat{
+  color: lightblue;
+}
 .wrap{
   width: 0;
   height: 0;
@@ -458,9 +476,113 @@ margin-right: 10px;
   width: 100%;
   height: 100%;
   position: absolute;
-  z-index: 1;
+  z-index: 3;
 }
-
+.video, .layout{
+  background-color: rgb(40, 40, 40);
+  position: absolute;
+  width: 600px;
+  z-index: 4;
+  right: 60px;
+  top: 50px;
+  border-radius: 5px;
+  display: none;
+  padding: 10px;
+}
+.layout{
+  height: auto;
+  width: auto;
+}
+.video{
+  min-height: 100px;
+}
+.search_from_follows, .add_video{
+  display: flex;
+}
+.add_by_follow p, .add_by_url p{
+  font-weight: bold;
+}
+.add_by_follow p:hover{
+  border-bottom: 2px solid purple;
+  cursor: pointer;
+}
+.add_by_url p:hover{
+  border-bottom: 2px solid purple;
+  cursor: pointer;
+}
+.search_by_url{
+  text-align: center;
+  margin-top: 10px;
+}
+.search_from_follows{
+  margin-top: 10px;
+}
+.add_by_url{
+  margin-right: 20px;
+}
+.edit_layout, .edit_video, .delete_video_icon{
+  margin: auto 10px;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.edit_layout:hover, .edit_video:hover, .delete_video_icon:hover{
+  background-color: rgb(50, 50, 50);
+}
+.type{
+  background-color: white;
+  position: relative;
+  margin: 0 10px
+}
+.type:hover{
+  cursor: pointer;
+}
+.frame{
+  background-color: rgb(0, 111, 202);
+  position: absolute;
+  margin: 5px;
+  display: flex;
+}
+.chat{
+  background-color: sandybrown;
+  position: absolute;
+  margin: 5px;
+  display: flex;
+}
+.channel_icon{
+  cursor: pointer;
+}
+.frame i, .chat i{
+  color: white;
+  margin: auto;
+}
+.change_layout{
+  margin-bottom: 20px;
+}
+.change_layout p{
+  font-weight: bold;
+  border-bottom: 2px solid purple;
+  display: inline;
+  padding-bottom: 5px;
+}
+.layout_type{
+  display: flex;
+}
+.youtube, .twitch, .niconico{
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+.rotate_video{
+  color: white;
+}
+.rotate_video:hover{
+  cursor: pointer;
+  color: rgb(0, 111, 202);
+}
+.rotate_video{
+  margin: auto;
+}
 /* === 5.1 PROFILE === */
 .setting_wrapper{
   margin: 30px auto;
@@ -481,9 +603,6 @@ margin-right: 10px;
 .security_tab, .profile_tab{
   padding-bottom: 2px;
   margin-right: 30px;
-}
-.underline{
-  border-bottom: 2px solid purple;
 }
 .profile_image_title, .profile p, .address p, .security p{
   color: white;

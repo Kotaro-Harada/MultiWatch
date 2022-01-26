@@ -1,8 +1,24 @@
 .wrapper
   .main
-    .stream_and_video
-      = form_with url: { controller: "multiwatch", action: "watch"}, method: :get, local: true do |f|
-        = f.text_field :youtube, size: 60, placeholder: "URL"
-        = f.text_field :twitch, size: 60, placeholder: "URL"
-        = f.text_field :niconico, size: 60, placeholder: "URL"
-        = f.submit "watch"
+    = form_with url: { controller: "multiwatch", action: "watch"}, method: :get, local: true do |f|
+      .platform
+        p YOUTUBE
+        = f.text_field :youtube, name:"youtube[]", size: 60, placeholder: "URL", class: "youtube1"
+        = f.text_field :youtube, name:"youtube[]", size: 60, placeholder: "URL", class: "youtube2"
+        = f.text_field :youtube, name:"youtube[]", size: 60, placeholder: "URL", class: "youtube3"
+        = f.text_field :youtube, name:"youtube[]", size: 60, placeholder: "URL", class: "youtube4"
+      .platform
+        p TWITCH
+        = f.text_field :twitch, name:"twitch[]", size: 60, placeholder: "URL", class: "twitch1"
+        = f.text_field :twitch, name:"twitch[]", size: 60, placeholder: "URL", class: "twitch2"
+        = f.text_field :twitch, name:"twitch[]", size: 60, placeholder: "URL", class: "twitch3"
+        = f.text_field :twitch, name:"twitch[]", size: 60, placeholder: "URL", class: "twitch4"
+      .platform
+        P NICONICO(動画のみ)
+        = f.text_field :niconico, name:"niconico[]", size: 60, placeholder: "URL", class: "niconico1"
+        = f.text_field :niconico, name:"niconico[]", size: 60, placeholder: "URL", class: "niconico2"
+        = f.text_field :niconico, name:"niconico[]", size: 60, placeholder: "URL", class: "niconico3"
+        = f.text_field :niconico, name:"niconico[]", size: 60, placeholder: "URL", class: "niconico4"
+        p ※ URLは４つまでです
+        = f.submit "WATCH", class: "submit"
+

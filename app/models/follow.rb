@@ -5,6 +5,11 @@ class Follow < ApplicationRecord
   validates :name, uniqueness: true
   validate :already_follow
 
+  def image_url
+    image.attached? ?
+      Rails.application.routes.url_helpers.rails_blob_path(image, only_path: true) : nil
+  end
+
   private
 
   def already_follow

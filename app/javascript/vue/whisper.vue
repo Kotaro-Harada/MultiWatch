@@ -12,6 +12,11 @@
           <p>クリア</p>
         </button>
       </div>
+      <div>
+        <button class="btn btn-primary reload_button" @click="reload">
+          <i class="fas fa-redo-alt"></i>
+        </button>
+      </div>
     </div>
     <div class="receive_box">
       <div v-for="(whisper,index) in whispers" :key="index">
@@ -108,6 +113,9 @@ export default {
         }
       )
     },
+    reload: function(){
+      axios.get("/api/v1/whispers").then((response) => { this.whispers = response.data })
+    }
   },
 };
 </script>

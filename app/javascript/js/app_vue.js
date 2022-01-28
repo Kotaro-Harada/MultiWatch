@@ -1,9 +1,13 @@
 import TurbolinksAdapter from 'vue-turbolinks'
+import ActionCable from 'actioncable'
 import Vue from 'vue/dist/vue.esm'
 import Whisper from '../vue/whisper.vue'
 import Edit from '../vue/edit.vue'
+import Chat from '../vue/chat.vue'
 import axios from "axios"
 
+const cable = ActionCable.createConsumer('ws:localhost:3000/cable');
+Vue.prototype.$cable = cable;
 Vue.use(TurbolinksAdapter);
 
 document.addEventListener('turbolinks:load', () => {
@@ -17,7 +21,7 @@ document.addEventListener('turbolinks:load', () => {
 
 for(let i = 0; i <= 4; i++ ){
   document.addEventListener('turbolinks:load', () => {
-    const app = new Vue({
+    new Vue({
       name: 'FollowComponent',
       el: `#follow${i}`,
       template: `
@@ -87,7 +91,7 @@ for(let i = 0; i <= 4; i++ ){
 }
 
 document.addEventListener('turbolinks:load', () => {
-  const app = new Vue({
+  new Vue({
     name: 'EditComponent',
     el: '#edit',
     template: "<edit/>",
@@ -95,6 +99,11 @@ document.addEventListener('turbolinks:load', () => {
   })
 })
 
-$(".frame").on("click", function(){
-  $(".chat_frame").addClass("not_show");
-});
+document.addEventListener('turbolinks:load', () => {
+  new Vue({
+    name: 'ChatComponent',
+    el: '#chat',
+    template: "<chat/>",
+    components: { Chat },
+  })
+})

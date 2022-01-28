@@ -6,6 +6,7 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.4.3",
+    "actioncable": "^5.2.6",
     "axios": "^0.24.0",
     "jquery": "^3.6.0",
     "turbolinks": "^5.2.0",
@@ -21,8 +22,6 @@
   "devDependencies": {
     "@mdi/font": "^6.5.95",
     "@vue/compiler-sfc": "^3.2.26",
-    "pug": "^3.0.2",
-    "pug-plain-loader": "^1.1.0",
     "vue-loader": "^15.9.8",
     "webpack-dev-server": "^3"
   }

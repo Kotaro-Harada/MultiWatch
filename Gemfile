@@ -66,10 +66,11 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'slim-rails'
 gem 'html2slim'
-gem "dotenv-rails"
+gem 'dotenv-rails'
 gem 'rest-client'
 gem 'bootstrap'
 gem 'font-awesome-sass', '~> 5.13.0'
 gem 'google-api-client', '~> 0.11'
-gem "ransack"
-gem "aws-sdk-s3", require: false
+gem 'ransack'
+gem 'aws-sdk-s3', require: false
+gem 'redis'

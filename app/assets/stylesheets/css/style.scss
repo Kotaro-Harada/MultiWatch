@@ -256,7 +256,7 @@ a{
   padding: 2px !important;
   margin: 0;
 }
-.clear_button{
+.clear_button, .reload_button{
   height:25px;
   padding: 2px !important;
   margin: 0;
@@ -264,6 +264,10 @@ a{
 }
 .clear_button p{
   line-height: 20px;
+}
+.reload_button{
+  margin-left: 20px;
+  width: 40px;
 }
 .confirm_button p{
   line-height: 0;

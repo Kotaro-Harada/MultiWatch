@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'chats/index'
+  get 'chats/create'
+  get 'rooms/index'
+  get 'rooms/create'
+  get 'rooms/edit'
+  get 'rooms/destroy'
   root to: "multiwatch#home"
 
   get '/login', to: "sessions#new"
@@ -42,5 +48,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :room, only: [:index, :create, :destroy]
+  resources :chat, only: [:index, :create, :destroy]
   resources :friendship, only: [:show, :create, :destroy]
+  mount ActionCable.server => '/cable'
 end

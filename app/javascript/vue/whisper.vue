@@ -72,7 +72,6 @@ export default {
           message: $("#message").val(),
         }
       }).then(response => (
-        this.whispers = response.data,
         this.send_message = "送信しました",
         $("#message").val(""),
         setTimeout(() => {this.send_message = "送信"}, 2000)
@@ -104,7 +103,7 @@ export default {
       }
     },
     confirm: function(user_id, index, whisper_id){
-      axios.post("/friendship", {
+      axios.post("/friendships", {
         friendship: {
           from_user_id: user_id,
           to_user_id: $(".send_user_id").val(),
@@ -153,6 +152,6 @@ export default {
         setTimeout(() => { $(".reload_button").removeAttr("disabled")}, 2000)
       })
     }
-  },
-};
+  }
+}
 </script>

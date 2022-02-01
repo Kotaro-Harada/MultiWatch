@@ -12,3 +12,7 @@
     = link_to logout_path, method: :delete, class: "nav_link"
       .user_each_menu
         i.fas.fa-sign-out-alt  ログアウト
+    = link_to user_path(current_user.id), method: :delete, data: { confirm: "アカウントを削除してもよろしいですか？" }
+      .user_each_menu
+        i.fas.fa-user-slash  退会
+

@@ -1,6 +1,6 @@
 require "open-uri"
 
-class FollowController < ApplicationController
+class FollowsController < ApplicationController
   def index
     @follows = current_user.follows
     render json: @follows, methods: [:image_url]

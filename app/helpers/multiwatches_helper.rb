@@ -1,4 +1,4 @@
-module MultiwatchHelper
+module MultiwatchesHelper
   include Rails.application.routes.url_helpers
 
   def part_of_url

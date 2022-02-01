@@ -1,6 +1,6 @@
 .wrapper
   .main
-    = form_with url: { controller: "multiwatch", action: "watch"}, method: :get, local: true do |f|
+    = form_with url: { controller: "multiwatches", action: "watch"}, method: :get, local: true do |f|
       .platform
         p YOUTUBE
         = f.text_field :youtube, name:"youtube[]", size: 60, placeholder: "URL", class: "youtube1"

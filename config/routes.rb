@@ -1,19 +1,17 @@
 Rails.application.routes.draw do
-  root to: "multiwatch#home"
+  root to: "multiwatches#home"
 
   get '/login', to: "sessions#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
-  resources :multiwatch, only: [:index] do
+  resources :multiwatches do
     collection do
-      post "follow"
-      delete "unfollow"
+      get "home"
+      get "watch"
+      get "search_channel"
     end
   end
-  get "multiwatch/home"
-  get "multiwatch/watch"
-  get "multiwatch/search_channel"
 
   resources :users do
     member do
@@ -22,11 +20,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :follow, only: [:index, :new, :create] do
+  resources :follows, only: [:index, :new, :create] do
     collection do
       get "check"
       delete "destroy"
-      get "image"
       get "get_stream"
     end
   end
@@ -51,9 +48,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :chat, only: [:index, :create, :destroy]
-
-  resources :friendship do
+  resources :friendships do
     collection do
       get "get_active_friends"
       get "get_passive_friends"

@@ -4,6 +4,7 @@
       <div class="add_video">
         <div class="add_by_url"><p class="underline">URL</p></div>
         <div class="add_by_follow"><p>フォロー</p></div>
+        <div><p>※動画は４つまでです</p></div>
       </div>
       <div class="search_by_url">
         <select id="platform" v-model="platform">
@@ -129,7 +130,7 @@ export default ({
     }
   },
   mounted(){
-    axios.get("/follow").then(response => {
+    axios.get("/follows").then(response => {
       this.follows = response.data
     }),
     this.$nextTick(function () {
@@ -150,38 +151,44 @@ export default ({
   },
   methods: {
     add_by_url: function(platform, url){
-      if(platform == "YouTube"){
-        let clipped_url = url.split("v=")
-        this.youtube = clipped_url[1]
-      }else if(platform == "Twitch"){
-        let clipped_url = url.split("tv/")
-        this.twitch = clipped_url[1]
-      }else{
-        let clipped_url = url.split("watch/")
-        this.niconico = clipped_url[1]
+      this.frames = $(".video_frame").length
+      if(this.frames <= 3){
+        if(platform == "YouTube"){
+          let clipped_url = url.split("v=")
+          this.youtube = clipped_url[1]
+        }else if(platform == "Twitch"){
+          let clipped_url = url.split("tv/")
+          this.twitch = clipped_url[1]
+        }else{
+          let clipped_url = url.split("watch/")
+          this.niconico = clipped_url[1]
+        }
+        this.url = ""
+        $(".delete_video").removeClass("show")
+        this.$nextTick(function () {
+          this.frames = $(".video_frame").length
+        })
       }
-      this.url = ""
-      $(".delete_video").removeClass("show")
-      this.$nextTick(function () {
-        this.frames = $(".video_frame").length
-      })
     },
     add_by_follow: function(id, platform, name){
-      if(platform){
-        axios.get("/follow/get_stream", {
-          params: {
-            channel_id: id
-          }
-        }).then(response => {
-          this.youtube = response.data
+      this.frames = $(".video_frame").length
+      if(this.frames <= 3){
+        if(platform){
+          axios.get("/follows/get_stream", {
+            params: {
+              channel_id: id
+            }
+          }).then(response => {
+            this.youtube = response.data
+          })
+        }else{
+          this.twitch = name
+        }
+        $(".delete_video").removeClass("show")
+        this.$nextTick(function () {
+          this.frames = $(".video_frame").length
         })
-      }else{
-        this.twitch = name
       }
-      $(".delete_video").removeClass("show")
-      this.$nextTick(function () {
-        this.frames = $(".video_frame").length
-      })
     },
     count_frames: function(frames){
       this.frames = frames

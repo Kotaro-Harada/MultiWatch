@@ -154,6 +154,25 @@ $(document).on("click", function(){
   }
 });
 
+// === SIDEBAR === //
+$(".select_unfollow").on("click", function(){
+  $(".select_unfollow").addClass("underline");
+  $(".select_follow").removeClass("underline");
+  $(".side_each_unfollow").removeClass("not_show");
+  $(".follows").addClass("not_show");
+  $(".sidebar_icon").removeClass("fa-heart");
+  $(".sidebar_icon").addClass("fa-heart-broken");
+});
+
+$(".select_follow").on("click", function(){
+  $(".select_follow").addClass("underline");
+  $(".select_unfollow").removeClass("underline");
+  $(".side_each_unfollow").addClass("not_show");
+  $(".follows").removeClass("not_show");
+  $(".sidebar_icon").addClass("fa-heart");
+  $(".sidebar_icon").removeClass("fa-heart-broken");
+});
+
 // === FRIEND === //
 $(".whisper_button").on("click", function(){
   const user_name = $(this).val();

@@ -1,5 +1,5 @@
-class MultiwatchController < ApplicationController
-  include MultiwatchHelper
+class MultiwatchesController < ApplicationController
+  include MultiwatchesHelper
 
   def home
     @user = current_user

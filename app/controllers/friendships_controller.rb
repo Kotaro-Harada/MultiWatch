@@ -1,4 +1,4 @@
-class FriendshipController < ApplicationController
+class FriendshipsController < ApplicationController
   def show
     @whisper = Whisper.new
     @active_friends = current_user.active_friends

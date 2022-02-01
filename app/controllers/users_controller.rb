@@ -1,7 +1,4 @@
 class UsersController < ApplicationController
-  def show
-  end
-
   def new
     @user = User.new
   end
@@ -33,6 +30,13 @@ class UsersController < ApplicationController
     else
       render :security
     end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.user_room.destroy
+    @user.destroy
+    redirect_to root_path
   end
 
   def profile

@@ -8,18 +8,18 @@
             .channel_image
               img src="#{channel['snippet']['thumbnails']['default']['url']}"
           = link_to_if channel["snippet"]["liveBroadcastContent"] == "live",
-            @live, multiwatch_watch_path(youtube:"v=#{youtube_stream(channel["id"]["channelId"])}")
+            @live, watch_multiwatches_path(youtube:"v=#{youtube_stream(channel["id"]["channelId"])}")
           .channel_explanation
             .channel_name
               - @live = capture do
                 p id="channel_name" = channel["snippet"]["title"]
               = link_to_if channel["snippet"]["liveBroadcastContent"] == "live",
-                @live, multiwatch_watch_path(youtube:"v=#{youtube_stream(channel["id"]["channelId"])}")
+                @live, watch_multiwatches_path(youtube:"v=#{youtube_stream(channel["id"]["channelId"])}")
               - if channel["snippet"]["liveBroadcastContent"] == "live"
                 .live_status
                   p ● ライブ配信中
               - if current_user
-                = form_with model: @follow, url: { controller: "multiwatch", action: "follow" },
+                = form_with model: @follow, url: { controller: "friendships", action: "create" },
                   local: true do |f|
                   = f.hidden_field :image_url, class:"image_url#{index}", value: channel['snippet']['thumbnails']['default']['url']
                   = f.hidden_field :name, class:"name#{index}", value: channel["snippet"]["title"]
@@ -33,18 +33,18 @@
     - if @platform == 2
       - @channels.each_with_index do |channel, index|
         .channel
-          = link_to multiwatch_watch_path(twitch:"tv/#{channel["broadcaster_login"]}")
+          = link_to watch_multiwatches_path(twitch:"tv/#{channel["broadcaster_login"]}")
             .channel_image
               img src="#{channel['thumbnail_url']}"
           .channel_explanation
             .channel_name
-              = link_to multiwatch_watch_path(twitch:"tv/#{channel["broadcaster_login"]}")
+              = link_to watch_multiwatches_path(twitch:"tv/#{channel["broadcaster_login"]}")
                 p id="channel_name" = channel["display_name"]
               - if channel["is_live"]
                 .live_status
                   p ● ライブ配信中
               - if current_user
-                = form_with model: @follow, url: { controller: "multiwatch", action: "follow" },
+                = form_with model: @follow, url: { controller: "friendships", action: "create" },
                   local: true do |f|
                   = f.hidden_field :image_url, class:"image_url#{index}", value: channel['thumbnail_url']
                   = f.hidden_field :name, class:"name#{index}", value: channel["broadcaster_login"]

@@ -297,6 +297,10 @@ a{
 .home:hover, .follow:hover{
   background-color: gray;
 }
+.select_follow:hover, .select_unfollow:hover{
+  cursor: pointer;
+  border-bottom: 2px solid purple;
+}
 .sidebar_icons{
   color: white;
   padding: 15px 10px;
@@ -305,6 +309,31 @@ a{
 .sidebar_icon{
 line-height: 24px !important;
 margin-right: 10px;
+}
+.side_each_unfollow{
+  display: flex;
+  margin: 10px 0;
+}
+.select_unfollow{
+  margin-left: 10px;
+}
+.side_unfollow{
+  background-color: purple;
+  border-radius: 5px;
+  margin: 0;
+  width: 115px;
+  display: flex;
+}
+.side_unfollow p{
+ font-weight: bold;
+ line-height: 30px !important;
+}
+.side_unfollow:hover{
+  cursor: pointer;
+  background-color: rgb(255, 100, 255);
+}
+.unfollow_channel{
+  line-height: 30px !important;
 }
 .follow{
   box-sizing: border-box;
@@ -315,10 +344,13 @@ margin-right: 10px;
 .follow_name{
   display: flex;
 }
-.follow_image{
+.follow_image, .unfollow_image{
   margin: auto 5px;
 }
-.follow_content{
+.unfollow_name{
+  margin-bottom: 5px;
+}
+.follow_content, .unfollow_content{
   margin: auto 0;
 }
 
@@ -522,8 +554,8 @@ margin-right: 10px;
 .search_from_follows{
   margin-top: 10px;
 }
-.add_by_url{
-  margin-right: 20px;
+.add_by_follow{
+  margin: 0 20px;
 }
 .edit_layout, .edit_video, .delete_video_icon{
   margin: auto 10px;
@@ -704,7 +736,6 @@ margin-right: 10px;
 .update_btn{
   text-align: center;
 }
-
 
 /* === 6. FRIEND === */
 .friends_wrapper{

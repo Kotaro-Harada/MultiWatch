@@ -128,10 +128,10 @@ export default {
       axios.get("/rooms/get_participants").then(response => (
         this.participants = response.data
       )),
-      axios.get("/friendship/get_active_friends").then(response => (
+      axios.get("/friendships/get_active_friends").then(response => (
         this.active_friends = response.data
       )),
-      axios.get("/friendship/get_passive_friends").then(response => (
+      axios.get("/friendships/get_passive_friends").then(response => (
         this.passive_friends = response.data
       )),
       $(".invite_exit, .chat_box").toggleClass("not_show")

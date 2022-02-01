@@ -4,6 +4,7 @@ import Vue from 'vue/dist/vue.esm'
 import Whisper from '../vue/whisper.vue'
 import Edit from '../vue/edit.vue'
 import Chat from '../vue/chat.vue'
+import Unfollow from '../vue/unfollow.vue'
 import axios from "axios"
 
 const cable = ActionCable.createConsumer('ws:localhost:3000/cable');
@@ -43,7 +44,7 @@ for(let i = 0; i <= 4; i++ ){
         follows: []
       },
       mounted(){
-        axios.get("/follow/check",{
+        axios.get("/follows/check",{
           params: {
             channel_id: $(`.channel_id${i}`).val()
           }
@@ -53,7 +54,7 @@ for(let i = 0; i <= 4; i++ ){
       },
       methods: {
         follow_button: function(){
-          axios.post("/follow",{
+          axios.post("/follows",{
             follow: {
               name: $(`.name${i}`).val(),
               display_name: $(`.display_name${i}`).val(),
@@ -72,7 +73,7 @@ for(let i = 0; i <= 4; i++ ){
           })
         },
         unfollow_button: function(){
-          axios.delete("/follow/destroy",{
+          axios.delete("/follows/destroy",{
             params: {
               channel_id: $(`.channel_id${i}`).val()
             }
@@ -105,5 +106,14 @@ document.addEventListener('turbolinks:load', () => {
     el: '#chat',
     template: "<chat/>",
     components: { Chat },
+  })
+})
+
+document.addEventListener('turbolinks:load', () => {
+  new Vue({
+    name: 'UnfollowComponent',
+    el: '#unfollow',
+    template: "<unfollow/>",
+    components: { Unfollow },
   })
 })

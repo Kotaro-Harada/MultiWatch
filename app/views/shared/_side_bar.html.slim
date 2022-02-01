@@ -1,5 +1,5 @@
 .sidebar
-  = link_to multiwatch_home_path, class: "nav_link"
+  = link_to home_multiwatches_path, class: "nav_link"
     .top_menu.home
       .sidebar_icons
         i.fas.fa-home.sidebar_icon
@@ -7,7 +7,10 @@
   .top_menu
     .sidebar_icons
       i.fas.fa-heart.sidebar_icon
-      p フォロー
+      .select_follow.underline
+        p フォロー
+      .select_unfollow
+        p フォロー解除
   .follows
     - if current_user && current_user.follows.present?
       - current_user.follows.each do |follow|
@@ -23,9 +26,9 @@
                     .live_status
                       p ●
           = link_to_if youtube_stream(follow.channel_id).present?,
-            @live, multiwatch_watch_path(youtube:"v=#{youtube_stream(follow.channel_id)}")
+            @live, watch_multiwatches_path(youtube:"v=#{youtube_stream(follow.channel_id)}")
         - else
-          = link_to multiwatch_watch_path(twitch:"tv/#{follow.name}")
+          = link_to watch_multiwatches_path(twitch:"tv/#{follow.name}")
             .follow
               .follow_image
                 = image_tag follow.image.variant(resize_to_fill: [35, 35]), class: "icon_image"
@@ -38,5 +41,4 @@
                 - if twitch_stream(follow.channel_id).present?
                   .follow_game
                     p = twitch_stream(follow.channel_id)[0]["game_name"]
-
-
+  #unfollow

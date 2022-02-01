@@ -160,9 +160,3 @@ $(".whisper_button").on("click", function(){
   $(".whisper_box").addClass("show");
   $(".receive_user_name").val(user_name);
 });
-
-// === WATCH === //
-
-
-
-

@@ -8,10 +8,6 @@
       .form_group
         = f.label :email, "メールアドレス"
         = f.text_field :email, class: "fotm-control"
-      .form_check
-        = f.label :admin, class: "form-check-label" do
-          p 管理者権限
-          = f.check_box :admin, class: "form-check-input"
       .form_group
         = f.label :password, "パスワード (8文字以上)"
         = f.password_field :password, class: "form-control"

@@ -232,12 +232,12 @@ a{
 .receive_message{
   margin: 0 10px;
 }
-.confirm{
+.confirm, .join{
   width: auto;
   height: 20px;
   margin: auto 0;
 }
-.receive_message p, .confirm_button p{
+.receive_message p, .confirm_button p, .join_button p{
   text-align: start;
   font-weight: lighter !important;
 }
@@ -250,7 +250,7 @@ a{
   overflow: scroll;
   margin-top: 10px;
 }
-.confirm_button{
+.confirm_button, .join_button{
   display: inherit !important;
   height: 20px;
   padding: 2px !important;
@@ -269,7 +269,7 @@ a{
   margin-left: 20px;
   width: 40px;
 }
-.confirm_button p{
+.confirm_button p, .join_button p{
   line-height: 0;
   width: 32px;
   font-size: 13px;
@@ -461,16 +461,17 @@ margin-right: 10px;
   height: 100vh;
   overflow: hidden;
 }
-.video_frame, .chat_frame, .delete_video{
+.video_frame, .chat_frame, .delete_video, .custom_chat{
   position: absolute;
   z-index: 1;
 }
-.next_chat, .prev_chat, .delete_video, .chats{
+.custom_chat{
+  padding: 5px;
+  background-color: rgb(20,20,20);
+}
+.delete_video, .chats{
   position: absolute;
   z-index: 3;
-}
-.next_chat, .prev_chat{
-  color: lightblue;
 }
 .wrap{
   width: 0;
@@ -587,6 +588,78 @@ margin-right: 10px;
 .rotate_video{
   margin: auto;
 }
+.participants, .participants_icon, .toggle_users{
+  color: white;
+}
+.toggle_users{
+  display: flex;
+  border-bottom: 1px solid gray;
+}
+.participants_icon{
+  margin: 0 0 0 auto;
+  line-height: 22px;
+  height: auto;
+  width: auto;
+  padding: 7px;
+  border-radius: 5px;
+}
+.room{
+  display: flex;
+}
+.room_button{
+  margin: auto;
+}
+.friends_list{
+  color:white;
+}
+.invite_button, .exit_button{
+  height: auto;
+  margin: auto;
+  display: flex !important;
+}
+.invite_whisper{
+  line-height: normal;
+  font-weight: lighter;
+}
+.invite, .exit{
+  margin: 10px auto 10px auto;
+  width: auto;
+}
+.invite_index_user{
+  margin-top: 40px;
+}
+.invite_user{
+  margin-top: 20px;
+}
+.participants_icon:hover{
+  background-color: rgb(50, 50, 50);
+  cursor: pointer;
+}
+.chat_area{
+  resize: none;
+  width: 100%;
+}
+.comment_box{
+  height: auto;
+  bottom: 0;
+  position: absolute;
+  width: 95%;
+}
+.each_chat{
+  display: flex;
+}
+.chat_box{
+  max-height: 560px;
+  overflow: scroll;
+}
+.chat_user p, .chat_comment p{
+  font-size: medium;
+  font-weight: normal;
+}
+.chat_comment{
+  margin-left: 5px;
+}
+
 /* === 5.1 PROFILE === */
 .setting_wrapper{
   margin: 30px auto;
@@ -631,6 +704,7 @@ margin-right: 10px;
 .update_btn{
   text-align: center;
 }
+
 
 /* === 6. FRIEND === */
 .friends_wrapper{

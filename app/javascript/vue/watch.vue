@@ -27,19 +27,20 @@
           <button class="btn btn-danger delete_video" style="display:none;" @click="delete_niconico(niconico)"><i class="fas fa-trash"></i></button>
         </div>
       </div>
+      <chat/>
       <select class="chats" v-model="chat1">
-        <option>CHAT 1</option>
-        <option>CHAT 2</option>
-        <option>CHAT 3</option>
-        <option>CHAT 4</option>
-        <option>CUSTOM</option>
+        <option value="CHAT 1">CHAT 1</option>
+        <option value="CHAT 2">CHAT 2</option>
+        <option value="CHAT 3">CHAT 3</option>
+        <option value="CHAT 4">CHAT 4</option>
+        <option value="CUSTOM">CUSTOM</option>
       </select>
       <select class="chats" v-model="chat2">
-        <option>CHAT 1</option>
-        <option>CHAT 2</option>
-        <option>CHAT 3</option>
-        <option>CHAT 4</option>
-        <option>CUSTOM</option>
+        <option value="CHAT 1">CHAT 1</option>
+        <option value="CHAT 2">CHAT 2</option>
+        <option value="CHAT 3">CHAT 3</option>
+        <option value="CHAT 4">CHAT 4</option>
+        <option value="CUSTOM">CUSTOM</option>
       </select>
     </div>
   </div>
@@ -47,10 +48,14 @@
 
 <script>
 import axios from "axios";
+import Chat from "./chat"
 const token = document.getElementsByName("csrf-token")[0].getAttribute("content");
 axios.defaults.headers.common["X-CSRF-Token"] = token;
 
 export default ({
+  components: {
+    chat: Chat
+  },
   data: function(){
     return{
       youtubes: [],
@@ -126,7 +131,9 @@ export default ({
       this.niconicos.push(this.niconico_url)
     },
     chat1: function(index){
+      $(".chats").eq(1).children().removeAttr("disabled")
       if($(".chats").eq(1).hasClass("not_show")){
+        $(".custom_chat").addClass("not_show")
         $(".chat_frame").addClass("not_show")
         if(index == "CHAT 1"){
           $(".chat_frame").eq(0).removeClass("not_show")
@@ -137,57 +144,72 @@ export default ({
         }else if(index == "CHAT 4"){
           $(".chat_frame").eq(3).removeClass("not_show")
         }else if(index == "CUSTOM"){
-          $(".chat_frame").eq(4).removeClass("not_show")
+          $(".custom_chat").css({"top":"0", "right":"0", "width":"20vw", "height":"100vh"})
+          $(".custom_chat").removeClass("not_show")
         }
       }else{
         for(let chat_index = 0; chat_index <= 4; chat_index++){
           if(this.chat2 == `CHAT ${chat_index + 1}`){
             $(`.chat_frame:not(:eq(${chat_index}))`).addClass("not_show")
+            $(".chats").eq(0).children().eq(chat_index).prop("disabled", true)
+            $(".custom_chat").addClass("not_show")
+          }else if(this.chat2 == "CUSTOM"){
+            $(".chat_frame").addClass("not_show")
           }
         }
         if(index == "CHAT 1"){
           $(".chat_frame").eq(0).css({"top":"0", "right":"20vw", "width":"20vw", "height":"100vh"})
           $(".chat_frame").eq(0).removeClass("not_show")
+          $(".chats").eq(1).children().eq(0).prop("disabled", true)
         }else if(index == "CHAT 2"){
           $(".chat_frame").eq(1).css({"top":"0", "right":"20vw", "width":"20vw", "height":"100vh"})
           $(".chat_frame").eq(1).removeClass("not_show")
+          $(".chats").eq(1).children().eq(1).prop("disabled", true)
         }else if(index == "CHAT 3"){
           $(".chat_frame").eq(2).css({"top":"0", "right":"20vw", "width":"20vw", "height":"100vh"})
           $(".chat_frame").eq(2).removeClass("not_show")
+          $(".chats").eq(1).children().eq(2).prop("disabled", true)
         }else if(index == "CHAT 4"){
           $(".chat_frame").eq(3).css({"top":"0", "right":"20vw", "width":"20vw", "height":"100vh"})
           $(".chat_frame").eq(3).removeClass("not_show")
+          $(".chats").eq(1).children().eq(3).prop("disabled", true)
         }else if(index == "CUSTOM"){
-          $(".chat_frame").eq(4).css({"top":"0", "right":"20vw", "width":"20vw", "height":"100vh"})
-          $(".chat_frame").eq(4).removeClass("not_show")
+          $(".custom_chat").css({"top":"0", "right":"20vw", "width":"20vw", "height":"100vh"})
+          $(".custom_chat").removeClass("not_show")
+          $(".chats").eq(1).children().eq(4).prop("disabled", true)
         }
       }
     },
     chat2: function(index){
-      if($(".chats").eq(0).hasClass("not_show")){
-        $(".chat_frame").addClass("not_show")
-      }else{
-        for(let chat_index = 0; chat_index <= 4; chat_index++){
-          if(this.chat1 == `CHAT ${chat_index + 1}`){
-            $(`.chat_frame:not(:eq(${chat_index}))`).addClass("not_show")
-          }
+      $(".chats").eq(0).children().removeAttr("disabled")
+      for(let chat_index = 0; chat_index <= 4; chat_index++){
+        if(this.chat1 == `CHAT ${chat_index + 1}`) {
+          $(`.chat_frame:not(:eq(${chat_index}))`).addClass("not_show")
+          $(".custom_chat").addClass("not_show")
+        }else if(this.chat1 == "CUSTOM"){
+          $(".chat_frame").addClass("not_show")
         }
-        if(index == "CHAT 1"){
-          $(".chat_frame").eq(0).css({"top":"0", "right":"0", "width":"20vw", "height":"100vh"})
-          $(".chat_frame").eq(0).removeClass("not_show")
-        }else if(index == "CHAT 2"){
-          $(".chat_frame").eq(1).css({"top":"0", "right":"0", "width":"20vw", "height":"100vh"})
-          $(".chat_frame").eq(1).removeClass("not_show")
-        }else if(index == "CHAT 3"){
-          $(".chat_frame").eq(2).css({"top":"0", "right":"0", "width":"20vw", "height":"100vh"})
-          $(".chat_frame").eq(2).removeClass("not_show")
-        }else if(index == "CHAT 4"){
-          $(".chat_frame").eq(3).css({"top":"0", "right":"0", "width":"20vw", "height":"100vh"})
-          $(".chat_frame").eq(3).removeClass("not_show")
-        }else if(index == "CUSTOM"){
-          $(".chat_frame").eq(4).css({"top":"0", "right":"0", "width":"20vw", "height":"100vh"})
-          $(".chat_frame").eq(4).removeClass("not_show")
-        }
+      }
+      if(index == "CHAT 1"){
+        $(".chat_frame").eq(0).css({"top":"0", "right":"0", "width":"20vw", "height":"100vh"})
+        $(".chat_frame").eq(0).removeClass("not_show")
+        $(".chats").eq(0).children().eq(0).prop("disabled", true)
+      }else if(index == "CHAT 2"){
+        $(".chat_frame").eq(1).css({"top":"0", "right":"0", "width":"20vw", "height":"100vh"})
+        $(".chat_frame").eq(1).removeClass("not_show")
+        $(".chats").eq(0).children().eq(1).prop("disabled", true)
+      }else if(index == "CHAT 3"){
+        $(".chat_frame").eq(2).css({"top":"0", "right":"0", "width":"20vw", "height":"100vh"})
+        $(".chat_frame").eq(2).removeClass("not_show")
+        $(".chats").eq(0).children().eq(2).prop("disabled", true)
+      }else if(index == "CHAT 4"){
+        $(".chat_frame").eq(3).css({"top":"0", "right":"0", "width":"20vw", "height":"100vh"})
+        $(".chat_frame").eq(3).removeClass("not_show")
+        $(".chats").eq(0).children().eq(3).prop("disabled", true)
+      }else if(index == "CUSTOM"){
+        $(".custom_chat").css({"top":"0", "right":"0", "width":"20vw", "height":"100vh"})
+        $(".custom_chat").removeClass("not_show")
+        $(".chats").eq(0).children().eq(4).prop("disabled", true)
       }
     },
     frames: function(frame){
@@ -196,6 +218,8 @@ export default ({
         $(".chat_frame").css({"top":"0", "right":"0", "width":"20vw", "height":"100vh"})
         $(".delete_video").css({"top":"90vh", "right":"22vw"})
         $(".chats").eq(0).css({"top":"2vh", "right":"6vw"})
+        $(".chats").eq(1).addClass("not_show")
+        $(".custom_chat").addClass("not_show")
       }else if(frame == 2){
         $(".chats").removeClass("not_show")
         $(".video_frame").eq(0).css({"top":"0", "left":"0"})
@@ -207,6 +231,7 @@ export default ({
         $(".delete_video").eq(1).css({"top":"90vh", "right":"42vw"})
         $(".chats").eq(0).css({"top":"2vh", "right":"26vw"})
         $(".chats").eq(1).css({"top":"2vh", "right":"6vw"})
+        $(".custom_chat").addClass("not_show")
       }else if(frame == 3){
         $(".chats").removeClass("not_show")
         $(".chat_frame").removeClass("not_show")
@@ -220,6 +245,7 @@ export default ({
         $(".delete_video").eq(2).css({"top":"90vh", "right":"42vw"})
         $(".chats").eq(0).css({"top":"2vh", "right":"26vw"})
         $(".chats").eq(1).css({"top":"2vh", "right":"6vw"})
+        $(".custom_chat").addClass("not_show")
       }else if(frame == 4){
         $(".chats").removeClass("not_show")
         $(".chat_frame").removeClass("not_show")
@@ -235,6 +261,7 @@ export default ({
         $(".delete_video").eq(3).css({"top":"90vh", "right":"42vw"})
         $(".chats").eq(0).css({"top":"2vh", "right":"26vw"})
         $(".chats").eq(1).css({"top":"2vh", "right":"6vw"})
+        $(".custom_chat").addClass("not_show")
       }
     }
   }

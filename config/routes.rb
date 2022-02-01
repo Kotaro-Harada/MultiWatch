@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  get 'chats/index'
-  get 'chats/create'
-  get 'rooms/index'
-  get 'rooms/create'
-  get 'rooms/edit'
-  get 'rooms/destroy'
   root to: "multiwatch#home"
 
   get '/login', to: "sessions#new"
@@ -43,13 +37,34 @@ Rails.application.routes.draw do
         collection do
           delete "destroy"
           post "friend_request"
+          post "invite_chat"
         end
       end
     end
   end
 
-  resources :room, only: [:index, :create, :destroy]
+  resources :rooms, only: [:index, :create, :destroy] do
+    collection do
+      get "get_participants"
+      post "add_user"
+      delete "delete_user"
+    end
+  end
+
   resources :chat, only: [:index, :create, :destroy]
-  resources :friendship, only: [:show, :create, :destroy]
+
+  resources :friendship do
+    collection do
+      get "get_active_friends"
+      get "get_passive_friends"
+    end
+  end
+
+  resources :user_room do
+    collection do
+      delete "destroy"
+    end
+  end
+
   mount ActionCable.server => '/cable'
 end

@@ -17,7 +17,7 @@
           </div>
           <div class="invite_exit not_show">
             <div class="user_in_chat">
-              <p>チャット内のユーザー</p>
+              <p>チャット内のユーザー(最大10人)</p>
             </div>
             <div class="participants">
               <div v-for="(participant, index) in participants" :key="`participant` + index">

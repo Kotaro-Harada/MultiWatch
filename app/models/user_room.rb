@@ -14,6 +14,6 @@ class UserRoom < ApplicationRecord
   private
 
   def rooms_has_less_than_ten_users
-    errors.add("参加できるのは10人までです") if room.users.length > MAX_PARTICIPANTS
+    errors.add("参加できるのは10人までです") if UserRoom.where(room_id: room_id).length == MAX_PARTICIPANTS
   end
 end

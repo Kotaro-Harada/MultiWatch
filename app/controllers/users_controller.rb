@@ -34,7 +34,9 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    @user.user_room.destroy
+    if @user.user_room.present?
+      @user.user_room.destroy
+    end
     @user.destroy
     redirect_to root_path
   end

@@ -1,6 +1,5 @@
 class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/
-  MAX_ROOMS = 3
 
   has_secure_password
   has_one_attached :avatar, dependent: :destroy
@@ -17,8 +16,8 @@ class User < ApplicationRecord
   has_many :active_friends, through: :active_friendships, source: :to_user
   has_many :passive_friends, through: :passive_friendships, source: :from_user
   has_many :chats
-  has_many :user_rooms
-  has_many :rooms, through: :user_rooms
+  has_one :user_room
+  has_one :room, through: :user_room
 
   validates :name,
     presence: true,
@@ -31,11 +30,4 @@ class User < ApplicationRecord
   validates :password,
     length: { minimum: 8 },
     presence: true
-  validate :user_has_less_than_five_rooms
-
-  private
-
-  def user_has_less_than_five_rooms
-    errors.add("参加できるチャットは５つまでです") if User.rooms.length > MAX_ROOMS
-  end
 end

@@ -8,8 +8,8 @@ class FriendshipController < ApplicationController
   def create
     @friend = Friendship.new(friend_params)
     if @friend.save
-      whisper = Whisper.find(params[:id])
-      whisper.destroy
+      @whisper = Whisper.find(params[:id])
+      @whisper.destroy
     end
   end
 
@@ -26,6 +26,16 @@ class FriendshipController < ApplicationController
       @passive_friendship.destroy
     end
     redirect_to friendship_path(current_user.id), notice: "フレンドから削除しました"
+  end
+
+  def get_active_friends
+    @active_friends = current_user.active_friends
+    render json: @active_friends
+  end
+
+  def get_passive_friends
+    @passive_friends = current_user.passive_friends
+    render json: @passive_friends
   end
 
   private

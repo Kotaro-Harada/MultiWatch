@@ -1,5 +1,5 @@
 class MultiwatchController < ApplicationController
-include MultiwatchHelper
+  include MultiwatchHelper
 
   def home
     @user = current_user
@@ -11,10 +11,10 @@ include MultiwatchHelper
       params[:niconico].is_a?(Array)
       if params[:youtube].reject!(&:blank?).length +
         params[:twitch].reject!(&:blank?).length +
-        params[:niconico].reject!(&:blank?).length > 4
-        redirect_to root_path
-      else
+        params[:niconico].reject!(&:blank?).length <= 4
         part_of_url
+      else
+        redirect_to root_path
       end
     else
       part_of_url

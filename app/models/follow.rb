@@ -2,7 +2,6 @@ class Follow < ApplicationRecord
   has_one_attached :image, dependent: :destroy
   belongs_to :user
 
-  validates :name, uniqueness: true
   validate :already_follow
 
   def image_url

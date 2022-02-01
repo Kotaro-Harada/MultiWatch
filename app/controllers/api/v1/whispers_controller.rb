@@ -28,6 +28,10 @@ class Api::V1::WhispersController < ApplicationController
     redirect_to friendship_path(current_user.id), alert: "ユーザーが見つからない、またはフレンド登録済みです"
   end
 
+  def invite_chat
+    send_chat_invite
+  end
+
   private
 
   def whisper_params

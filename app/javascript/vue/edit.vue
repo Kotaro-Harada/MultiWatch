@@ -141,7 +141,6 @@ export default ({
       $(".add_by_url p").removeClass("underline")
       $(".search_from_follows").removeClass("not_show")
     }),
-
     $(".add_by_url p").on("click", function(){
       $(".add_by_url p").addClass("underline")
       $(".search_from_follows").addClass("not_show")
@@ -188,7 +187,7 @@ export default ({
       this.frames = frames
     },
     layout1: function(){
-      $(".chat_frame, .chats").addClass("not_show")
+      $(".chat_frame, .chats, .custom_chat").addClass("not_show")
       $(".video_frame").css({"width":"100vw"})
       $(".delete_video").css({"right":"2vw"})
     },
@@ -200,18 +199,20 @@ export default ({
       $(".chats").eq(0).css({"top":"2vh", "right":"2vw"})
     },
     layout3: function(){
-      $(".chat_frame, .chats").addClass("not_show")
+      $(".chat_frame, .chats, .custom_chat").addClass("not_show")
       $(".video_frame").eq(0).css({"top":"0", "left":"0", "width":"50vw", "height":"100vh"})
       $(".video_frame").eq(1).css({"top":"0", "left":"50vw", "width":"50vw", "height":"100vh"})
       $(".delete_video").eq(0).css({"top":"90vh", "right":"52vw"})
       $(".delete_video").eq(1).css({"right":"2vw"})
     },
     layout4: function(){
+      $(".chats").eq(0).children().removeAttr("disabled")
+      $(".custom_chat").addClass("not_show")
       $(".chat_frame").eq(0).removeClass("not_show")
-      $(".chats").eq(0).removeClass("not_show")
       $(".chat_frame").eq(1).addClass("not_show")
+      $(".chat_frame").css({"top":"0", "right":"0", "width":"20vw", "height":"100vh"})
+      $(".chats").eq(0).removeClass("not_show")
       $(".chats").eq(1).addClass("not_show")
-      $(".chat_frame").eq(0).css({"top":"0", "right":"0", "width":"20vw", "height":"100vh"})
       $(".video_frame").eq(1).css({"top":"50vh", "left":"0"})
       $(".video_frame").css({"width":"80vw", "height":"50vh"})
       $(".delete_video").css({"right":"22vw"})
@@ -229,7 +230,7 @@ export default ({
       $(".chats").eq(1).css({"top":"2vh", "right":"6vw"})
     },
     layout6: function(){
-      $(".chat_frame, .chats").addClass("not_show")
+      $(".chat_frame, .chats, .custom_chat").addClass("not_show")
       $(".video_frame").eq(0).css({"top":"0", "left":"0", "width":"50vw", "height":"100vh"})
       $(".video_frame").eq(1).css({"top":"0", "left":"50vw", "width":"50vw", "height":"50vh"})
       $(".video_frame").eq(2).css({"top":"50vh", "left":"50vw", "width":"50vw", "height":"50vh"})
@@ -239,6 +240,8 @@ export default ({
       this.chat_type = 0
     },
     layout7: function(){
+      $(".chats").eq(0).children().removeAttr("disabled")
+      $(".custom_chat").addClass("not_show")
       $(".chat_frame, .chats").addClass("not_show")
       $(".chats").eq(0).removeClass("not_show")
       $(".chats").eq(0).css({"top":"2vh", "right":"6vw"})
@@ -266,7 +269,7 @@ export default ({
       this.chat_type = 2
     },
     layout9: function(){
-      $(".chat_frame, .chats").addClass("not_show")
+      $(".chat_frame, .chats, .custom_chat").addClass("not_show")
       $(".video_frame").eq(0).css({"top":"0", "width":"50vw", "height":"50vh"})
       $(".video_frame").eq(1).css({"top":"0", "left":"50vw", "width":"50vw", "height":"50vh"})
       $(".video_frame").eq(2).css({"top":"50vh", "left":"0", "width":"50vw", "height":"50vh"})
@@ -277,6 +280,8 @@ export default ({
       $(".delete_video").eq(3).css({"top":"90vh", "right":"2vw"})
     },
     layout10: function(){
+      $(".chats").eq(0).children().removeAttr("disabled")
+      $(".custom_chat").addClass("not_show")
       $(".chat_frame, .chats").addClass("not_show")
       $(".chats").eq(0).removeClass("not_show")
       $(".chats").eq(0).css({"top":"2vh", "right":"6vw"})

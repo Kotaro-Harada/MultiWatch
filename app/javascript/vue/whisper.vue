@@ -31,9 +31,14 @@
           <div class="receive_message">
             <p>{{ whisper.message }}</p>
           </div>
-          <div class="confirm" v-if="whisper.message_type">
+          <div class="confirm" v-if="whisper.message_type == 1">
             <button class="btn btn-success confirm_button" @click="confirm(whisper.send_user_id, index, whisper.id)">
-              <p class="confirm_message">{{ confirm_message }}</p>
+              <p class="confirm_message">許可</p>
+            </button>
+          </div>
+          <div class="join" v-else-if="whisper.message_type == 2">
+            <button class="btn btn-success join_button" @click="join(whisper.send_user_id, index, whisper.id)">
+              <p class="join_message">参加</p>
             </button>
           </div>
         </div>
@@ -51,12 +56,11 @@ export default {
   data: function(){
     return{
       whispers: [],
-      send_message: "送信",
-      confirm_message: "許可"
+      send_message: "送信"
     }
   },
   mounted(){
-    axios.get("/api/v1/whispers").then((response) => { this.whispers = response.data })
+    axios.get("/api/v1/whispers").then(response => { this.whispers = response.data })
   },
   methods: {
     whisper: function(){
@@ -79,7 +83,7 @@ export default {
           this.send_message = "送信",
           $("#message_button").removeAttr("disabled"),
           $("#message_button").removeClass("fas fa-exclamation-circle")
-        }, 3000);
+        }, 3000)
         switch(error.response.status){
           case 422:
             this.send_message = "メッセージエラーです";
@@ -107,14 +111,47 @@ export default {
         },
         id: whisper_id,
       }).then(function(){
-          $(".each_message").eq(index).find(".confirm_button").prop("disabled", true),
-          $(".each_message").eq(index).find(".confirm_button").addClass("fas fa-check"),
-          $(".each_message").eq(index).find(".confirm_message").text("")
-        }
-      )
+        $(".each_message").eq(index).find(".confirm_button").prop("disabled", true),
+        $(".each_message").eq(index).find(".confirm_button").addClass("fas fa-check"),
+        $(".each_message").eq(index).find(".confirm_message").text("")
+      }).catch(error => {
+        $(".each_message").eq(index).find(".confirm_button").addClass("fas fa-exclamation-circle"),
+        $(".each_message").eq(index).find(".confirm_message").text(""),
+        $(".confirm_button").prop("disabled", true)
+        setTimeout(() => {
+          $(".each_message").eq(index).find(".confirm_message").text("許可"),
+          $(".confirm_button").removeClass("fa-exclamation-circle"),
+          $(".confirm_button").removeAttr("disabled")
+        }, 3000)
+      })
+    },
+    join: function(user_id, index, whisper_id){
+      axios.post("/rooms/add_user", {
+        user_id: user_id,
+        whisper_id: whisper_id
+      }).then(response => (
+        $(".each_message").eq(index).find(".join_button").prop("disabled", true),
+        $(".each_message").eq(index).find(".join_button").addClass("fas fa-check"),
+        $(".each_message").eq(index).find(".join_message").text(""),
+        console.log(response.data),
+        this.chatChannel = this.$cable.subscriptions.create({ channel: "ChatChannel_", room: response.data.id })
+      )).catch(error => {
+        $(".each_message").eq(index).find(".join_button").addClass("fas fa-exclamation-circle"),
+        $(".each_message").eq(index).find(".join_message").text(""),
+        $(".join_button").prop("disabled", true)
+        setTimeout(() => {
+          $(".each_message").eq(index).find(".join_message").text("参加"),
+          $(".join_button").removeClass("fa-exclamation-circle"),
+          $(".join_button").removeAttr("disabled")
+        }, 3000)
+      })
     },
     reload: function(){
-      axios.get("/api/v1/whispers").then((response) => { this.whispers = response.data })
+      axios.get("/api/v1/whispers").then((response) => {
+        this.whispers = response.data,
+        $(".reload_button").prop("disabled", true),
+        setTimeout(() => { $(".reload_button").removeAttr("disabled")}, 2000)
+      })
     }
   },
 };

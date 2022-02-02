@@ -2,7 +2,7 @@ require "open-uri"
 
 class FollowsController < ApplicationController
   def index
-    @follows = current_user.follows
+    @follows = current_user.follows.eager_load([image_attachment: [:blob]])
     render json: @follows, methods: [:image_url]
   end
 

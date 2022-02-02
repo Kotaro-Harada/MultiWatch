@@ -1,8 +1,8 @@
 class FriendshipsController < ApplicationController
   def show
     @whisper = Whisper.new
-    @active_friends = current_user.active_friends
-    @passive_friends = current_user.passive_friends
+    @active_friends = current_user.active_friends.eager_load([avatar_attachment: [:blob]])
+    @passive_friends = current_user.passive_friends.eager_load([avatar_attachment: [:blob]])
   end
 
   def create
@@ -29,12 +29,12 @@ class FriendshipsController < ApplicationController
   end
 
   def get_active_friends
-    @active_friends = current_user.active_friends
+    @active_friends = current_user.active_friends.eager_load([avatar_attachment: [:blob]])
     render json: @active_friends
   end
 
   def get_passive_friends
-    @passive_friends = current_user.passive_friends
+    @passive_friends = current_user.passive_friends.eager_load([avatar_attachment: [:blob]])
     render json: @passive_friends
   end
 

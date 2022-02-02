@@ -122,6 +122,9 @@ export default {
         }})
       )).catch( error => {
         $(".create_chat_room").text("エラー")
+        if(!$(".current_user_menu").children("p").text()){
+          $(".create_chat_room").text("ログインして下さい")
+        }
       })
     },
     participants_friends: function(){
@@ -178,7 +181,7 @@ export default {
       this.chat_message = this.chat_message.replace(/\r?\n/g, "")
       if(this.chat_message && this.chat_message == $(".chat_area").val()){
         this.chatChannel.perform("speak", {
-          user: $(".current_user_menu").children().text(),
+          user: $(".current_user_menu").children("p").text(),
           message: this.chat_message
         })
       }

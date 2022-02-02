@@ -83,6 +83,7 @@ $(".niconico3").on("input", function(){
 // === HEADER === //
 $(".user_icon").on("click", function(){
   $(".user_menu").toggleClass("show");
+  $(".short_header_menu").toggleClass("header_slide");
 });
 
 $(".side_nav").on("click", function(){
@@ -91,19 +92,33 @@ $(".side_nav").on("click", function(){
 
 $(".whisper").on("click", function(){
   $(".whisper_box").toggleClass("show");
+  $(".short_header_menu").toggleClass("header_slide");
 });
 
 $(".edit_layout").on("click", function(){
   $(".layout").toggleClass("show");
-})
+  $(".short_header_menu").toggleClass("header_slide");
+});
 
 $(".edit_video").on("click", function(){
   $(".video").toggleClass("show");
-})
+  $(".short_header_menu").toggleClass("header_slide");
+});
 
 $(".delete_video_icon").on("click", function(){
   $(".delete_video").toggleClass("show");
-})
+  $(".short_header_menu").toggleClass("header_slide");
+});
+
+$(".side_user_nav").on("click", function(){
+  $(".short_header_menu").toggleClass("header_slide");
+});
+
+$(function(){
+	if(window.matchMedia('(min-width: 440px)').matches){
+    $("#platform").children("option").eq(0).addClass("fab fa-youtube");
+  }
+});
 
 $(document).on("click", function(event){
   if (!$(event.target).closest(".whisper_box").length
@@ -142,12 +157,19 @@ $(document).on("click", function(event){
   }
 });
 
+$(document).on("click", function(event){
+  if (!$(event.target).closest(".side_user_nav").length){
+    $(".short_header_menu").removeClass("header_slide");
+  }
+});
+
 $(document).on("click", function(){
   if ($(".user_menu").hasClass("show")
     || $(".sidebar").hasClass("slide")
     || $(".whisper_box").hasClass("show")
     || $(".video").hasClass("show")
-    || $(".layout").hasClass("show")){
+    || $(".layout").hasClass("show")
+    || $(".short_header_menu").hasClass("header_slide")){
       $(".wrap").addClass("hide");
   }else{
     $(".wrap").removeClass("hide");

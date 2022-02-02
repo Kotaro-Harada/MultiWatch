@@ -1,0 +1,22 @@
+.short_header_menu
+  .delete_video_icon
+    i.fas.fa-minus-square
+  .edit_video
+    i.fas.fa-plus-square
+  .edit_layout
+    i.fas.fa-th-large
+  - if current_user
+    .whisper
+      i.far.fa-comment-alt
+  - unless current_user
+    .login
+      = link_to login_path
+        p ログイン
+    .register
+      = link_to new_user_path
+        p 登録
+  .user_icon
+    - if current_user
+      = image_tag current_user.avatar.variant(resize_to_fill: [30, 30]), class: "icon_image"
+    - else
+      = image_tag "default_icon.jpeg", size: "30x30", class: "icon_image"

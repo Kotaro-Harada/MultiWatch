@@ -7,7 +7,7 @@
         <div><p>※動画は４つまでです</p></div>
       </div>
       <div class="search_by_url">
-        <select id="platform" v-model="platform">
+        <select class="platform_edit" id="platform" v-model="platform">
           <option>YouTube</option>
           <option>Twitch</option>
           <option>NicoNico</option>

@@ -1,0 +1,96 @@
+@media screen and ( max-width:930px )
+{
+  .header_user{
+    display: none;
+  }
+  .short_header_user{
+    display: inline-block;
+  }
+  .delete_video_icon, .edit_video, .edit_layout, .whisper, .user_icon{
+    margin: 10px;
+  }
+  .register{
+    margin: 0;
+  }
+}
+@media screen and ( min-width:870px )
+{
+  .short_header_menu{
+    display: none;
+  }
+}
+@media screen and ( max-width:650px )
+{
+  .logo{
+    display: none;
+  }
+  #keyword{
+    width: auto;
+  }
+  .header{
+    height:auto;
+  }
+  .youtube1, .twitch1, .niconico1{
+    margin:auto;
+  }
+  .platform{
+    width: auto;
+  }
+  .layout_type{
+    display: inline-block;
+  }
+  .type{
+    margin: 10px;
+  }
+  .platform_edit{
+    width: auto !important;
+  }
+  .video{
+    left: 0;
+    right: 0;
+  }
+  .chats:nth-of-type(1){
+    right: 21vw;
+    width: 65px;
+  }
+  .chats:nth-of-type(2){
+    right: 1vw;
+    width: 65px;
+  }
+  .channel_image img{
+    width: 50px;
+    height: 50px;
+  }
+  .channel_wrapper{
+    margin-left: 0;
+  }
+  .channel_explanation{
+    padding-left: 0;
+  }
+  .follow_button, .unfollow_button{
+    margin-left: 0 !important;
+    height: auto !important;
+  }
+  .chat_button{
+    padding: 0 !important;
+  }
+  .each_friend_name{
+    width: 70px;
+    overflow-wrap: anywhere;
+  }
+  .friend_icon{
+    display: block;
+    margin: auto;
+  }
+}
+@media screen and ( max-width:440px ){
+  #platform{
+    width: 30px;
+  }
+  .side_nav{
+    margin: auto 10px;
+  }
+  .chat_area{
+    font-size: small;
+  }
+}

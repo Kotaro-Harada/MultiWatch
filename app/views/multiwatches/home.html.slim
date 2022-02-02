@@ -3,21 +3,24 @@
     = form_with url: { controller: "multiwatches", action: "watch"}, method: :get, local: true do |f|
       .platform
         p YOUTUBE
-        = f.text_field :youtube, name:"youtube[]", size: 60, placeholder: "URL", class: "youtube1"
-        = f.text_field :youtube, name:"youtube[]", size: 60, placeholder: "URL", class: "youtube2"
-        = f.text_field :youtube, name:"youtube[]", size: 60, placeholder: "URL", class: "youtube3"
-        = f.text_field :youtube, name:"youtube[]", size: 60, placeholder: "URL", class: "youtube4"
+        .input_url
+          = f.text_field :youtube, name:"youtube[]", size: 60, placeholder: "URL", class: "youtube1"
+          = f.text_field :youtube, name:"youtube[]", size: 60, placeholder: "URL", class: "youtube2"
+          = f.text_field :youtube, name:"youtube[]", size: 60, placeholder: "URL", class: "youtube3"
+          = f.text_field :youtube, name:"youtube[]", size: 60, placeholder: "URL", class: "youtube4"
       .platform
         p TWITCH
-        = f.text_field :twitch, name:"twitch[]", size: 60, placeholder: "URL", class: "twitch1"
-        = f.text_field :twitch, name:"twitch[]", size: 60, placeholder: "URL", class: "twitch2"
-        = f.text_field :twitch, name:"twitch[]", size: 60, placeholder: "URL", class: "twitch3"
-        = f.text_field :twitch, name:"twitch[]", size: 60, placeholder: "URL", class: "twitch4"
+        .input_url
+          = f.text_field :twitch, name:"twitch[]", size: 60, placeholder: "URL", class: "twitch1"
+          = f.text_field :twitch, name:"twitch[]", size: 60, placeholder: "URL", class: "twitch2"
+          = f.text_field :twitch, name:"twitch[]", size: 60, placeholder: "URL", class: "twitch3"
+          = f.text_field :twitch, name:"twitch[]", size: 60, placeholder: "URL", class: "twitch4"
       .platform
         P NICONICO(動画のみ)
-        = f.text_field :niconico, name:"niconico[]", size: 60, placeholder: "URL", class: "niconico1"
-        = f.text_field :niconico, name:"niconico[]", size: 60, placeholder: "URL", class: "niconico2"
-        = f.text_field :niconico, name:"niconico[]", size: 60, placeholder: "URL", class: "niconico3"
-        = f.text_field :niconico, name:"niconico[]", size: 60, placeholder: "URL", class: "niconico4"
+        .input_url
+          = f.text_field :niconico, name:"niconico[]", size: 60, placeholder: "URL", class: "niconico1"
+          = f.text_field :niconico, name:"niconico[]", size: 60, placeholder: "URL", class: "niconico2"
+          = f.text_field :niconico, name:"niconico[]", size: 60, placeholder: "URL", class: "niconico3"
+          = f.text_field :niconico, name:"niconico[]", size: 60, placeholder: "URL", class: "niconico4"
         p ※ URLは４つまでです
         = f.submit "WATCH", class: "submit"

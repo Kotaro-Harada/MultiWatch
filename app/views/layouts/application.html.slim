@@ -10,7 +10,8 @@ html
   body
     = render "shared/header"
     = yield
-    = render partial: "shared/side_bar", collection: Follow.eager_load([:image_attachment])
+    = render "shared/side_bar"
     = render "shared/user_menu_bar"
     = render "shared/whisper"
+    = render "shared/short_header_menu"
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'

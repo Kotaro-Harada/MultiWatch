@@ -9,6 +9,6 @@ class Friendship < ApplicationRecord
   private
 
   def already_friend
-    errors.add if Friendship.find_by(from_user_id: to_user_id, to_user_id: from_user_id)
+    errors.add("すでにフレンド登録しています") if Friendship.find_by(from_user_id: to_user_id, to_user_id: from_user_id)
   end
 end

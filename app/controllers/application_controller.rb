@@ -59,9 +59,11 @@ class ApplicationController < ActionController::Base
     }
     res = JSON.parse(RestClient.get(
       ENV["TWITCH_API_STREAM"],
-      Authorization: "Bearer #{ENV['TWITCH_ACCESS_TOKEN']}",
-      "Client-Id": ENV["TWITCH_CLIENT_ID"],
-      params: params
+      headers = {
+        Authorization: "Bearer #{ENV['TWITCH_ACCESS_TOKEN']}",
+        "Client-Id": ENV["TWITCH_CLIENT_ID"],
+        params: params
+      }
     ))
     res["data"]
   end
@@ -72,9 +74,11 @@ class ApplicationController < ActionController::Base
     }
     res = JSON.parse(RestClient.get(
       ENV["TWITCH_API_URI"],
-      Authorization: "Bearer #{ENV['TWITCH_ACCESS_TOKEN']}",
-      "Client-Id": ENV["TWITCH_CLIENT_ID"],
-      params: params
+      headers = {
+        Authorization: "Bearer #{ENV['TWITCH_ACCESS_TOKEN']}",
+        "Client-Id": ENV["TWITCH_CLIENT_ID"],
+        params: params
+      }
     ))
     res["data"][0]["description"]
   end
@@ -86,9 +90,11 @@ class ApplicationController < ActionController::Base
     }
     res = JSON.parse(RestClient.get(
       ENV["TWITCH_API_CHANNEL"],
-      Authorization: "Bearer #{ENV['TWITCH_ACCESS_TOKEN']}",
-      "Client-Id": ENV["TWITCH_CLIENT_ID"],
-      params: params
+      headers = {
+        Authorization: "Bearer #{ENV['TWITCH_ACCESS_TOKEN']}",
+        "Client-Id": ENV["TWITCH_CLIENT_ID"],
+        params: params
+      }
     ))
     res["data"]
   end

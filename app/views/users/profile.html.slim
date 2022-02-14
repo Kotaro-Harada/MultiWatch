@@ -28,4 +28,4 @@
           .form_group.p-3.update_btn
             = f.hidden_field :password, value: @user.password_digest
             = f.hidden_field :password_confirmation, value: @user.password_digest
-            = f.submit "変更", class: "btn btn-primary"
+            = f.submit "変更", class: "btn btn-primary update_button"

@@ -4,9 +4,7 @@ class Whisper < ApplicationRecord
   validates :message,
     presence: true,
     length: { maximum: 50 }
-  validates :receive_user_name,
-    presence: true,
-    length: { in: 4..25 }
+  validates :receive_user_name, presence: true
   validates :send_user_name, presence: true
   validates :send_user_id, presence: true
   validates :receive_user_id, presence: true

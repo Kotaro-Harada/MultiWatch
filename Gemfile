@@ -40,6 +40,12 @@ group :development, :test do
   gem 'annotate'
   gem 'capybara'
   gem 'webmock'
+  # Adds support for Capybara system testing and selenium driver
+  gem 'selenium-webdriver'
+  # Easy installation and use of web drivers to run system tests with browsers
+  gem 'webdrivers'
+  gem 'launchy'
+  gem 'action-cable-testing'
 end
 
 group :development do
@@ -55,13 +61,6 @@ group :development do
   gem 'bullet'
 end
 
-group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'selenium-webdriver'
-  # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
-end
-
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'slim-rails'
@@ -70,7 +69,6 @@ gem 'dotenv-rails'
 gem 'rest-client'
 gem 'bootstrap'
 gem 'font-awesome-sass', '~> 5.13.0'
-gem 'google-api-client', '~> 0.11'
 gem 'ransack'
 gem 'aws-sdk-s3', require: false
 gem 'redis'

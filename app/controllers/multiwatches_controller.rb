@@ -22,14 +22,17 @@ class MultiwatchesController < ApplicationController
   end
 
   def search_channel
-    @follow = Follow.new
-    @keyword = params[:keyword]
-    @platform = params[:platform].to_i
-    case @platform
-    when 1
-      @channels = youtube_channel(params[:keyword])
-    when 2
-      @channels = twitch_channel(params[:keyword])
+    if params[:keyword].present?
+      @follow = Follow.new
+      @platform = params[:platform].to_i
+      case @platform
+      when 1
+        @channels = youtube_channel(params[:keyword])
+      when 2
+        @channels = twitch_channel(params[:keyword])
+      end
+    else
+      redirect_to root_path
     end
   end
 end

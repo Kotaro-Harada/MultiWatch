@@ -1,15 +1,2 @@
 - if current_user
-  .whisper_box
-    .send_receive
-      .select_whisper
-        p.underline ウィスパー
-    .send_box
-      = form_with model: [:api, :v1, Whisper.new], class: "whisper_form", local: true do |f|
-        = f.text_field :receive_user_name, class: "receive_user_name", placeholder: "ユーザー名"
-        = f.hidden_field :send_user_id, class: "send_user_id", value: current_user.id
-        = f.hidden_field :send_user_name, class: "send_user_name", value: current_user.name
-        .send_message
-          .message
-            p.underline メッセージ
-          = f.text_area :message, id: "message", placeholder: "メッセージは50字までです", rows: 2
-    #whisper
+  #whisper

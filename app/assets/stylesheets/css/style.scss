@@ -750,6 +750,7 @@ margin-right: 10px;
 }
 .chat_comment{
   margin-left: 5px;
+  overflow-wrap: anywhere;
 }
 .invite_exit{
   max-height: 78vh;
@@ -807,7 +808,7 @@ margin-right: 10px;
 }
 .friend_form{
   height: auto;
-  width: 325px;
+  width: 350px;
   margin: auto;
 }
 .friends{
@@ -829,6 +830,6 @@ margin-right: 10px;
 #whisper_button{
   margin-left: 30px;
 }
-.whisper_button, .friend_delete p{
+.whisper_button p, .friend_delete p{
   font-weight: bold;
 }

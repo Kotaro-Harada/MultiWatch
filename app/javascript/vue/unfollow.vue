@@ -19,8 +19,11 @@
 
 <script>
 import axios from "axios";
-const token = document.getElementsByName("csrf-token")[0].getAttribute("content");
-axios.defaults.headers.common["X-CSRF-Token"] = token;
+import $ from 'jquery'
+if(document.getElementsByName("csrf-token")[0]){
+  const token = document.getElementsByName("csrf-token")[0].getAttribute("content")
+  axios.defaults.headers.common["X-CSRF-Token"] = token
+}
 
 export default {
   data: function(){

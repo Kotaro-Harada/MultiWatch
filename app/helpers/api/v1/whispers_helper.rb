@@ -33,7 +33,7 @@ module Api::V1::WhispersHelper
 
   def send_chat_invite
     ActiveRecord::Base.transaction do
-      if params[:whisper][:message_type] == 2 && params[:whisper][:receive_user_name].present?
+      if params[:whisper][:message_type] == "2" && params[:whisper][:receive_user_name].present?
         params[:whisper][:receive_user_name].each do |user_name|
           @receive_user_id = get_receive_user_id(user_name)
           @chat_user_ids = current_user.room.users.map(&:id)

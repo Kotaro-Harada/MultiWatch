@@ -41,6 +41,8 @@ class FriendshipsController < ApplicationController
   private
 
   def friend_params
-    params.require(:friendship).permit(:from_user_id, :to_user_id)
+    params.require(:friendship).permit(:from_user_id, :to_user_id).merge(
+      to_user_id: current_user.id
+    )
   end
 end

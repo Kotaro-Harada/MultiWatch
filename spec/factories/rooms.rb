@@ -1,6 +1,9 @@
 FactoryBot.define do
   factory :room do
-    user_id { 1 }
-    chat_id { 1 }
+    id { 1 }
+  end
+
+  trait :with_user_room do
+    after(:create) { |room| create(:user_room, room: room) }
   end
 end

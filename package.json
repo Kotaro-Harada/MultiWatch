@@ -20,9 +20,45 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "@babel/core": "^7.17.0",
+    "@babel/plugin-transform-runtime": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
     "@mdi/font": "^6.5.95",
+    "@vue/cli-plugin-babel": "^4.5.15",
     "@vue/compiler-sfc": "^3.2.26",
+    "@vue/test-utils": "1",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^27.5.0",
+    "babel-preset-env": "^1.7.0",
+    "flush-promises": "^1.0.2",
+    "jest": "^27.5.0",
+    "vue-jest": "^3.0.7",
     "vue-loader": "^15.9.8",
     "webpack-dev-server": "^3"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "roots": [
+      "spec/javascript"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "app/javascript"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+      ".*\\.(vue)$": "vue-jest"
+    },
+    "testEnvironment": "jsdom",
+    "transformIgnorePatterns": [
+      "node_modules/(?!@ngrx|(?!deck.gl)|ng-dynamic)"
+    ]
   }
 }

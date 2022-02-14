@@ -37,6 +37,9 @@ class Api::V1::WhispersController < ApplicationController
   def whisper_params
     @receive_user_id = get_receive_user_id(params[:whisper][:receive_user_name])
     params.require(:whisper).permit(:message, :send_user_id, :receive_user_name,
-      :send_user_name, :receive_user_id, :message_type).merge(receive_user_id: @receive_user_id)
+      :send_user_name, :receive_user_id, :message_type).merge(
+        receive_user_id: @receive_user_id, send_user_name: current_user.name,
+        send_user_id: current_user.id
+      )
   end
 end

@@ -47,10 +47,8 @@
 </template>
 
 <script>
-import axios from "axios";
 import Chat from "./chat"
-const token = document.getElementsByName("csrf-token")[0].getAttribute("content");
-axios.defaults.headers.common["X-CSRF-Token"] = token;
+import $ from 'jquery'
 
 export default ({
   components: {
@@ -80,10 +78,12 @@ export default ({
       default: "frames"
     }
   },
-  mounted(){
+  created(){
     this.youtubes = rails_youtube,
     this.twitches = rails_twitch,
-    this.niconicos = rails_niconico,
+    this.niconicos = rails_niconico
+  },
+  mounted(){
     this.$nextTick(function(){
       this.frames = $(".video_frame").length
     })

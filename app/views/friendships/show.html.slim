@@ -3,7 +3,7 @@
   .wrap
   .friends_wrapper
     .friend_form
-      = form_with model: Whisper.new, url: friend_request_api_v1_whispers_path, local: true do |f|
+      = form_with model: Whisper.new, url: friend_request_api_v1_whispers_path, class: "send_friend", local: true do |f|
         = f.text_field :receive_user_name, placeholder: "ユーザー名"
         = f.hidden_field :send_user_id, value: current_user.id
         = f.hidden_field :send_user_name, class: "send_user_name", value: current_user.name

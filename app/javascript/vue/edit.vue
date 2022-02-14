@@ -4,7 +4,7 @@
       <div class="add_video">
         <div class="add_by_url"><p class="underline">URL</p></div>
         <div class="add_by_follow"><p>フォロー</p></div>
-        <div><p>※動画は４つまでです</p></div>
+        <div><p>※動画は4つまでです</p></div>
       </div>
       <div class="search_by_url">
         <select class="platform_edit" id="platform" v-model="platform">
@@ -107,8 +107,11 @@
 <script>
 import Watch from "./watch"
 import axios from "axios"
-const token = document.getElementsByName("csrf-token")[0].getAttribute("content")
-axios.defaults.headers.common["X-CSRF-Token"] = token
+import $ from 'jquery'
+if(document.getElementsByName("csrf-token")[0]){
+  const token = document.getElementsByName("csrf-token")[0].getAttribute("content")
+  axios.defaults.headers.common["X-CSRF-Token"] = token
+}
 
 export default ({
   components: {

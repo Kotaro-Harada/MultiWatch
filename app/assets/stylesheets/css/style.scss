@@ -7,16 +7,27 @@
 2. CHANNEL
 3. REGISTER, LOGIN
 4. WATCH
+5. SETTING
+  5.1 PROFILE
+  5.2 SECURITY
+6. FRIEND
 */
+
 /* === 0 COMMON ===*/
+body{
+  background-color: black !important;
+  height: 100vh;
+}
 p{
   color: white;
   text-decoration: none;
+  margin: 0 !important;
 }
 .wrapper{
+  height: 100%;
   background-color: black;
   display: flex;
-  height: 100vh;
+  position: relative;
 }
 .nav_link, .nav_link:hover{
   text-decoration: none;
@@ -25,6 +36,25 @@ p{
 a{
   text-decoration: none !important;
 }
+.side{
+  display: flex;
+}
+.alert{
+  margin: 0;
+  padding: 0 !important;
+  color: rgb(255, 80, 80);
+}
+.notice{
+  color: chartreuse;
+  margin-bottom: 30px;
+}
+.not_show{
+  display: none !important;
+}
+.underline{
+  border-bottom: 2px solid purple;
+}
+
 /* === 1.1 HEADER === */
 .header, .navbar_header, .search, .search_input{
   display: flex;
@@ -58,7 +88,7 @@ a{
   margin: auto;
   width: auto;
 }
-.user_menu{
+.header_user{
   display: flex;
   width: auto;
   height: 50px;
@@ -92,10 +122,57 @@ a{
   font-weight: bold !important;
   line-height: 0 !important;
 }
-.user_icon{
-  margin-right: 20px;
+.whisper_box{
+  display: none;
+  position: absolute;
+  background-color: rgb(40, 40, 40);
+  max-width: 400px;
+  z-index: 4;
+  right: 40px;
+  top: 50px;
+  border-radius: 5px;
+  padding: 10px;
 }
-.sidebar{
+.whisper_box p{
+  margin-top: 5px;
+  font-weight: bold;
+  text-align: center;
+}
+.user_icon{
+  margin: 0 20px 0 10px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}
+.icon_image{
+  border-radius: 100%;
+}
+.user_each_menu{
+  color: white;
+  padding: 5px
+}
+.current_user_menu{
+  display: flex;
+}
+.current_user_menu p{
+  line-height: 35px;
+}
+.current_user_menu img{
+  margin-right: 10px;
+}
+.user_menu{
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  background-color: black;
+  z-index: 4;
+}
+.show{
+  display: inline-block !important;
+  animation: display 0.3s;
+}
+.side_nav{
   position: relative;
   height: 20px;
   width: 28px;
@@ -103,6 +180,7 @@ a{
   box-sizing: border-box;
   vertical-align: middle;
   margin: auto 20px;
+  cursor: pointer;
 }
 .menu{
   position: absolute;
@@ -112,38 +190,267 @@ a{
   box-sizing: border-box;
   background-color: white;
 }
-.sidebar .menu:nth-of-type(1){
+.side_nav .menu:nth-of-type(1){
   bottom: 20px;
 }
-.sidebar .menu:nth-of-type(2){
+.side_nav .menu:nth-of-type(2){
   bottom: 10px;
 }
-.sidebar .menu:nth-of-type(3){
+.side_nav .menu:nth-of-type(3){
   bottom: 0;
 }
-
-/* === 1.3 TOP === */
-.home_sidebar{
-  width: 150px;
+.side_user_nav{
+  border-radius: 100px;
+  position: relative;
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+  box-sizing: border-box;
+  vertical-align: middle;
+  margin: 10px;
+  cursor: pointer;
+}
+.side_user_nav:hover{
+  background-color: rgb(40, 40, 40);
+}
+.short_header_menu{
+  position: absolute;
+  width: 0px;
+  height: auto;
+  background-color: rgb(40, 40, 40);
+  color: white;
+  right: -50px;
+  top: 50px;
+  transition-duration: 0.3s;
+  z-index: 4;
+  overflow: hidden;
+}
+.short_header_user{
+  display: none;
+}
+.header_slide{
+  right: 0;
+  width: 50px;
+}
+.short_menu{
+  position: absolute;
+  height: 2px;
+  width: 2px;
+  display: inline-block;
+  box-sizing: border-box;
+  background-color: white;
+}
+.side_user_nav .short_menu:nth-of-type(1){
+  bottom: 19px;
+  left: 14px;
+}
+.side_user_nav .short_menu:nth-of-type(2){
+  bottom: 14px;
+  left: 14px;
+}
+.side_user_nav .short_menu:nth-of-type(3){
+  bottom: 9px;
+  left: 14px;
+}
+.whisper{
+  margin: auto 10px;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.whisper:hover, .user_each_menu:hover{
+  background-color: rgb(50, 50, 50);
+}
+.fa-comment-alt, .fa-th-large, .fa-plus-square, .fa-minus-square{
+  padding: 7px;
+}
+.send_message, .whisper_form, #message{
+  margin-top: 5px;
+}
+.send_user{
+  display: flex;
+}
+.send_box input, .send_box textarea{
+  width: 100%;
+}
+.send_receive, .each_message, .message{
+  display: flex;
+}
+.select_whisper, .select_receive, .clear_message, .message{
+  margin: 0 10px;
+}
+.whisper_message{
+  font-weight: lighter !important;
+}
+.receive_message{
+  margin: 0 10px;
+}
+.confirm, .join{
+  width: auto;
+  height: 20px;
+  margin: auto 0;
+}
+.receive_message p, .confirm_button p, .join_button p{
+  text-align: start;
+  font-weight: lighter !important;
+}
+#message_button{
+  width: 100%;
+  margin: 5px 0;
+}
+.receive_box{
+  max-height: 350px;
+  overflow: scroll;
+  margin-top: 10px;
+}
+.confirm_button, .join_button{
+  display: inherit !important;
+  height: 20px;
+  padding: 2px !important;
+  margin: 0;
+}
+.clear_button, .reload_button{
+  height:25px;
+  padding: 2px !important;
+  margin: 0;
+  vertical-align: middle !important;
+}
+.clear_button p{
+  line-height: 20px;
+}
+.reload_button{
+  margin-left: 20px;
+  width: 40px;
+}
+.confirm_button p, .join_button p{
+  line-height: 0;
+  width: 32px;
+  font-size: 13px;
+  text-align: center;
+}
+.sidebar{
+  position: absolute;
+  width: 0px;
   height: 100%;
   background-color: rgb(40, 40, 40);
   color: white;
+  left: -250px;
+  top: 50px;
+  transition-duration: 0.3s;
+  z-index: 4;
+}
+.slide{
+  left: 0;
+  width: 250px;
 }
 .top_menu{
-  display: flex;
+  width: 250px;
   align-items: center;
 }
-.top_menu:hover{
+.home:hover, .follow:hover{
   background-color: gray;
 }
-.icon{
-  margin: 15px 10px;
+.select_follow:hover, .select_unfollow:hover{
+  cursor: pointer;
+  border-bottom: 2px solid purple;
 }
-.home, .follow, .history, .later{
-  box-sizing: border-box;
-}
-.stream_and_video{
+.sidebar_icons{
+  color: white;
+  padding: 15px 10px;
   display: flex;
+}
+.sidebar_icon{
+line-height: 24px !important;
+margin-right: 10px;
+}
+.side_each_unfollow{
+  display: flex;
+  margin: 10px 0;
+}
+.select_unfollow{
+  margin-left: 10px;
+}
+.side_unfollow{
+  background-color: purple;
+  border-radius: 5px;
+  margin: 0;
+  width: 115px;
+  display: flex;
+}
+.side_unfollow p{
+ font-weight: bold;
+ line-height: 30px !important;
+}
+.side_unfollow:hover{
+  cursor: pointer;
+  background-color: rgb(255, 100, 255);
+}
+.unfollow_channel{
+  line-height: 30px !important;
+}
+.follow{
+  box-sizing: border-box;
+  display: flex;
+  min-height: 52px;
+  padding: 5px 0;
+}
+.follow_name{
+  display: flex;
+}
+.follow_image, .unfollow_image{
+  margin: auto 5px;
+}
+.unfollow_name{
+  margin-bottom: 5px;
+}
+.follow_content, .unfollow_content{
+  margin: auto 0;
+}
+
+/* === 1.3 TOP === */
+.main{
+  width: 100%;
+  margin: 0 auto;
+}
+.platform{
+  width: 520px;
+  margin: 30px auto 0 auto;
+}
+.platform p{
+  text-align: center;
+  margin: 0;
+  font-weight: bold;
+}
+.platform input{
+  margin: 5px auto;
+}
+.input_url{
+  margin: auto;
+  width:80%;
+}
+.submit{
+  display: block;
+  margin: auto;
+  width: 150px;
+}
+@keyframes display{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+#youtube, #twitch, #niconico{
+  width: 100%;
+}
+.youtube2, .youtube3, .youtube4, .twitch2, .twitch3, .twitch4, .niconico2, .niconico3, .niconico4{
+  display: none;
+}
+.youtube2.display, .youtube3.display, .youtube4.display, .twitch2.display, .twitch3.display,
+  .twitch4.display, .niconico2.display, .niconico3.display, .niconico4.display{
+  display: inline-block;
+  animation: display 0.5s;
 }
 
 /* === 2. CHANNEL === */
@@ -163,12 +470,15 @@ a{
 .channel_explanation{
   padding: 15px 0 0 40px;
 }
-.title{
+.channel_name{
   display: flex;
 }
-.title p{
+.channel_name p{
   font-size: 20px;
   font-weight: bold;
+}
+#channel_name:hover{
+  color: rgb(255, 100, 255);
 }
 .live_status{
   margin: 2px 0 2px 10px;
@@ -177,11 +487,33 @@ a{
   color: red;
   font-size: var(--bs-body-font-size);
 }
+.follow_channel{
+  padding: 0 10px;
+  margin-left: 30px;
+  height: 30px;
+  background-color: black;
+  border-radius: 5px;
+}
+.follow_form button, .unfollow_form button{
+  vertical-align: middle;
+  background-color: purple;
+  border-radius: 5px;
+  color: white;
+  margin-left: 30px;
+  height: 25px;
+}
+#follow_button{
+  border-style: none;
+}
+.follow_form button:hover, .unfollow_form button:hover{
+  background-color: rgb(255, 100, 255);
+}
 
 /* === 3. REGISTER, LOGIN === */
-.register_wrapper, .login_wrapper, .login_form{
+.register_wrapper, .login_wrapper{
   background-color: black;
   height: 100vh;
+  padding-top: 20px;
 }
 .form_group{
   color: white;
@@ -203,7 +535,6 @@ a{
   margin: auto;
 }
 .register_wrapper p, .login_wrapper p{
-  padding-top: 20px;
   font-weight: bold;
   text-align: center;
   font-size: 20px;
@@ -218,8 +549,287 @@ a{
 
 /* === 4. WATCH === */
 .video_wrapper{
-  background-color: black;
-  display: flex;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+.video_frame, .chat_frame, .delete_video, .custom_chat{
+  position: absolute;
+  z-index: 1;
+}
+.custom_chat{
+  padding: 5px;
+  background-color: rgb(20,20,20);
+}
+.delete_video, .chats{
+  position: absolute;
+  z-index: 3;
+}
+.wrap{
+  width: 0;
+  height: 0;
+}
+.hide{
+  width: 100%;
   height: 100%;
+  position: absolute;
+  z-index: 3;
+}
+.video, .layout{
+  background-color: rgb(40, 40, 40);
+  position: absolute;
+  max-width: 600px;
+  z-index: 4;
+  right: 60px;
+  top: 50px;
+  border-radius: 5px;
+  display: none;
+  padding: 10px;
+}
+.layout{
+  height: auto;
+  width: auto;
+}
+.video{
+  min-height: 100px;
+}
+.search_from_follows, .add_video{
+  display: flex;
+}
+.add_by_follow p, .add_by_url p{
+  font-weight: bold;
+}
+.add_by_follow p:hover{
+  border-bottom: 2px solid purple;
+  cursor: pointer;
+}
+.add_by_url p:hover{
+  border-bottom: 2px solid purple;
+  cursor: pointer;
+}
+.search_by_url{
+  text-align: center;
+  margin-top: 10px;
+}
+.search_from_follows{
+  margin-top: 10px;
+}
+.add_by_follow{
+  margin: 0 20px;
+}
+.edit_layout, .edit_video, .delete_video_icon{
+  margin: auto 10px;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.edit_layout:hover, .edit_video:hover, .delete_video_icon:hover{
+  background-color: rgb(50, 50, 50);
+}
+.type{
+  background-color: white;
+  position: relative;
+  margin: 0 10px
+}
+.type:hover{
+  cursor: pointer;
+}
+.frame{
+  background-color: rgb(0, 111, 202);
+  position: absolute;
+  margin: 5px;
+  display: flex;
+}
+.chat{
+  background-color: sandybrown;
+  position: absolute;
+  margin: 5px;
+  display: flex;
+}
+.channel_icon{
+  cursor: pointer;
+}
+.frame i, .chat i{
+  color: white;
+  margin: auto;
+}
+.change_layout{
+  margin-bottom: 20px;
+}
+.change_layout p{
+  font-weight: bold;
+  border-bottom: 2px solid purple;
+  display: inline;
+  padding-bottom: 5px;
+}
+.layout_type{
+  display: flex;
+}
+.youtube, .twitch, .niconico{
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+.rotate_video{
+  color: white;
+}
+.rotate_video:hover{
+  cursor: pointer;
+  color: rgb(0, 111, 202);
+}
+.rotate_video{
+  margin: auto;
+}
+.participants, .participants_icon, .toggle_users{
+  color: white;
+}
+.toggle_users{
+  display: flex;
+  border-bottom: 1px solid gray;
+}
+.participants_icon{
+  margin: 0 0 0 auto;
+  line-height: 22px;
+  height: auto;
+  width: auto;
+  padding: 7px;
+  border-radius: 5px;
+}
+.room{
+  display: flex;
+}
+.room_button{
+  margin: auto;
+}
+.friends_list{
+  color:white;
+}
+.invite_button, .exit_button{
+  height: auto;
+  margin: auto;
+  display: flex !important;
+}
+.invite_whisper{
+  line-height: normal;
+  font-weight: lighter;
+}
+.invite, .exit{
+  margin: 10px auto 10px auto;
+  width: auto;
+}
+.invite_index_user{
+  margin-top: 40px;
+}
+.invite_user{
+  margin-top: 20px;
+}
+.participants_icon:hover{
+  background-color: rgb(50, 50, 50);
+  cursor: pointer;
+}
+.chat_area{
+  resize: none;
+  width: 100%;
+}
+.comment_box{
+  height: auto;
+  bottom: 0;
+  position: absolute;
+  width: 95%;
+}
+.each_chat{
+  display: flex;
+}
+.chat_box{
+  max-height: 560px;
+  overflow: scroll;
+}
+.chat_user p, .chat_comment p{
+  font-size: medium;
+  font-weight: normal;
+}
+.chat_comment{
+  margin-left: 5px;
+  overflow-wrap: anywhere;
+}
+.invite_exit{
+  max-height: 78vh;
+  overflow: scroll;
 }
 
+/* === 5.1 PROFILE === */
+.setting_wrapper{
+  margin: 30px auto;
+  width: 600px;
+}
+.setting_tab{
+  display: flex;
+  margin: 20px 0;
+}
+.setting_title{
+  font-weight: bold;
+  font-size: 40px;
+}
+.security_tab:hover, .profile_tab:hover{
+  border-bottom: 2px solid purple;
+  cursor: pointer;
+}
+.security_tab, .profile_tab{
+  padding-bottom: 2px;
+  margin-right: 30px;
+}
+.profile_image_title, .profile p, .address p, .security p{
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+.profile_image{
+  margin: auto 0 auto 30px;
+  height: 30px;
+}
+#update_image{
+  width: 350px;
+}
+.title_username, .title_email, .title_password, .title_confirmation{
+  margin: auto 20px auto 0;
+  width: 180px;
+}
+.profile_box, .setting{
+  width: 600px;
+  background-color: rgb(40, 40, 40);
+}
+.update_btn{
+  text-align: center;
+}
+
+/* === 6. FRIEND === */
+.friends_wrapper{
+  margin: 30px auto 0 auto;
+}
+.friend_form{
+  height: auto;
+  width: 350px;
+  margin: auto;
+}
+.friends{
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+.friend_name, .friend_action{
+  margin: auto 10px;
+}
+.friend_name p{
+  font-size: larger;
+  font-weight: bolder;
+}
+.friend_request{
+  margin-left: 20px;
+  vertical-align: bottom !important;
+}
+#whisper_button{
+  margin-left: 30px;
+}
+.whisper_button p, .friend_delete p{
+  font-weight: bold;
+}

@@ -1,3 +1,4 @@
+- provide(:title, "ログイン")
 .login_wrapper
   p ログイン
   .login_form
@@ -9,7 +10,4 @@
         = f.label :password, "パスワード"
         = f.password_field :password, class: "form-control", id: "session_password"
       .form_group
-        = f.submit "ログイン", class: "btn btn-primary"
-
-h1 Sessions#new
-p Find me in app/views/sessions/new.html.slim
+        = f.submit "ログイン", class: "btn btn-primary login_button"

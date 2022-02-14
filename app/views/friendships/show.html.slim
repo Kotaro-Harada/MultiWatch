@@ -1,0 +1,41 @@
+- provide(:title, "フレンド")
+.wrapper
+  .wrap
+  .friends_wrapper
+    .friend_form
+      = form_with model: Whisper.new, url: friend_request_api_v1_whispers_path, class: "send_friend", local: true do |f|
+        = f.text_field :receive_user_name, placeholder: "ユーザー名"
+        = f.hidden_field :send_user_id, value: current_user.id
+        = f.hidden_field :send_user_name, class: "send_user_name", value: current_user.name
+        = f.hidden_field :message_type, value: 1
+        = f.submit "フレンド申請", class: "btn btn-primary friend_request"
+        = render "shared/error_and_notice", model: f.object
+    .friends_box
+      - if @active_friends.present?
+        - @active_friends.each do |friend|
+          .friends
+            .friend_icon
+              = image_tag friend.avatar.variant(resize_to_fill: [50, 50]), class: "icon_image"
+            .friend_name
+              p class="each_friend_name" = friend.name
+            .friend_action
+              = link_to friendship_path(from_user_id: current_user.id, to_user_id: friend.id), method: :delete,
+                data: { confirm: "フレンドから削除してもよろしいですか？" }
+                button class="btn btn-danger friend_delete"
+                  p 削除
+              button class="btn btn-secondary whisper_button" id="whisper_button" value="#{friend.name}"
+                p class="whisper_button" ウィスパー
+      - if @passive_friends.present?
+        - @passive_friends.each do |friend|
+          .friends
+            .friend_icon
+              = image_tag friend.avatar.variant(resize_to_fill: [50, 50]), class: "icon_image"
+            .friend_name
+              p class="each_friend_name" = friend.name
+            .friend_action
+              = link_to friendship_path(from_user_id: current_user.id, to_user_id: friend.id), method: :delete,
+                data: { confirm: "フレンドから削除してもよろしいですか？" }
+                button class="btn btn-danger friend_delete"
+                  p 削除
+              button class="btn btn-secondary whisper_button" id="whisper_button" value="#{friend.name}"
+                p class="whisper_button" ウィスパー

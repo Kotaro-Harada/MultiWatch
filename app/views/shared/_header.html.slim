@@ -1,0 +1,41 @@
+.header
+  .side_nav
+    .menu
+    .menu
+    .menu
+  .logo
+    = link_to "MultiWatch", home_multiwatches_path, class: "nav_link"
+  .search
+    .search_input
+      = form_with url: { controller: "multiwatches", action: "search_channel" }, method: :get, local: true do |f|
+        = f.select :platform, { "YouTube": 1, "Twitch": 2 }, class: "form-control", required: true
+        = f.text_field :keyword, placeholder: "チャンネル検索"
+        = f.button :type => "submit", class: "search_channel", style: "border-style: none;" do
+          i.fas.fa-search
+  .short_header_user
+    .side_user_nav
+      .short_menu
+      .short_menu
+      .short_menu
+  .header_user
+    .delete_video_icon
+      i.fas.fa-minus-square
+    .edit_video
+      i.fas.fa-plus-square
+    .edit_layout
+      i.fas.fa-th-large
+    - if current_user
+      .whisper
+        i.far.fa-comment-alt
+    - unless current_user
+      .login
+        = link_to login_path
+          p ログイン
+      .register
+        = link_to new_user_path
+          p 登録
+    .user_icon
+      - if current_user
+        = image_tag current_user.avatar.variant(resize_to_fill: [30, 30]), class: "icon_image"
+      - else
+        = image_tag "default_icon.jpeg", size: "30x30", class: "icon_image"

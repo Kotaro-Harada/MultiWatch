@@ -1,12 +1,20 @@
-GET https://www.googleapis.com/youtube/v3/search?part=snippet&q=mssp&type=channel&maxResults=5&key=AIzaSyANhdpNyFdNHJUxD90Canf5NAAavgilsLw HTTP/1.1
+GET https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCJhjE7wbdYAae1G25m0tHAA&eventType=live&type=video&key=AIzaSyANhdpNyFdNHJUxD90Canf5NAAavgilsLw HTTP/1.1
 
 ####
 
-GET https://api.twitch.tv/helix/users?login=icebahn05 HTTP/1.1
-Authorization: Bearer 9hvky7oapw6mbcs737pck0yt14hco6
+GET https://api.twitch.tv/helix/search/channels?query=suruga&first=5 HTTP/1.1
+Authorization: Bearer ip5tsjoub76cb2v9uksvgo9k0nbjf3
 Client-Id: ld7k23jtn14otrmpij39mqa50y5pmk
 
 ####
-GET https://api.twitch.tv/helix/streams?user_login=icebahn05 HTTP/1.1
-Authorization: Bearer 9hvky7oapw6mbcs737pck0yt14hco6
+GET https://api.twitch.tv/helix/streams?user_id=81296754 HTTP/1.1
+Authorization: Bearer ip5tsjoub76cb2v9uksvgo9k0nbjf3
 Client-Id: ld7k23jtn14otrmpij39mqa50y5pmk
+
+####
+
+POST https://id.twitch.tv/oauth2/token?client_id=ld7k23jtn14otrmpij39mqa50y5pmk&client_secret=yshudxdh4b93siitn2lwuhyw6oohcc&grant_type=client_credentials
+
+#####
+
+POST https://id.twitch.tv/oauth2/token--data-urlencode?grant_type=refresh_token&refresh_token=ip5tsjoub76cb2v9uksvgo9k0nbjf3&client_id=ld7k23jtn14otrmpij39mqa50y5pmk&client_secret=yshudxdh4b93siitn2lwuhyw6oohcc

@@ -20,10 +20,10 @@ gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -39,8 +39,13 @@ group :development, :test do
   gem 'rails-erd'
   gem 'annotate'
   gem 'capybara'
-  gem 'bullet'
   gem 'webmock'
+  # Adds support for Capybara system testing and selenium driver
+  gem 'selenium-webdriver'
+  # Easy installation and use of web drivers to run system tests with browsers
+  gem 'webdrivers'
+  gem 'launchy'
+  gem 'action-cable-testing'
 end
 
 group :development do
@@ -52,26 +57,18 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-end
-
-group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'selenium-webdriver'
-  # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
+  gem 'rubocop-airbnb'
+  gem 'bullet'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'slim-rails'
 gem 'html2slim'
-gem "rubocop-airbnb"
-gem "dotenv-rails"
+gem 'dotenv-rails'
 gem 'rest-client'
 gem 'bootstrap'
 gem 'font-awesome-sass', '~> 5.13.0'
-gem 'google-api-client', '~> 0.11'
-gem "ransack"
-gem "bcrypt"
-gem "aws-sdk-s3", require: false
-gem 'image_processing'
+gem 'ransack'
+gem 'aws-sdk-s3', require: false
+gem 'redis'

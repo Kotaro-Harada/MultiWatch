@@ -1,0 +1,10 @@
+- if model.errors.any?
+  .alert
+    ul
+      - model.errors.full_messages.each do |message|
+        li = message
+- if flash.present?
+  .notice
+    = flash.notice
+  .alert
+    = flash.alert

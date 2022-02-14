@@ -1,0 +1,18 @@
+- if current_user
+  .user_menu
+    .current_user_menu
+      = image_tag current_user.avatar.variant(resize_to_fill: [35, 35]), class: "icon_image"
+      p = current_user.name
+    = link_to friendship_path(current_user.id)
+      .user_each_menu
+        i.fas.fa-user-friends  フレンド
+    = link_to profile_user_path(current_user.id)
+      .user_each_menu
+        i.fas.fa-cog  設定
+    = link_to logout_path, method: :delete, class: "nav_link"
+      .user_each_menu
+        i.fas.fa-sign-out-alt  ログアウト
+    = link_to user_path(current_user.id), method: :delete, data: { confirm: "アカウントを削除してもよろしいですか？" }
+      .user_each_menu
+        i.fas.fa-user-slash  退会
+

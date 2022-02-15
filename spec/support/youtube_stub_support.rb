@@ -89,7 +89,7 @@ module YoutubeStubSupport
         }
       ]}'
 
-    youtube_videoId_0 =
+    youtube_videoid_0 =
       '{"items": [
         {
           "id": {
@@ -98,7 +98,7 @@ module YoutubeStubSupport
         }
       ]}'
 
-    youtube_videoId_1 =
+    youtube_videoid_1 =
       '{"items": [
         {
           "id": {
@@ -107,16 +107,16 @@ module YoutubeStubSupport
         }
       ]}'
 
-    youtube_videoId_2 =
-    '{"items": [
-      {
-        "id": {
-          "videoId": "videoId_2"
+    youtube_videoid_2 =
+      '{"items": [
+        {
+          "id": {
+            "videoId": "videoId_2"
+          }
         }
-      }
-    ]}'
+      ]}'
 
-    youtube_videoId_3 =
+    youtube_videoid_3 =
       '{"items": [
         {
           "id": {
@@ -125,7 +125,7 @@ module YoutubeStubSupport
         }
       ]}'
 
-    youtube_videoId_4 =
+    youtube_videoid_4 =
       '{"items": [
         {
           "id": {
@@ -137,55 +137,61 @@ module YoutubeStubSupport
     WebMock.stub_request(
       :get, youtube_uri
     ).
-      with(query: "part=snippet&q=0&type=channel&maxResults=5&key=#{youtube_key}").
-      to_return(
+      with(
+        query: "part=snippet&q=0&type=channel&maxResults=5&key=#{youtube_key}"
+      ).to_return(
         status: 200,
-        body: result_youtube_channels
+        body: result_youtube_channels,
       )
 
     WebMock.stub_request(
       :get, youtube_uri
     ).
-      with(query: "part=snippet&channelId=channel_id_0&type=video&eventType=live&key=#{youtube_key}").
-      to_return(
+      with(
+        query: "part=snippet&channelId=channel_id_0&type=video&eventType=live&key=#{youtube_key}"
+      ).to_return(
         status: 200,
-        body: youtube_videoId_0
+        body: youtube_videoid_0,
       )
 
     WebMock.stub_request(
       :get, youtube_uri
     ).
-      with(query: "part=snippet&channelId=channel_id_1&type=video&eventType=live&key=#{youtube_key}").
-      to_return(
+      with(
+        query: "part=snippet&channelId=channel_id_1&type=video&eventType=live&key=#{youtube_key}"
+      ).to_return(
         status: 200,
-        body: youtube_videoId_1
+        body: youtube_videoid_1,
       )
 
     WebMock.stub_request(
       :get, youtube_uri
     ).
-      with(query: "part=snippet&channelId=channel_id_2&type=video&eventType=live&key=#{youtube_key}").
-      to_return(
+      with(
+        query: "part=snippet&channelId=channel_id_2&type=video&eventType=live&key=#{youtube_key}"
+      ).to_return(
         status: 200,
-        body: youtube_videoId_2
+        body: youtube_videoid_2,
       )
 
     WebMock.stub_request(
       :get, youtube_uri
     ).
-      with(query: "part=snippet&channelId=channel_id_3&type=video&eventType=live&key=#{youtube_key}").
-      to_return(
+      with(
+        query: "part=snippet&channelId=channel_id_3&type=video&eventType=live&key=#{youtube_key}"
+      ).to_return(
         status: 200,
-        body: youtube_videoId_3
+        body: youtube_videoid_3,
       )
 
     WebMock.stub_request(
       :get, youtube_uri
     ).
-      with(query: "part=snippet&channelId=channel_id_4&type=video&eventType=live&key=#{youtube_key}").
-      to_return(
+      with(
+        query: "part=snippet&channelId=channel_id_4&type=video&eventType=live&key=#{youtube_key}"
+      ).to_return(
         status: 200,
-        body: youtube_videoId_4
+        body: youtube_videoid_4,
       )
   end
 end

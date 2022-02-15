@@ -5,7 +5,6 @@ class Follow < ApplicationRecord
   validates_uniqueness_of :user_id, :scope => :channel_id
 
   def image_url
-    image.attached? ?
-      Rails.application.routes.url_helpers.rails_blob_path(image, only_path: true) : nil
+    Rails.application.routes.url_helpers.rails_blob_path(image, only_path: true)
   end
 end

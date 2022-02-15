@@ -5,8 +5,8 @@ RSpec.describe "Api::Whispers", type: :request do
   let!(:user2) { create(:user, :second) }
 
   before do
-    allow_any_instance_of(ActionDispatch::Request)
-      .to receive(:session).and_return(user_id: user1.id)
+    allow_any_instance_of(ActionDispatch::Request).
+      to receive(:session).and_return(user_id: user1.id)
   end
 
   describe "GET /index" do
@@ -20,14 +20,16 @@ RSpec.describe "Api::Whispers", type: :request do
   describe "POST /create" do
     it "returns http success" do
       expect{
-        post "/api/v1/whispers", params:{
-          whisper: {
-            send_user_id: user1.id,
-            send_user_name: user1.name,
-            receive_user_id: user2.id,
-            receive_user_name: user2.name,
-            message: "multiwatch2"
-          }
+        post "/api/v1/whispers",
+          params: {
+            whisper: {
+              send_user_id: user1.id,
+              send_user_name: user1.name,
+              receive_user_id: user2.id,
+              receive_user_name: user2.name,
+              message: "multiwatch2",
+            },
+          },
         }
       }.to change(Whisper, :count).by(1)
       expect(response).to have_http_status(200)
@@ -51,8 +53,8 @@ RSpec.describe "Api::Whispers", type: :request do
             send_user_id: user1.id,
             send_user_name: user1.name,
             receive_user_name: user2.name,
-            message_type: 1
-          }
+            message_type: "1",
+          },
         }
       }.to change(Whisper, :count).by(1)
       expect(response).to have_http_status(302)
@@ -67,8 +69,8 @@ RSpec.describe "Api::Whispers", type: :request do
         post "/api/v1/whispers/invite_chat", params: {
           whisper: {
             receive_user_name: [user2.name],
-            message_type: 2
-          }
+            message_type: "2",
+          },
         }
       }.to change(Whisper, :count).by(1)
       expect(response).to have_http_status(204)

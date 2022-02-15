@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
       q: keyword,
       type: "channel",
       maxResults: MAX_RESULTS,
-      key: ENV["YOUTUBE_API_KEY"]
+      key: ENV["YOUTUBE_API_KEY"],
     }
     res = JSON.parse(RestClient.get(
       ENV["YOUTUBE_API_URI"], params: params
@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
       part: "snippet",
       channelId: channel_id,
       type: "video",
-      key: ENV["YOUTUBE_API_KEY"]
+      key: ENV["YOUTUBE_API_KEY"],
     }
     res = JSON.parse(RestClient.get(
       ENV["YOUTUBE_API_URI"], params: params
@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
       channelId: channel_id,
       eventType: "live",
       type: "video",
-      key: ENV["YOUTUBE_API_KEY"]
+      key: ENV["YOUTUBE_API_KEY"],
     }
     res = JSON.parse(RestClient.get(
       ENV["YOUTUBE_API_URI"], params: params
@@ -55,14 +55,14 @@ class ApplicationController < ActionController::Base
 
   def twitch_stream(channel_id)
     params = {
-      user_id: channel_id
+      user_id: channel_id,
     }
     res = JSON.parse(RestClient.get(
       ENV["TWITCH_API_STREAM"],
       headers = {
         Authorization: "Bearer #{ENV['TWITCH_ACCESS_TOKEN']}",
         "Client-Id": ENV["TWITCH_CLIENT_ID"],
-        params: params
+        params: params,
       }
     ))
     res["data"]
@@ -70,14 +70,14 @@ class ApplicationController < ActionController::Base
 
   def twitch_description(channel_id)
     params = {
-      id: channel_id
+      id: channel_id,
     }
     res = JSON.parse(RestClient.get(
       ENV["TWITCH_API_URI"],
       headers = {
         Authorization: "Bearer #{ENV['TWITCH_ACCESS_TOKEN']}",
         "Client-Id": ENV["TWITCH_CLIENT_ID"],
-        params: params
+        params: params,
       }
     ))
     res["data"][0]["description"]
@@ -86,14 +86,14 @@ class ApplicationController < ActionController::Base
   def twitch_channel(keyword)
     params = {
       query: keyword,
-      first: MAX_RESULTS
+      first: MAX_RESULTS,
     }
     res = JSON.parse(RestClient.get(
       ENV["TWITCH_API_CHANNEL"],
       headers = {
         Authorization: "Bearer #{ENV['TWITCH_ACCESS_TOKEN']}",
         "Client-Id": ENV["TWITCH_CLIENT_ID"],
-        params: params
+        params: params,
       }
     ))
     res["data"]

@@ -1,0 +1,27 @@
+inherit_from:
+  - .rubocop_airbnb.yml
+
+Rails:
+  Enabled: true
+
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'bin/*'
+    - 'config/environments/*'
+    - 'config/application.rb'
+    - 'config/initializers/*'
+    - 'config/spring.rb'
+    - 'lib/tasks/*'
+    - 'vendor/**/*'
+    - 'path/ruby'
+    - 'Gemfile'
+    - 'app/channels/application_cable/connection.rb'
+    - 'app/controllers/application_controller.rb'
+    - 'app/helpers/multiwatches_helper.rb'
+    - 'app/models/user_room.rb'
+    - 'app/models/user.rb'
+    - 'spec/models/user_spec.rb'
+    - 'spec/features/api_search_channel_spec.rb'
+    - 'spec/features/friendship_spec.rb'
+    - 'spec/features/sessions_spec.rb'

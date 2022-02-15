@@ -13,12 +13,12 @@ RSpec.describe Friendship, type: :model do
   context "users are already friend" do
     FactoryBot.build(:friendship, from_user_id: 1, to_user_id: 2)
 
-    it "is invalid if users are already friend" do
+    it "is invalid if users are already active friend" do
       friendship = Friendship.new(from_user_id: 1, to_user_id: 2)
       expect(friendship.errors).to be_truthy
     end
 
-    it "is invalid if users are already friend" do
+    it "is invalid if users are already passive friend" do
       friendship = Friendship.new(from_user_id: 2, to_user_id: 1)
       expect(friendship.errors).to be_truthy
     end

@@ -92,12 +92,12 @@ module TwitchStubSupport
       with(
         headers: {
           Authorization: "Bearer #{twitch_token}",
-          "Client-Id": twitch_client_id
+          "Client-Id": twitch_client_id,
         },
         query: "query=0&first=5"
       ).to_return(
         status: 200,
-        body: result_twitch_channels
+        body: result_twitch_channels,
       )
 
     WebMock.stub_request(
@@ -106,12 +106,12 @@ module TwitchStubSupport
       with(
         headers: {
           Authorization: "Bearer #{twitch_token}",
-          "Client-Id": twitch_client_id
+          "Client-Id": twitch_client_id,
         },
         query: "id=channel_id_0"
       ).to_return(
         status: 200,
-        body: twitch_description_0
+        body: twitch_description_0,
       )
 
     WebMock.stub_request(
@@ -120,12 +120,12 @@ module TwitchStubSupport
       with(
         headers: {
           Authorization: "Bearer #{twitch_token}",
-          "Client-Id": twitch_client_id
+          "Client-Id": twitch_client_id,
         },
         query: "id=channel_id_1"
       ).to_return(
         status: 200,
-        body: twitch_description_1
+        body: twitch_description_1,
       )
 
     WebMock.stub_request(
@@ -134,12 +134,12 @@ module TwitchStubSupport
       with(
         headers: {
           Authorization: "Bearer #{twitch_token}",
-          "Client-Id": twitch_client_id
+          "Client-Id": twitch_client_id,
         },
         query: "id=channel_id_2"
       ).to_return(
         status: 200,
-        body: twitch_description_2
+        body: twitch_description_2,
       )
 
     WebMock.stub_request(
@@ -148,12 +148,12 @@ module TwitchStubSupport
       with(
         headers: {
           Authorization: "Bearer #{twitch_token}",
-          "Client-Id": twitch_client_id
+          "Client-Id": twitch_client_id,
         },
         query: "id=channel_id_3"
       ).to_return(
         status: 200,
-        body: twitch_description_3
+        body: twitch_description_3,
       )
 
     WebMock.stub_request(
@@ -162,12 +162,12 @@ module TwitchStubSupport
       with(
         headers: {
           Authorization: "Bearer #{twitch_token}",
-          "Client-Id": twitch_client_id
+          "Client-Id": twitch_client_id,
         },
         query: "id=channel_id_4"
       ).to_return(
         status: 200,
-        body: twitch_description_4
+        body: twitch_description_4,
       )
 
     WebMock.stub_request(
@@ -176,7 +176,7 @@ module TwitchStubSupport
       with(
         headers: {
           Authorization: "Bearer #{twitch_token}",
-          "Client-Id": twitch_client_id
+          "Client-Id": twitch_client_id,
         },
         query: "user_id=channel_id_1"
       ).to_return(

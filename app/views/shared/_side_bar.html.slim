@@ -13,7 +13,7 @@
         p フォロー解除
   .follows
     - if current_user && current_user.follows.present?
-      - current_user.follows.each do |follow|
+      - current_user.follows.with_attached_image.each do |follow|
         - if follow.platform
           - @live = capture do
             .follow

@@ -16,10 +16,12 @@ class FriendshipsController < ApplicationController
   def destroy
     @active_friendship = Friendship.find_by(
       from_user_id: params[:from_user_id],
-      to_user_id: params[:to_user_id])
+      to_user_id: params[:to_user_id]
+    )
     @passive_friendship = Friendship.find_by(
       from_user_id: params[:to_user_id],
-      to_user_id: params[:from_user_id])
+      to_user_id: params[:from_user_id]
+    )
     if @active_friendship
       @active_friendship.destroy
     else

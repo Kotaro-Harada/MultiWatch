@@ -5,8 +5,8 @@ RSpec.describe ChatChannel, type: :channel do
   let(:user) { create(:user) }
 
   before do
-    allow_any_instance_of(ActionDispatch::Request)
-      .to receive(:session).and_return(user_id: user.id)
+    allow_any_instance_of(ActionDispatch::Request).
+      to receive(:session).and_return(user_id: user.id)
     stub_connection current_user: user
   end
 

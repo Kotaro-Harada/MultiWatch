@@ -241,7 +241,6 @@ GEM
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    redis (4.6.0)
     regexp_parser (2.2.0)
     rest-client (2.1.0)
       http-accept (>= 1.7.0, < 2.0)
@@ -399,7 +398,6 @@ DEPENDENCIES
   rails (~> 6.1.4, >= 6.1.4.1)
   rails-erd
   ransack
-  redis
   rest-client
   rspec-rails
   rubocop-airbnb

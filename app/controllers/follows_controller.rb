@@ -2,7 +2,7 @@ require "open-uri"
 
 class FollowsController < ApplicationController
   def index
-    @follows = current_user.follows
+    @follows = current_user.follows.with_attached_image
     render json: @follows, methods: [:image_url]
   end
 
@@ -11,12 +11,18 @@ class FollowsController < ApplicationController
     file_url = URI.open(params[:image_url])
     @follow.image.attach(io: file_url, filename: "#{params[:follow][:name]}.png")
     @follow.save!
-    @check_follow = Follow.find_by(user_id: current_user.id, channel_id: params[:follow][:channel_id])
+    @check_follow = Follow.find_by(
+      user_id: current_user.id,
+      channel_id: params[:follow][:channel_id],
+    )
     render json: @check_follow
   end
 
   def destroy
-    @follow = Follow.find_by(user_id: current_user.id, channel_id: params[:channel_id])
+    @follow = Follow.find_by(
+      user_id: current_user.id,
+      channel_id: params[:channel_id]
+    )
     @follow.destroy
     @check_follow = Follow.find_by(user_id: current_user.id, channel_id: params[:channel_id])
     render json: @check_follow

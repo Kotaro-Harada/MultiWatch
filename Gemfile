@@ -71,4 +71,3 @@ gem 'bootstrap'
 gem 'font-awesome-sass', '~> 5.13.0'
 gem 'ransack'
 gem 'aws-sdk-s3', require: false
-gem 'redis'

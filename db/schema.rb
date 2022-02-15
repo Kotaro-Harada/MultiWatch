@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 2022_01_26_074443) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "admin", default: false, null: false
+    t.index ["name", "email"], name: "index_users_on_name_and_email", unique: true
   end
 
   create_table "whispers", force: :cascade do |t|

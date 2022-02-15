@@ -19,8 +19,8 @@ RSpec.describe "SideBar", js: true, type: :feature do
 
   context "sidebar shows follow channel contents" do
     before do
-      allow_any_instance_of(ActionDispatch::Request)
-        .to receive(:session).and_return(user_id: user.id)
+      allow_any_instance_of(ActionDispatch::Request).
+        to receive(:session).and_return(user_id: user.id)
       WebMock.enable!
       stub_youtube
       stub_twitch

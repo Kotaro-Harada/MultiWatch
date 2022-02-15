@@ -146,7 +146,7 @@ export default {
       axios.post("/api/v1/whispers/invite_chat", {
         whisper: {
           receive_user_name: this.select_names,
-          message_type: 2
+          message_type: "2",
         }
       }).then(response => (
         this.invite_whisper = "ウィスパーで招待しました",

@@ -5,8 +5,8 @@ RSpec.describe "UserSettings", type: :feature do
 
   context "change profile" do
     before do
-      allow_any_instance_of(ActionDispatch::Request)
-        .to receive(:session).and_return(user_id: user.id)
+      allow_any_instance_of(ActionDispatch::Request).
+        to receive(:session).and_return(user_id: user.id)
       visit profile_user_path(user.id)
     end
 
@@ -27,8 +27,8 @@ RSpec.describe "UserSettings", type: :feature do
 
   context "change security" do
     before do
-      allow_any_instance_of(ActionDispatch::Request)
-        .to receive(:session).and_return(user_id: user.id)
+      allow_any_instance_of(ActionDispatch::Request).
+        to receive(:session).and_return(user_id: user.id)
       visit security_user_path(user.id)
     end
 

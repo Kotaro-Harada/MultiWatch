@@ -37,6 +37,7 @@ FactoryBot.define do
     id { 1 }
     name { "multiwatch1" }
     after(:create) { |user| create(:whisper, user: user) }
+
     after(:create) { |user| create(:room, users: [user]) }
   end
 end

@@ -150,6 +150,7 @@ GEM
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     jmespath (1.5.0)
+    kgio (2.11.4)
     launchy (2.5.0)
       addressable (~> 2.7)
     listen (3.7.1)
@@ -233,6 +234,7 @@ GEM
       rake (>= 0.13)
       thor (~> 1.0)
     rainbow (3.1.1)
+    raindrops (0.20.0)
     rake (13.0.6)
     ransack (2.5.0)
       activerecord (>= 5.2.4)
@@ -339,6 +341,9 @@ GEM
       unf_ext
     unf_ext (0.0.8)
     unicode-display_width (1.8.0)
+    unicorn (6.1.0)
+      kgio (~> 2.6)
+      raindrops (~> 0.7)
     uniform_notifier (1.14.2)
     web-console (4.2.0)
       actionview (>= 6.0.0)
@@ -407,6 +412,7 @@ DEPENDENCIES
   spring
   turbolinks (~> 5)
   tzinfo-data
+  unicorn (= 6.1.0)
   web-console (>= 4.1.0)
   webdrivers
   webmock

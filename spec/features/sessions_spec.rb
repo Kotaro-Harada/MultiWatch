@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "Sessions", type: :feature do
-  let(:user) { create(:user, :attach_avatar) }
+  let(:user) { create(:user) }
 
   before do
     visit login_path

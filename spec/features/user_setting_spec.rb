@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "UserSettings", type: :feature do
-  let!(:user) { create(:user, :attach_avatar) }
+  let!(:user) { create(:user) }
 
   context "change profile" do
     before do

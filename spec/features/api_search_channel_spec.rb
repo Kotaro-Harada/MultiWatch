@@ -26,20 +26,10 @@ RSpec.describe "ApiChannels", type: :feature do
 
     scenario "search youtube channel shows 5 results" do
       aggregate_failures do
-        expect(visit search_channel_muitiwatches_path)
         (0..4).each do |index|
-          within ".channel_image" do
-            expect(page).to have_selector "img[src$='https://yt3.ggpht.com/#{index}']"
-          end
-          within ".channel_name" do
-            expect(page).to have_content "title_#{index}"
-          end
-          within ".channel_id" do
-            expect(page).to have_content "channel_id_#{index}"
-          end
-          within ".description" do
-            expect(page).to have_content "description_#{index}"
-          end
+          expect(page).to have_selector "img[src$='https://yt3.ggpht.com/#{index}']"
+          expect(page).to have_content "title_#{index}"
+          expect(page).to have_content "description_#{index}"
         end
       end
     end
@@ -71,20 +61,10 @@ RSpec.describe "ApiChannels", type: :feature do
 
     scenario "search twitch channel shows 5 results" do
       aggregate_failures do
-        expect(visit search_channel_muitiwatches_path)
         (0..4).each do |index|
-          within ".channel_image" do
-            expect(page).to have_selector "img[src$='https://static-cdn.jtvnw.net/#{index}']"
-          end
-          within ".channel_name" do
-            expect(page).to have_content "title_#{index}"
-          end
-          within ".channel_id" do
-            expect(page).to have_content "channel_id_#{index}"
-          end
-          within ".description" do
-            expect(page).to have_content "description_#{index}"
-          end
+          expect(page).to have_selector "img[src$='https://static-cdn.jtvnw.net/#{index}']"
+          expect(page).to have_content "title_#{index}"
+          expect(page).to have_content "description_#{index}"
         end
       end
     end

@@ -19,16 +19,14 @@ RSpec.describe "Api::Whispers", type: :request do
 
   describe "POST /create" do
     it "returns http success" do
-      expect{
-        post "/api/v1/whispers",
-          params: {
-            whisper: {
-              send_user_id: user1.id,
-              send_user_name: user1.name,
-              receive_user_id: user2.id,
-              receive_user_name: user2.name,
-              message: "multiwatch2",
-            },
+      expect {
+        post "/api/v1/whispers", params: {
+          whisper: {
+            send_user_id: user1.id,
+            send_user_name: user1.name,
+            receive_user_id: user2.id,
+            receive_user_name: user2.name,
+            message: "multiwatch2",
           },
         }
       }.to change(Whisper, :count).by(1)
@@ -38,7 +36,7 @@ RSpec.describe "Api::Whispers", type: :request do
 
   describe "GET /destroy" do
     it "returns http success" do
-      expect{
+      expect {
         delete "/api/v1/whispers/destroy"
       }.to change(Whisper, :count).by(-1)
       expect(response).to have_http_status(200)
@@ -47,7 +45,7 @@ RSpec.describe "Api::Whispers", type: :request do
 
   describe "POST /friend_request" do
     it "returns http success" do
-      expect{
+      expect {
         post "/api/v1/whispers/friend_request", params: {
           whisper: {
             send_user_id: user1.id,
@@ -65,7 +63,7 @@ RSpec.describe "Api::Whispers", type: :request do
     let!(:friendship) { create(:friendship) }
 
     it "returns http success" do
-      expect{
+      expect {
         post "/api/v1/whispers/invite_chat", params: {
           whisper: {
             receive_user_name: [user2.name],

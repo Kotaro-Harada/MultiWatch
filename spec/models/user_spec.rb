@@ -106,7 +106,7 @@ RSpec.describe User, type: :model do
     end
 
     it "is invalid if name is duplicated" do
-      user2 = User.new(:user, name: "multiwatch")
+      user2 = User.new(name: "multiwatch")
       user2.valid?
       expect(user2.errors[:name]).to include("はすでに存在します")
     end

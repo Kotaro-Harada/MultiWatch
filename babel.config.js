@@ -89,7 +89,8 @@ module.exports = {
         'modules': 'false',
         'useBuiltIns': 'usage',
         'targets': '> 0.25%, not dead',
-      }
+      },
+      "@vue/cli-plugin-babel/preset",
     ]
   ],
   env: {

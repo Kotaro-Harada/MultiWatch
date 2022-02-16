@@ -82,5 +82,6 @@ test:
 production:
   <<: *default
   database: multiwatch_production
-  username: multiwatch
-  password: <%= ENV['MULTIWATCH_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock

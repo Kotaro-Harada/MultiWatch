@@ -10804,7 +10804,7 @@ vue-loader@^15.9.2:
 
 vue-loader@^17.0.0:
   version "17.0.0"
-  resolved "https://registry.npmjs.org/vue-loader/-/vue-loader-17.0.0.tgz"
+  resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-17.0.0.tgz#2eaa80aab125b19f00faa794b5bd867b17f85acb"
   integrity sha512-OWSXjrzIvbF2LtOUmxT3HYgwwubbfFelN8PAP9R9dwpIkj48TVioHhWWSx7W7fk+iF5cgg3CBJRxwTdtLU4Ecg==
   dependencies:
     chalk "^4.1.0"

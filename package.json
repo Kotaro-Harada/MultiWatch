@@ -12,6 +12,7 @@
     "jquery": "^3.6.0",
     "turbolinks": "^5.2.0",
     "vue": "^2.6.14",
+    "vue-loader": "^17.0.0",
     "vue-router": "^3.5.3",
     "vue-template-compiler": "^2.6.14",
     "vue-turbolinks": "^2.2.2",
@@ -34,7 +35,6 @@
     "flush-promises": "^1.0.2",
     "jest": "^27.5.0",
     "vue-jest": "^3.0.7",
-    "vue-loader": "^17.0.0",
     "webpack-dev-server": "^3"
   },
   "scripts": {

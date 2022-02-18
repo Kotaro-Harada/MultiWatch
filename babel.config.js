@@ -24,6 +24,7 @@ module.exports = function(api) {
             node: 'current'
           },
           "useBuiltIns": "entry",
+          'corejs': 2,
         }
       ],
       (isProductionEnv || isDevelopmentEnv) && [
@@ -86,11 +87,12 @@ module.exports = {
       '@babel/preset-env', {
         "modules": false,
         'useBuiltIns': "entry",
+        'corejs': 2,
         'targets': '> 0.25%, not dead',
       },
-      "@vue/cli-plugin-babel/preset",
-      'jest',
-    ]
+    ],
+    "@vue/cli-plugin-babel/preset",
+    'jest'
   ],
   env: {
     test: {
@@ -102,6 +104,7 @@ module.exports = {
               node: 'current'
             },
             "useBuiltIns": "entry",
+            'corejs': 2,
           }
         ]
       ],

@@ -84,4 +84,4 @@ production:
   database: multiwatch_production
   username: root
   password: <%= ENV['DATABASE_PASSWORD'] %>
-  socket: /var/lib/mysql/mysql.sock
+  port: 5432

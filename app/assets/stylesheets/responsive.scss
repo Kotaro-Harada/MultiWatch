@@ -13,12 +13,14 @@
     margin: 0;
   }
 }
-@media screen and ( min-width:870px )
+
+@media screen and ( min-width:931px )
 {
   .short_header_menu{
     display: none;
   }
 }
+
 @media screen and ( max-width:650px )
 {
   .logo{
@@ -83,6 +85,7 @@
     margin: auto;
   }
 }
+
 @media screen and ( max-width:440px ){
   #platform{
     width: 30px;

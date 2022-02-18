@@ -89,6 +89,7 @@ module.exports = {
         'targets': '> 0.25%, not dead',
       },
       "@vue/cli-plugin-babel/preset",
+      'jest',
     ]
   ],
   env: {

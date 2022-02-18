@@ -10,6 +10,7 @@
     "actioncable": "^5.2.6",
     "axios": "^0.24.0",
     "babel-loader": "^8.2.3",
+    "babel-preset-jest": "^27.5.1",
     "core-js": "2.6.8",
     "jquery": "^3.6.0",
     "regenerator-runtime": "^0.13.9",

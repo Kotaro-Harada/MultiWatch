@@ -18,20 +18,19 @@ module.exports = function(api) {
   return {
     presets: [
       isTestEnv && [
-        '@babel/preset-env',
-        {
+        '@babel/preset-env', {
+          "modules": false,
           targets: {
             node: 'current'
-          }
+          },
+          "useBuiltIns": "entry",
         }
       ],
       (isProductionEnv || isDevelopmentEnv) && [
-        '@babel/preset-env',
-        {
+        '@babel/preset-env', {
           forceAllTransforms: true,
-          useBuiltIns: 'entry',
-          corejs: 3,
-          modules: false,
+          useBuiltIns: "entry",
+          "modules": false,
           exclude: ['transform-typeof-symbol']
         }
       ]
@@ -84,10 +83,9 @@ module.exports = function(api) {
 module.exports = {
   presets: [
     [
-      '@babel/preset-env',
-      {
-        'modules': 'false',
-        'useBuiltIns': 'usage',
+      '@babel/preset-env', {
+        "modules": false,
+        'useBuiltIns': "entry",
         'targets': '> 0.25%, not dead',
       },
       "@vue/cli-plugin-babel/preset",
@@ -95,7 +93,17 @@ module.exports = {
   ],
   env: {
     test: {
-      presets: [['@babel/preset-env', {targets: {node: 'current'}}]],
+      presets: [
+        [
+          '@babel/preset-env', {
+            "modules": false,
+            targets: {
+              node: 'current'
+            },
+            "useBuiltIns": "entry",
+          }
+        ]
+      ],
     },
   },
 };

@@ -82,6 +82,7 @@ test:
 production:
   <<: *default
   database: multiwatch_production
-  username: root
+  username: <%= ENV['DATABASE_USERNAME'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
   port: 5432
+  host: <%= ENV['DATABASE_HOST'] %>

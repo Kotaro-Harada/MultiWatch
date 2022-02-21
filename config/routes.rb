@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => '/cable'
   root to: "multiwatches#home"
 
   get '/login', to: "sessions#new"
@@ -60,6 +61,4 @@ Rails.application.routes.draw do
       delete "destroy"
     end
   end
-
-  mount ActionCable.server => '/cable'
 end

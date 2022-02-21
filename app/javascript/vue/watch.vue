@@ -8,15 +8,15 @@
             frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
           <button class="btn btn-danger delete_video" style="display:none;" @click="delete_youtube(youtube)"><i class="fas fa-trash"></i></button>
           <iframe class="chat_frame" frameborder="0"
-            v-bind:src="`https://www.youtube.com/live_chat?v=` + youtube + `&embed_domain=localhost`"></iframe>
+            v-bind:src="`https://www.youtube.com/live_chat?v=` + youtube + `&embed_domain=www.multiwatch.ml`"></iframe>
         </div>
       </div>
       <div v-for="(twitch, index) in twitches" :key="`twitch` + index">
         <div class="twitch">
           <iframe class="video_frame" frameborder="0" allowfullscreen="true" scrolling="no"
-            v-bind:src="`https://player.twitch.tv/?channel=` + twitch + `&parent=localhost`"></iframe>
+            v-bind:src="`https://player.twitch.tv/?channel=` + twitch + `&parent=www.multiwatch.ml`"></iframe>
           <button class="btn btn-danger delete_video" style="display:none;" @click="delete_twitch(twitch)"><i class="fas fa-trash"></i></button>
-          <iframe class="chat_frame" id="twitch-chat-embed" v-bind:src="`https://www.twitch.tv/embed/` + twitch + `/chat?parent=localhost`"
+          <iframe class="chat_frame" id="twitch-chat-embed" v-bind:src="`https://www.twitch.tv/embed/` + twitch + `/chat?parent=www.multiwatch.ml`"
             sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-modals"></iframe>
         </div>
       </div>

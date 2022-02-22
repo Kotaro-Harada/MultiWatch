@@ -3,4 +3,4 @@
 
 import { createConsumer } from "@rails/actioncable"
 
-export default createConsumer('wss:multiwatch.ml/cable')
+export default createConsumer('wss:www.multiwatch.ml/cable')

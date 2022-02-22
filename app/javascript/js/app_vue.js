@@ -7,7 +7,7 @@ import Chat from '../vue/chat.vue'
 import Unfollow from '../vue/unfollow.vue'
 import Follow from '../vue/follow.vue'
 
-const cable = ActionCable.createConsumer('wss:multiwatch.ml/cable');
+const cable = ActionCable.createConsumer('wss:www.multiwatch.ml/cable');
 Vue.prototype.$cable = cable;
 Vue.use(TurbolinksAdapter);
 

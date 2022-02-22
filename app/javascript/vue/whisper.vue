@@ -8,7 +8,7 @@
       </div>
       <div class="send_box">
         <div class="whisper_form">
-          <input type="text" class="receive_user_name" v-model="receive_user_name" placeholder="ユーザー名">
+          <input type="text" class="receive_user_name" placeholder="ユーザー名">
           <div class="send_message">
             <div class="message">
               <p class="underline">メッセージ</p>
@@ -18,7 +18,7 @@
         </div>
       </div>
       <div>
-        <button id="message_button" class="btn btn-primary" @click="whisper(receive_user_name, message)">{{ send_message }}</button>
+        <button id="message_button" class="btn btn-primary" @click="whisper(message)">{{ send_message }}</button>
       </div>
       <div class="send_receive">
         <div class="select_receive underline">
@@ -78,7 +78,6 @@ export default {
     return{
       whispers: [],
       send_message: "送信",
-      receive_user_name: "",
       message: ""
     }
   },
@@ -86,10 +85,10 @@ export default {
     axios.get("/api/v1/whispers").then(response => { this.whispers = response.data })
   },
   methods: {
-    whisper: function(receive_user_name, message){
+    whisper: function(message){
       axios.post("/api/v1/whispers",{
         whisper: {
-          receive_user_name: receive_user_name,
+          receive_user_name: $(".receive_user_name").val(),
           message: message
         }
       }).then(response => (

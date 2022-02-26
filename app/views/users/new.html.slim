@@ -25,4 +25,10 @@
       = f.hidden_field :email, value: "test@test.com"
       = f.hidden_field :password, value: "testpass"
       .form_group
-        = f.submit "テストユーザーでログイン", class: "btn btn-primary login_button"
+        = f.submit "テストユーザー1でログイン", class: "btn btn-primary login_button"
+    = form_with scope: :session, url: { controller: "sessions", action: "create"},
+      method: :post, local: true do |f|
+      = f.hidden_field :email, value: "test2@test.com"
+      = f.hidden_field :password, value: "testpass2"
+      .form_group
+        = f.submit "テストユーザー2でログイン", class: "btn btn-primary login_button"

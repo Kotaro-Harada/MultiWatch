@@ -4,6 +4,7 @@
   1.1 HEADER
   1.2 FOOTER
   1.3 TOP
+  1.4 ABOUT
 2. CHANNEL
 3. REGISTER, LOGIN
 4. WATCH
@@ -54,6 +55,9 @@ a{
 .underline{
   border-bottom: 2px solid purple;
 }
+ol, li{
+  color: white;
+}
 
 /* === 1.1 HEADER === */
 .header, .navbar_header, .search, .search_input{
@@ -64,9 +68,13 @@ a{
   width: auto;
   background-color: black;
 }
-.logo{
+.logo, .about{
   font-size: 20px;
-  margin: auto 0;
+  margin: auto 20px auto 0;
+}
+.logo:hover, .about:hover{
+  border-radius: 5px;
+  background-color: rgb(40, 40, 40);
 }
 .search_input{
   padding-top: 10px;
@@ -451,6 +459,91 @@ margin-right: 10px;
   .twitch4.display, .niconico2.display, .niconico3.display, .niconico4.display{
   display: inline-block;
   animation: display 0.5s;
+}
+
+/* === 1.4 ABOUT === */
+.about_menu{
+  width: 200px;
+}
+.about_title{
+  max-width: 300px;
+  font-size: xx-large;
+  font-weight: 840;
+  text-align: center;
+  margin: 30px auto;
+  border-bottom: 2px solid purple;
+}
+.about_content{
+  max-width: 700px;
+  margin: auto;
+  line-height: 30px;
+  font-size: large;
+}
+.concept_nav:hover, .howto_each_menu:hover{
+  background-color: gray;
+}
+.concept_nav, .howto_nav{
+  height: 50px;
+}
+.concept_nav p, .howto_nav p{
+  padding: 13px;
+}
+.concept_title{
+  max-width: 100px;
+  font-size: large;
+  font-weight: 600;
+  text-align: center;
+  margin: 30px auto;
+}
+.concept_content{
+  max-width: 700px;
+  margin: auto;
+  line-height: 30px;
+  font-size: large;
+}
+.howto_each_menu{
+  padding: 10px 0;
+}
+.about_concept, .howto_explanation, .whisper_explanation, .watch_explanation, .chat_explanation,
+  .home_explanation, .friend_explanation, .channel_explanation{
+  width: 100%;
+}
+.home_image, .channel_explanation_image, .friend_explanation_image, .whisper_explanation_image,
+  .watch_explanation_image, .chat_explanation_image, .home_explanation_image{
+  max-width: 700px;
+  margin: 30px auto;
+}
+.home_image, .chat_image, .invite_chat_image{
+  border: 2px solid white;
+  width: 100%;
+}
+.home_explanation_content, .channel_explanation_content, .friend_explanation_content,
+  .watch_explanation_content, .chat_explanation_content{
+  max-width: 600px;
+  margin: auto;
+}
+.user_menu_image{
+  max-width: 300px;
+  display: block;
+  margin: auto;
+}
+.chat_image{
+  max-width: 200px;
+  display: block;
+  margin: auto;
+}
+.invite_chat_image{
+  max-width: 400px;
+  display: block;
+  margin: auto;
+}
+.each_howto{
+  margin: 10px auto;
+}
+.attention{
+  color: red;
+  font-weight: bold;
+  font-size: larger;
 }
 
 /* === 2. CHANNEL === */

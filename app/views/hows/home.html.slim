@@ -1,0 +1,25 @@
+- provide(:title, "HOMEの使い方")
+.wrapper
+  = render "shared/hows_menu"
+  .home_explanation
+    .home_explanation_image
+      = image_tag "home.png", class:"home_image"
+    .home_explanation_content
+      ol
+        li.each_howto
+          p チャンネルの検索はヘッダーにあるチャンネル検索によってプラットフォームを選択し、
+            チャンネル名を入力することで検索が可能です。
+        li.each_howto
+          p フォローしたチャンネルは左上のメニューボタンを押すことによって画像にある サイドバーが開くのでそちらで確認、
+            フォローの解除が可能です。サイドバーのフォローチャンネルから配信を見ることも可能です。
+        li.each_howto
+          p 直接配信または動画のURLを入力して視聴することも可能です。
+            その場合は最大4つまで、またニコニコは動画のみとなっております。URLを入力した後、 下のWATCHボタンを押すことで視聴できます。
+        li.each_howto
+          = image_tag "user_menu.png", class:"user_menu_image home_image"
+          p ユーザーアイコンをクリックすることで上記画像のようにそれぞれのメニューが出てきます。 フレンドはフレンド申請の送信、フレンドの削除、フレンドへのウィスパーができます。
+            設定はユーザーアイコンの変更やユーザーネーム、メールアドレス、パスワードの変更ができます。
+            ログアウトは現在ログインしているユーザーからログアウトします。
+            退会は現在ログインしているユーザーを削除します。
+        li.each_howto
+          p ログイン、登録をするときはこちらから可能です。

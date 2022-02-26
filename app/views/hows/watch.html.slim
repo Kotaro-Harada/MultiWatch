@@ -1,0 +1,26 @@
+- provide(:title, "視聴画面の見方")
+.wrapper
+  = render "shared/hows_menu"
+  .watch_explanation
+    ul
+      .watch_explanation_image
+        = image_tag "layout.png", class:"home_image"
+      .watch_explanation_content
+        li
+          p 4分割されているのアイコンをクリックすると視聴している数に応じたレイアウトが表示されます。
+            お好みのレイアウトをクリックすることでレイアウトの変更が可能です。
+        li
+          p 視聴している数が3つの場合のみ画像にある回転しているアイコンが表示されますので、
+            それをクリックすることで動画の位置を調整可能です。
+      .watch_explanation_image
+        = image_tag "add_video.png", class:"home_image"
+      .watch_explanation_content
+        li
+          p +アイコンをクリックすることでURLまたはフォロー中のチャンネルから追加が可能です。
+      .watch_explanation_image
+        = image_tag "delete_video.png", class:"home_image"
+      .watch_explanation_content
+        li
+          p -アイコンをクリックすることで、画像のようなゴミ箱のアイコンが動画の右下に出てきますので、それをクリックすることで
+            動画の削除が可能です。
+

@@ -1,3 +1,21 @@
+@media screen and ( min-width:1001px )
+{
+  .about{
+    display: block;
+  }
+  .side_about{
+    display: none;
+  }
+}
+@media screen and ( max-width:1000px )
+{
+  .about{
+    display: none;
+  }
+  .side_about{
+    display: flex;
+  }
+}
 @media screen and ( max-width:930px )
 {
   .header_user{

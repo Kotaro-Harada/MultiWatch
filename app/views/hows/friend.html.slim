@@ -1,0 +1,28 @@
+- provide(:title, "フレンド一覧の見方")
+.wrapper
+  = render "shared/hows_menu"
+  .friend_explanation
+    ul
+      .friend_explanation_image
+        = image_tag "send_friend.png", class:"home_image"
+      .friend_explanation_content
+        li
+          p 右上のユーザーアイコンをクリックして出てくるメニューから"フレンド"をクリックするとこの画面に移動します。
+            そして、画像のようにユーザー名を入力して"フレンド申請"をクリックすることで、
+            ウィスパーからフレンド申請を送ることができます。
+      .friend_explanation_image
+        = image_tag "receive_request.png", class:"home_image"
+      .friend_explanation_content
+        li
+          p フレンド申請を受け取ったユーザーは画像のようにウィスパーで受け取りますので"許可"ボタンをクリックすることで
+            フレンドになることができます。
+      .friend_explanation_image
+        = image_tag "friend_function.png", class:"home_image"
+      .friend_explanation_content
+        li
+          p フレンドは画像のように一覧で確認可能です。"削除"ボタンでフレンドから削除でき、"ウィスパー"ボタンで
+            自動的にウィスパー画面の展開とフレンドの名前の入力を行います。
+
+
+
+

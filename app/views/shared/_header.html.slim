@@ -5,6 +5,8 @@
     .menu
   .logo
     = link_to "MultiWatch", home_multiwatches_path, class: "nav_link"
+  .about
+    = link_to "ABOUT", concept_multiwatches_path, class: "nav_link"
   .search
     .search_input
       = form_with url: { controller: "multiwatches", action: "search_channel" }, method: :get, local: true do |f|

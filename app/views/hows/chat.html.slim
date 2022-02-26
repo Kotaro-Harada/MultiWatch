@@ -1,0 +1,30 @@
+- provide(:title, "CUSTOMチャットの使い方")
+.wrapper
+  = render "shared/hows_menu"
+  .chat_explanation
+    ol
+      .chat_explanation_image
+        = image_tag "create_chat_room.png", class:"chat_image"
+      .chat_explanation_content
+        li
+          p チャット欄の種類をCUSTOMに変更。
+        li
+          p "ルームを作成"をクリックすることで、チャットルームが作成できます。作成した時点で
+            自分はそのルームに参加しています。
+    ul
+      .chat_explanation_image
+        = image_tag "chat.png", class:"chat_image"
+      .chat_explanation_content
+        li
+          p チャットルームに参加すると、メッセージに入力してチャットボタンをクリックすることでチャットが可能です。
+      .chat_explanation_image
+        = image_tag "edit_chat.png", class:"chat_image"
+      .chat_explanation_content
+        li
+          p 赤枠のアイコンをクリックすることで、チャット内のユーザーを確認できます。
+        li
+          p フレンドを招待する際はフレンドの名前の横のチェックボックスにチェックを入れて"招待"ボタンを押すことで、
+            チャットルームに招待ができます。なお、招待は以下の画像のようにウィスパーで送られますので"参加"ボタンを
+            クリックすることでチャットルームに参加が可能です。
+          = image_tag "invite_chat.png", class:"invite_chat_image"
+

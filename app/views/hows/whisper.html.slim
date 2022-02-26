@@ -1,0 +1,23 @@
+- provide(:title, "チャンネル一覧の見方")
+.wrapper
+  = render "shared/hows_menu"
+  .whisper_explanation
+    .whisper_explanation_image
+      = image_tag "whisper.png", class:"home_image"
+    .friend_explanation_content
+      ul
+        li
+          p 赤枠で囲まれているアイコンをクリックすることでウィスパー画面を展開できます。
+        li
+          p ユーザー名にはメッセージを送りたい相手の名前を入力します。
+        li
+          p 送信可能なメッセージは50文字以内です。
+        li
+          p "送信"ボタンをクリックすることでウィスパーを送ることができます。
+        li
+          p 受け取ったメッセージは画像のように受信メッセージ以下に表示されます。
+        li
+          p "クリア"ボタンを押すことで全てのメッセージを削除できます。
+        li
+          p 回転しているアイコンをクリックすることで新着メッセージを確認できます。
+

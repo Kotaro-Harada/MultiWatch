@@ -1,0 +1,32 @@
+.about_menu
+  = link_to concept_multiwatches_path, class: "nav_link"
+    .concept_nav
+      p CONCEPT
+  .howto_nav
+    p HOW TO
+  .howto_menu
+    ul
+      = link_to home_hows_path, class: "nav_link"
+        .howto_home.howto_each_menu
+          li
+            p ホーム
+      = link_to channel_hows_path, class: "nav_link"
+        .howto_channel.howto_each_menu
+          li
+            p チャンネル検索
+      = link_to friend_hows_path, class: "nav_link"
+        .howto_user.howto_each_menu
+          li
+            p フレンド
+      = link_to whisper_hows_path, class: "nav_link"
+        .howto_whisper.howto_each_menu
+          li
+            p ウィスパー
+      = link_to watch_hows_path, class: "nav_link"
+        .howto_watch.howto_each_menu
+          li
+            p 視聴画面
+      = link_to chat_hows_path, class: "nav_link"
+        .howto_chat.howto_each_menu
+          li
+            p チャット

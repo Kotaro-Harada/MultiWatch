@@ -35,4 +35,10 @@ class MultiwatchesController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def concept
+  end
+
+  def howto
+  end
 end

@@ -11,6 +11,18 @@ Rails.application.routes.draw do
       get "home"
       get "watch"
       get "search_channel"
+      get "concept"
+    end
+  end
+
+  resources :hows do
+    collection do
+      get "home"
+      get "channel"
+      get "friend"
+      get "whisper"
+      get "watch"
+      get "chat"
     end
   end
 

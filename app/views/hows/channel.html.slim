@@ -1,0 +1,15 @@
+- provide(:title, "チャンネル一覧の見方")
+.wrapper
+  = render "shared/hows_menu"
+  .channel_explanation
+    .channel_explanation_image
+      = image_tag "channels.png", class:"home_image"
+    .channel_explanation_content
+      ul
+        li チャンネル一覧の画面では、チャンネルが配信中であるならばアイコンまたは名前をクリックすると視聴ができます。twitchの場合、配信していない時は待機画面が表示されます。
+          また、フォローボタンを押すことでそのチャンネルをフォローすることができます。
+        li
+          p class="attention" 注意!
+          p youtubeのチャンネルもフォローできるようにしていますが、YoutubeのAPI使用には1日当たりの限度が設定されてあります。そして、
+            youtubeのチャンネルをフォローするとサイドバーから全ての画面でyoutubeAPIを使用するため、youtubeチャンネルをフォローした上でその限度
+            がきてしまうと19時まで何もできなくなってしまうため、極力youtubeチャンネルのフォローはしないで下さい。

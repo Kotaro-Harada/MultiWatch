@@ -38,7 +38,4 @@ class MultiwatchesController < ApplicationController
 
   def concept
   end
-
-  def howto
-  end
 end

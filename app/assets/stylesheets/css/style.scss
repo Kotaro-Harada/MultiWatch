@@ -55,9 +55,6 @@ a{
 .underline{
   border-bottom: 2px solid purple;
 }
-ol, li{
-  color: white;
-}
 
 /* === 1.1 HEADER === */
 .header, .navbar_header, .search, .search_input{
@@ -521,6 +518,7 @@ margin-right: 10px;
   .watch_explanation_content, .chat_explanation_content{
   max-width: 600px;
   margin: auto;
+  color: white;
 }
 .user_menu_image{
   max-width: 300px;

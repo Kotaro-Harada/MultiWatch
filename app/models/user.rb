@@ -29,5 +29,6 @@ class User < ApplicationRecord
     format: { with: VALID_EMAIL_REGEX }
   validates :password,
     length: { minimum: 8 },
-    presence: true
+    presence: true,
+    allow_nil: true
 end

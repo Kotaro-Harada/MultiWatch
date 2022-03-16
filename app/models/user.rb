@@ -15,7 +15,6 @@ class User < ApplicationRecord
     dependent: :destroy
   has_many :active_friends, through: :active_friendships, source: :to_user
   has_many :passive_friends, through: :passive_friendships, source: :from_user
-  has_many :chats
   has_one :user_room
   has_one :room, through: :user_room
 

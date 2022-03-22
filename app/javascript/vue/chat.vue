@@ -143,7 +143,7 @@ export default {
       $(".invite_exit, .chat_box").toggleClass("not_show")
     },
     invite: function(){
-      axios.post("/api/v1/whispers/invite_chat", {
+      axios.post("/whispers/invite_chat", {
         whisper: {
           receive_user_name: this.select_names,
           message_type: "2",

@@ -1,5 +1,5 @@
-class Api::V1::WhispersController < ApplicationController
-  include Api::V1::WhispersHelper
+class WhispersController < ApplicationController
+  include WhispersHelper
 
   def index
     @whispers = current_user.whispers

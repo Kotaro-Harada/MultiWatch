@@ -82,11 +82,11 @@ export default {
     }
   },
   mounted(){
-    axios.get("/api/v1/whispers").then(response => { this.whispers = response.data })
+    axios.get("/whispers").then(response => { this.whispers = response.data })
   },
   methods: {
     whisper: function(message){
-      axios.post("/api/v1/whispers",{
+      axios.post("/whispers",{
         whisper: {
           receive_user_name: $(".receive_user_name").val(),
           message: message
@@ -118,7 +118,7 @@ export default {
     },
     delete_whisper: function(){
       if(window.confirm("メッセージを全て削除します。よろしいですか？")){
-        axios.delete("/api/v1/whispers/destroy", {
+        axios.delete("/whispers/destroy", {
         }).then(response => (this.whispers = response.data));
       }
     },
@@ -165,7 +165,7 @@ export default {
       })
     },
     reload: function(){
-      axios.get("/api/v1/whispers").then((response) => {
+      axios.get("/whispers").then((response) => {
         this.whispers = response.data,
         $(".reload_button").prop("disabled", true),
         $(".receive_box").scrollTop(350),

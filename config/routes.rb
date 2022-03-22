@@ -41,15 +41,11 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :api, format: "json" do
-    namespace :v1 do
-      resources :whispers, only: [:index, :create] do
-        collection do
-          delete "destroy"
-          post "friend_request"
-          post "invite_chat"
-        end
-      end
+  resources :whispers, only: [:index, :create], format: "json" do
+    collection do
+      delete "destroy"
+      post "friend_request"
+      post "invite_chat"
     end
   end
 

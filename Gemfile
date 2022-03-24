@@ -37,7 +37,6 @@ group :development, :test do
   gem 'pry-doc'
   gem 'pry-byebug'
   gem 'rails-erd'
-  gem 'annotate'
   gem 'capybara'
   gem 'webmock'
   # Adds support for Capybara system testing and selenium driver

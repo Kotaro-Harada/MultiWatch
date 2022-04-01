@@ -9,12 +9,16 @@ class MultiwatchesController < ApplicationController
     if params[:youtube].is_a?(Array) ||
       params[:twitch].is_a?(Array) ||
       params[:niconico].is_a?(Array)
-      if params[:youtube].reject!(&:blank?).length +
-        params[:twitch].reject!(&:blank?).length +
-        params[:niconico].reject!(&:blank?).length <= 4
+      params[:youtube].reject! { |youtube| youtube.exclude?("https://www.youtube.com") }
+      params[:twitch].reject! { |twitch| twitch.exclude?("https://www.twitch.tv") }
+      params[:niconico].reject! { |niconico| niconico.exclude?("https://www.nicovideo.jp") }
+      @number_of_videos = params[:youtube].length +
+        params[:twitch].length +
+        params[:niconico].length
+      if @number_of_videos.between?(1, 4)
         part_of_url
       else
-        redirect_to root_path
+        redirect_to root_path, alert: "URLが正しいかどうか、またはURLの数を確認してみて下さい"
       end
     else
       part_of_url

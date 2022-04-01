@@ -24,4 +24,6 @@
           = f.text_field :niconico, name:"niconico[]", size: 60, placeholder: "URL", class: "niconico3"
           = f.text_field :niconico, name:"niconico[]", size: 60, placeholder: "URL", class: "niconico4"
         p ※ URLは4つまでです
+        .alert
+          = flash.alert
         = f.submit "WATCH", class: "submit"

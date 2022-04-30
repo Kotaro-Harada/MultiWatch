@@ -7,7 +7,8 @@ module MultiwatchesHelper
       @youtube = params[:youtube] if params[:youtube].is_a?(Array)
       @youtube.reject!(&:blank?)
       @youtube.map! do |url|
-        /v=/.match(url).post_match
+        /v=/ =~ url
+        $'
       end
     else
       @youtube = []
@@ -18,7 +19,8 @@ module MultiwatchesHelper
       @twitch = params[:twitch] if params[:twitch].is_a?(Array)
       @twitch.reject!(&:blank?)
       @twitch.map! do |url|
-        /tv./.match(url).post_match
+        /tv./ =~ url
+        $'
       end
     else
       @twitch = []
@@ -29,7 +31,8 @@ module MultiwatchesHelper
       @niconico = params[:niconico] if params[:niconico].is_a?(Array)
       @niconico.reject!(&:blank?)
       @niconico.map! do |url|
-        /watch./.match(url).post_match
+        /watch./ =~ url
+        $'
       end
     else
       @niconico = []
